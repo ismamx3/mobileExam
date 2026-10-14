@@ -1,0 +1,8 @@
+[
+  { "id": 1, "titulo": "Coco", "anio": 2017, "genero": "Animación", "calificacion": 8.4, "imagen": "foto1" },
+  { "id": 2, "titulo": "Interestelar", "anio": 2014, "genero": "Ciencia ficción", "calificacion": 8.7, "imagen": "foto4" },
+  { "id": 3, "titulo": "El laberinto del fauno", "anio": 2006, "genero": "Fantasía", "calificacion": 8.2, "imagen": "foto2" },
+  { "id": 4, "titulo": "Roma", "anio": 2018, "genero": "Drama", "calificacion": 7.7, "imagen": "foto3" },
+  { "id": 5, "titulo": "Intensa-Mente", "anio": 2015, "genero": "Animación", "calificacion": 8.1, "imagen": "foto1" },
+  { "id": 6, "titulo": "Volver al futuro", "anio": 1985, "genero": "Ciencia ficción", "calificacion": 8.5, "imagen": "foto4" }
+]
