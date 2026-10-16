@@ -25,6 +25,8 @@
 //   Ojo: dos pantallas con la MISMA llave ("ajustesNombre")
 //   comparten el mismo valor. Así se pasa un dato entre pantallas.
 //  NECESITA:   nada más.
+//  ⚠️ NO VISTO EN LAS PRESENTACIONES: .onAppear (lo usaste en tu tarea
+//     DefaultsApp) y .disabled (apaga el Slider si no hay sonido).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -94,7 +96,7 @@ struct AppStorageView: View {
                         .font(.headline)
                     Slider(value: $volumen, in: 0 ... 1)
                         .tint(.green)
-                        .disabled(!sonidoActivo)        // sin sonido no se mueve
+                        .disabled(!sonidoActivo)        // ⚠️ NO VISTO EN CLASE: sin sonido no se mueve
 
                     // ── 6. Regresar a los valores iniciales ───────
                     Button {
@@ -119,9 +121,11 @@ struct AppStorageView: View {
                 .padding()
             }
         }
+        // En el Stack PRINCIPAL (el ZStack), como pide la Clase 4.
         .onTapGesture {
             campoEnFoco = false
         }
+        // ⚠️ NO VISTO EN LAS PRESENTACIONES (tarea DefaultsApp): corre al aparecer la pantalla.
         .onAppear {
             visitas += 1              // también se guarda solo
         }

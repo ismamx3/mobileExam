@@ -17,11 +17,17 @@
 //   3. Cambia el nombre del archivo marcado con ✏️
 //      (forResource = nombre SIN extensión, withExtension = "mp3").
 //  NECESITA:   el .mp3 dentro del proyecto. import AVFoundation (ya viene).
+//  ⚠️ NO VISTO EN LAS PRESENTACIONES (viene de tu tarea ejemploMusica):
+//     todo el audio → import AVFoundation, AVAudioPlayer, AVAudioSession,
+//     Bundle.main.url(forResource:withExtension:), do/try/catch, .onAppear.
+//     Ninguna presentación de la profesora lo trae; si lo usas, explícalo
+//     con tu tarea ejemploMusica.
 //  ⚠️ NO VISTO EN CLASE: .onDisappear (para apagar la música al salir)
+//  DE CLASE: Slider/Toggle + .onChange(of:) { oldValue, newValue in } (Clase 4).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
-import AVFoundation             // AVAudioPlayer vive aquí
+import AVFoundation             // ⚠️ NO VISTO EN LAS PRESENTACIONES (tarea ejemploMusica): AVAudioPlayer vive aquí
 
 struct SonidoView: View {
 
@@ -103,6 +109,7 @@ struct SonidoView: View {
                 .padding()
             }
         }
+        // ⚠️ NO VISTO EN LAS PRESENTACIONES (tarea ejemploMusica): corre al aparecer la pantalla.
         .onAppear {
             prepararAudio()
         }
@@ -124,7 +131,8 @@ struct SonidoView: View {
         // Para que suene aunque el iPhone esté en modo silencio
         try? AVAudioSession.sharedInstance().setCategory(.playback)
 
-        // Busca el archivo en la app. Regresa opcional → if let
+        // ⚠️ NO VISTO EN LAS PRESENTACIONES: Bundle.main.url busca el archivo
+        // dentro de la app. Regresa opcional → if let
         if let sonido = Bundle.main.url(forResource: "MarioBros", withExtension: "mp3") {   // ✏️ nombre del archivo
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: sonido)

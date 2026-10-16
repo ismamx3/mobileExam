@@ -106,7 +106,7 @@ struct UserDefaultsView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
                         .background(Color.gray.opacity(0.15))
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .cornerRadius(12)        // forma de la Clase 17
 
                     Text("⚠️ No guardes contraseñas aquí: se guarda en texto claro. Para eso es Keychain.")
                         .font(.footnote)
@@ -115,6 +115,7 @@ struct UserDefaultsView: View {
                 .padding()
             }
         }
+        // En el Stack PRINCIPAL (el ZStack), como pide la Clase 4.
         .onTapGesture {
             campoEnFoco = false
         }
