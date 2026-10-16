@@ -18,17 +18,24 @@
 //  NECESITA:   Model/Mascota.swift, Utils/PaletaMascotas.swift,
 //              Components/FilaDatoMascota.swift, imagen "perfil" en Assets.
 //
-//  ¿QUIERES TAMBIÉN CÁMARA? (el simulador NO tiene cámara: prueba en iPhone)
-//   1. Copia 10_FotosYCamara/CamaraPicker.swift a tu proyecto (es el de la profe).
-//   2. Proyecto → Target → pestaña Info → Add Row →
-//      "Privacy - Camera Usage Description" con un mensaje. Sin esto TRUENA.
-//   3. Aquí agrega:   @State private var mostrarCamara = false
-//   4. Junto al PhotosPicker agrega:
-//        Button("Tomar foto", systemImage: "camera.fill") {
-//            mostrarCamara = true
+//  ⚠️ NO VISTO EN CLASE: Button(role: .destructive) (botón rojo de borrar)
+//     y .aspectRatio(contentMode: .fill) en la foto elegida.
+//
+//  ¿QUIERES TAMBIÉN CÁMARA? (Clase 17; el simulador NO tiene cámara:
+//  la prueba final se hace en un iPhone físico, tutorial en Canvas)
+//   1. Copia 10_FotosYCamara/CamaraPicker.swift a tu proyecto (es el de la
+//      profe, de Canvas). Arrástralo y asegúrate de que se haga una COPIA.
+//   2. Permiso (obligatorio desde iOS 10, si no TRUENA): Navegador del
+//      proyecto → selecciona el proyecto → pestaña Info → clic derecho en
+//      la última fila de "Custom iOS Target Properties" → Add Row →
+//      "Privacy - Camera Usage Description" → en Value escribe el mensaje.
+//   3. Aquí agrega:   @State private var showCamara = false
+//   4. Junto al PhotosPicker agrega (igual a la lámina):
+//        Button("Abrir Cámara", systemImage: "camera.fill") {
+//            showCamara = true
 //        }
 //        .buttonStyle(.borderedProminent)
-//        .sheet(isPresented: $mostrarCamara) {
+//        .sheet(isPresented: $showCamara) {
 //            CamaraPicker(selectedImageFromCamera: $fotoPerfil)
 //        }
 // ═══════════════════════════════════════════════════════════════
@@ -76,9 +83,12 @@ struct PerfilDuenoView: View {
 
                         // ── 1. Foto de perfil con borde del color favorito ─
                         VStack(spacing: 12) {
+                            // Paso F de la Clase 17: como es opcional, primero if let.
                             if let fotoBien = fotoPerfil {
                                 Image(uiImage: fotoBien)
                                     .resizable(resizingMode: .stretch)
+                                    // ⚠️ NO VISTO EN CLASE: .fill para que la foto
+                                    // (casi nunca cuadrada) llene el círculo.
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 140, height: 140)
                                     .clipShape(.circle)
@@ -86,10 +96,12 @@ struct PerfilDuenoView: View {
                                         Circle().stroke(colorFavoritoDueno(colorFavorito), lineWidth: 5)
                                     }
                             } else {
+                                // Forma de clase: resizable + .fit + frame (Clase 3)
+                                // y círculo con borde (Clase 5A). El asset es cuadrado.
                                 Image("perfil")                                 // ✏️ tu asset
                                     .resizable(resizingMode: .stretch)
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 140, height: 140)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 140)
                                     .clipShape(.circle)
                                     .overlay {
                                         Circle().stroke(colorFavoritoDueno(colorFavorito), lineWidth: 5)
@@ -105,9 +117,11 @@ struct PerfilDuenoView: View {
                                     .bold()
                                     .padding(.vertical, 6)
                             }
-                            // Los colores van AFUERA de las llaves del PhotosPicker:
-                            // adentro Swift 6 no deja usar variables de la vista
-                            // (sale un warning amarillo).
+                            // En clase (Clase 17, paso C) el estilo va DENTRO de las llaves:
+                            //   Label(...).padding(12).background(.purple)
+                            //       .foregroundStyle(.white).cornerRadius(12)
+                            // Aquí van AFUERA porque adentro Swift 6 no deja usar
+                            // variables de la vista (warning amarillo).
                             .buttonStyle(.borderedProminent)
                             .tint(colorFavoritoDueno(colorFavorito))
                             .onChange(of: fotoPerfilItem) { oldItem, newItem in
@@ -172,6 +186,7 @@ struct PerfilDuenoView: View {
                         .cornerRadius(16)
 
                         // ── 4. Borrar lo guardado ───────────────────
+                        // ⚠️ NO VISTO EN CLASE: role: .destructive (pinta el botón de rojo).
                         Button(role: .destructive) {
                             // Regresar a los valores iniciales también
                             // actualiza UserDefaults.
@@ -190,6 +205,7 @@ struct PerfilDuenoView: View {
                     .padding()
                 }
             }
+            // En el Stack PRINCIPAL (el ZStack), como pide la Clase 4.
             .onTapGesture {
                 tecladoActivo = false
             }

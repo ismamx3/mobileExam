@@ -70,6 +70,8 @@ struct ListaMascotasView: View {
                                 mascotas.remove(atOffsets: posiciones)
                             }
                         }
+                        // En clase (Clase 10) se usa .listStyle(.inset).
+                        // .insetGrouped deja cada renglón como tarjeta.
                         .listStyle(.insetGrouped)
                         .scrollContentBackground(.hidden)   // apaga el fondo propio del List
                     }

@@ -16,6 +16,8 @@
 //  NECESITA:   Model/Mascota.swift, Utils/PaletaMascotas.swift,
 //              Components/TarjetaResumenMascotas.swift, MascotaRow.swift,
 //              BotonPrincipalMascotas.swift, imagen "mascota" en Assets.
+//  ⚠️ NO VISTO EN CLASE: ForEach (bloque 3). Si no lo quieres, quita la
+//     lista de pendientes y deja solo las tarjetas.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -65,10 +67,12 @@ struct InicioMascotasView: View {
 
                         // ── 1. Encabezado con foto y saludo ─────────
                         VStack(spacing: 10) {
+                            // Forma de clase: resizable + .fit + frame (Clase 3)
+                            // y círculo con borde y sombra (Clase 5A).
                             Image("mascota")                                    // ✏️ tu asset
                                 .resizable(resizingMode: .stretch)
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 130, height: 130)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 130)
                                 .clipShape(.circle)
                                 .overlay {
                                     Circle().stroke(paletaPrimario, lineWidth: 4)
@@ -121,8 +125,9 @@ struct InicioMascotasView: View {
                                     .foregroundStyle(paletaTextoSuave)
                                     .padding(.vertical, 8)
                             } else {
-                                // ForEach (no List) porque ya estamos dentro
-                                // de un ScrollView; el if filtra las que faltan.
+                                // ⚠️ NO VISTO EN CLASE: ForEach (en clase se usa List).
+                                // Aquí va ForEach porque ya estamos dentro de un
+                                // ScrollView; el if filtra las que faltan.
                                 ForEach(mascotas) { mascota in
                                     if !mascota.vacunada {
                                         MascotaRow(mascota: mascota)

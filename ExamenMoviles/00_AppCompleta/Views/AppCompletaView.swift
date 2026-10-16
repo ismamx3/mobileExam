@@ -16,9 +16,14 @@
 //   3. En TuAppApp.swift cambia ContentView() por AppCompletaView().
 //   4. Cambia pestañas/íconos marcados con ✏️
 //  NECESITA:   toda la carpeta 00_AppCompleta (Model, Utils, Components, Views).
+//  DE CLASE (Clase 7): cada pestaña = una vista + .tabItem { Label(...) },
+//     y .tint(...) sobre el TabView = "cambiar el color de ícono".
+//     En clase el TabView va dentro de un VStack en ContentView; aquí la
+//     vista ES el TabView (funciona igual).
 //  ⚠️ NO VISTO EN CLASE: TabView(selection:) + .tag para cambiar de
 //     pestaña desde un botón. Si no lo quieres: borra `selection:` y los
 //     .tag, y quita el botón "Ver mis mascotas" de InicioMascotasView.
+//  ⚠️ NO VISTO EN CLASE: .preferredColorScheme(.light) (lo usaste en Movil2).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -61,7 +66,8 @@ struct AppCompletaView: View {
                 }
                 .tag(4)
         }
-        .tint(paletaPrimario)            // color de la pestaña seleccionada
+        .tint(paletaPrimario)            // color del ícono de la pestaña seleccionada
+        // ⚠️ NO VISTO EN CLASE (lo usaste en tu tarea Movil2).
         // La paleta es clara; forzamos modo claro para que el texto
         // del sistema no salga blanco sobre fondo claro en modo oscuro.
         .preferredColorScheme(.light)

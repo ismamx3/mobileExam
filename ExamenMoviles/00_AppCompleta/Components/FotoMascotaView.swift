@@ -15,6 +15,9 @@
 //   2. Pega el archivo completo.
 //   3. Úsalo así:  FotoMascotaView(mascota: mascota, tamano: 60)
 //  NECESITA:   Model/Mascota.swift, Utils/PaletaMascotas.swift
+//  DE CLASE (5A, PokeImagenView): .clipShape(.circle) + .overlay { Circle().stroke(...) }
+//              + .shadow(color:radius:).
+//  ⚠️ NO VISTO EN CLASE: .aspectRatio(contentMode: .fill) para la foto del usuario.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -30,15 +33,18 @@ struct FotoMascotaView: View {
             if let fotoBien = mascota.foto {
                 Image(uiImage: fotoBien)
                     .resizable(resizingMode: .stretch)
-                    // .fill (no .fit) para que la foto LLENE el círculo;
-                    // lo que sobra lo recorta el clipShape de abajo.
+                    // ⚠️ NO VISTO EN CLASE: .fill (en clase siempre es .fit).
+                    // Una foto del carrete casi nunca es cuadrada: con .fill
+                    // LLENA el círculo y lo que sobra lo recorta el clipShape.
                     .aspectRatio(contentMode: .fill)
 
             // ── 2. Imagen del asset ───────────────────────────────
             } else if mascota.imagen != "" {
+                // Forma de clase (Clase 3): resizable + aspectRatio .fit.
+                // El asset es cuadrado, así que llena el círculo igual.
                 Image(mascota.imagen)
                     .resizable(resizingMode: .stretch)
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
 
             // ── 3. Sin imagen: ícono de la especie ────────────────
             } else {

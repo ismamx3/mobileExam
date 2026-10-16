@@ -22,8 +22,15 @@ import Foundation
 // Por eso viven aquí: si agregas una especie, se agrega en los dos.
 let especiesMascotas = ["Perro", "Gato", "Ave", "Pez", "Conejo"]     // ✏️
 
-// Función que devuelve el arreglo. La vista dueña de los datos
-// (AppCompletaView) la llama UNA vez en su @State.
+// Función que devuelve el arreglo (Clase 10: "una función que regrese
+// un arreglo Array<...>"). La vista dueña de los datos (AppCompletaView)
+// la llama UNA vez en su @State.
+//
+// En la Clase 10 además se hace una var global:
+//     var listaJugadores = cargarJugadores()   (ver 08_ModelosYListas)
+// Eso sirve para una lista de SOLO LECTURA. Aquí la lista se modifica
+// (agregar, editar, borrar), y una var global no le avisa a SwiftUI
+// cuando cambia; por eso la lista vive en un @State de AppCompletaView.
 func cargarMascotas() -> Array<Mascota> {
 
     var lista = Array<Mascota>()

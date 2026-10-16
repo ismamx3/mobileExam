@@ -19,8 +19,14 @@
 //  NECESITA:   import Charts (ya viene arriba), Model/Mascota.swift,
 //              Model/ModelDataMascotas.swift (especiesMascotas),
 //              Utils/PaletaMascotas.swift
+//  QUÉ GRÁFICA PARA QUÉ (Clase 15):
+//     barras = comparar categorías · líneas = evoluciones/tendencias en el
+//     TIEMPO (NUNCA para comparar categorías) · puntos = relación entre 2
+//     variables · pastel/dona = proporciones de un total.
+//     Por eso aquí: especies → barras; vacunadas vs pendientes → dona.
 //  ⚠️ NO VISTO EN CLASE: .annotation para poner el número sobre la barra
 //     (tú lo usaste en tu tarea de gráficas sobre un RuleMark).
+//  ⚠️ NO VISTO EN CLASE: barras horizontales (bloque 2: x y y intercambiados).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -117,6 +123,7 @@ struct EstadisticasMascotasView: View {
                             .cornerRadius(16)
 
                             // ── 2. Barras HORIZONTALES: peso ────────
+                            // ⚠️ NO VISTO EN CLASE: barras acostadas.
                             // Truco: el número va en x y la categoría en y.
                             VStack(alignment: .leading, spacing: 12) {
                                 Text("Peso de cada mascota (kg)")               // ✏️
@@ -143,12 +150,16 @@ struct EstadisticasMascotasView: View {
                                     .foregroundStyle(paletaTexto)
 
                                 Chart(datosVacunas()) { dato in
+                                    // Dona = pastel + segunda propiedad innerRadius
+                                    // (Clase 15). Quítala para que sea pastel.
                                     SectorMark(
                                         angle: .value("Cantidad", dato.valor),
-                                        innerRadius: .ratio(0.55)   // quítalo para pastel
+                                        innerRadius: .ratio(0.5)
                                     )
                                     .foregroundStyle(by: .value("Estado", dato.etiqueta))
                                 }
+                                // Colores propios: además de foregroundStyle(by:),
+                                // sobre el Chart (opción C de la Clase 15).
                                 .chartForegroundStyleScale([
                                     "Vacunadas": paletaPrimario,                // ✏️
                                     "Pendientes": paletaPrimarioClaro
@@ -162,6 +173,7 @@ struct EstadisticasMascotasView: View {
                                     .bold()
                                     .foregroundStyle(paletaTexto)
                                     .padding(.top, 8)
+                                // Clase 15: ProgressView(value: 75, total: 100).scaleEffect(x: 1, y: 3)
                                 ProgressView(value: Double(totalVacunadas), total: Double(mascotas.count))
                                     .scaleEffect(x: 1, y: 3)    // y: 3 = barra más gruesa
                                     .tint(paletaPrimario)

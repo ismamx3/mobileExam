@@ -51,7 +51,7 @@ struct TarjetaResumenMascotas: View {
         .padding(.vertical, 16)
         .background(paletaSuperficie)
         .cornerRadius(16)
-        .shadow(color: paletaPrimario.opacity(0.12), radius: 6, y: 3)
+        .shadow(color: paletaPrimario.opacity(0.12), radius: 6)     // forma de clase 5A
     }
 }
 

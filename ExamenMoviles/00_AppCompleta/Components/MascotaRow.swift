@@ -19,7 +19,7 @@ import SwiftUI
 
 struct MascotaRow: View {
 
-    // Sin @State ni private: el renglón solo MUESTRA, no modifica.
+    // Variable NO privada y sin @State (Clase 10): el renglón solo MUESTRA.
     var mascota: Mascota
 
     var body: some View {
@@ -44,7 +44,8 @@ struct MascotaRow: View {
                 .font(.title3)
                 .foregroundStyle(mascota.vacunada ? paletaPrimario : .orange)
         }
-        .padding(.vertical, 6)
+        // Sin .padding al HStack: regla de la Clase 10 ("No agregues padding
+        // al stack" del renglón). El List ya le da su espacio a cada renglón.
     }
 }
 

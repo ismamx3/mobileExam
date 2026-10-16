@@ -17,7 +17,7 @@ La raíz es `Views/AppCompletaView.swift` (el TabView). Ahí vive la lista (`@St
 
 ## 1. Meterla a tu proyecto (5 minutos)
 
-1. Crea tu proyecto en Xcode (iOS → App, SwiftUI).
+1. Crea tu proyecto en Xcode como en clase: pestaña **iOS → App** → Product Name, Organization Identifier **tec.mx**, Interface **SwiftUI**, Language **Swift**.
 2. En Finder abre `examen/ExamenMoviles/00_AppCompleta/`.
 3. Arrastra las carpetas **Model, Utils, Components y Views** a la carpeta amarilla de tu proyecto en Xcode.
    - Marca **Copy items if needed**.
@@ -58,7 +58,7 @@ Los **nombres de archivo** no se cambian solos. Si quieres, renómbralos en Xcod
 | **Cambiar las opciones del Picker** | `especiesMascotas` en `Model/ModelDataMascotas.swift`. La gráfica de barras se actualiza sola. Para el ícono de cada opción: `iconoEspecie` en `Mascota.swift`. |
 | **Cambiar los colores** de toda la app | Solo `Utils/PaletaMascotas.swift`. Verifica contraste en coolors.co/contrast-checker. |
 | **Cambiar, quitar o agregar pestañas** | `Views/AppCompletaView.swift`. Cada pestaña es una vista + `.tabItem { Label(...) }` + `.tag(n)`. Si quitas la pestaña 2, arregla el botón de Inicio (`pestanaSeleccionada = 2`). |
-| **Cambiar la gráfica** | `Views/EstadisticasMascotasView.swift`. Para barras de otro dato, cambia el `for` de `conteoPorEspecie()`. Para pastel en vez de dona, borra `innerRadius:`. Para líneas, cambia `BarMark` por `LineMark`. |
+| **Cambiar la gráfica** | `Views/EstadisticasMascotasView.swift`. Para barras de otro dato, cambia el `for` de `conteoPorEspecie()`. Para pastel en vez de dona, borra `innerRadius:`. **No cambies las barras por líneas**: la Clase 15 dice que `LineMark` NO sirve para comparar categorías (especies); úsala solo si el eje x es tiempo (días, meses). |
 | **Cambiar los mensajes de validación** | `guardarMascota()` en `Views/AgregarMascotaView.swift`. |
 | **Cambiar las tarjetas de Inicio** | `Views/InicioMascotasView.swift`, bloque 2, y sus cálculos (`totalVacunadas`, `pesoPromedio`) arriba del `body`. |
 | **Que el renglón muestre otra cosa** | `Components/MascotaRow.swift`. |
@@ -70,16 +70,34 @@ Los **nombres de archivo** no se cambian solos. Si quieres, renómbralos en Xcod
 Todas están marcadas con `⚠️ NO VISTO EN CLASE` en el código, con su explicación:
 
 - `TabView(selection:)` + `.tag` → para cambiar de pestaña con un botón.
-- `ForEach` + `.onDelete` → borrar deslizando.
+- `ForEach` + `.onDelete` → borrar deslizando (Lista). `ForEach` también en Inicio y dentro del Picker de especie.
 - `Stepper` → botones − / + para la edad.
+- `step:` en el Slider → avanza de 0.5 en 0.5.
 - `.keyboardType(.numberPad)` → teclado de solo números.
 - `var accion: () -> Void` → pasarle a un botón qué hacer.
 - `.annotation` → número encima de la barra.
+- Barras horizontales (x y y intercambiados) en Estadísticas.
 - `var foto: UIImage?` dentro del modelo.
+- `.aspectRatio(contentMode: .fill)` solo en las fotos que elige el usuario (en clase siempre es `.fit`).
+- `Button(role: .destructive)` → botón rojo de "Borrar mis datos".
+- `.preferredColorScheme(.light)` → forzar modo claro (lo usaste en Movil2).
 
 Si alguno te da miedo defenderlo, quítalo: la app sigue funcionando.
 
-## 5. Si algo falla
+## 5. Lo que SÍ sigue la forma exacta de clase
+
+- Renglón de la lista (`MascotaRow`): HStack **sin padding** (Clase 10).
+- `func cargarMascotas() -> Array<Mascota>` (Clase 10). La lista vive en un `@State` porque se modifica.
+- Imágenes: `.resizable(resizingMode: .stretch)` + `.aspectRatio(contentMode: .fit)` + `.frame(width:)` (Clase 3).
+- Foto circular: `.clipShape(.circle)` + `.overlay { Circle().stroke(...) }` + `.shadow(...)` (Clase 5A).
+- PhotosPicker con los pasos A–F (Clase 17). Única diferencia: el color del botón va fuera de las llaves (ver comentario).
+- `Picker(selection: $x, label: Text("..."))` y alertas con `.toggle()` (Clases 3 y 4).
+- `.onTapGesture { ... = false }` en el Stack principal para esconder el teclado (Clase 4).
+- `@Binding` + `.constant(...)` en el preview, `@Environment(\.dismiss)` + `dismiss()` (Clases 6A y 6B).
+- `.tabItem { Label(...) }` + `.tint(...)` (Clase 7).
+- Dona con `innerRadius: .ratio(0.5)`, colores con `.foregroundStyle(by:)` + `.chartForegroundStyleScale`, ProgressView con `.scaleEffect(x: 1, y: 3)` (Clase 15).
+
+## 6. Si algo falla
 
 - **"Cannot find X in scope"** → te faltó copiar un archivo. Busca `X` en este repo (⌘⇧F) y cópialo.
 - **La imagen no sale** → el nombre en el código no es igual al del asset (mayúsculas cuentan).

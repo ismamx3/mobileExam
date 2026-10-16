@@ -16,8 +16,11 @@
 //  NECESITA:   Model/Mascota.swift, Utils/PaletaMascotas.swift,
 //              Components/FotoMascotaView.swift, FilaDatoMascota.swift,
 //              BotonPrincipalMascotas.swift
+//  DE CLASE: @Binding (6B), @Environment(\.dismiss) + dismiss() (6A),
+//     .constant(...) en el #Preview (6B).
 //  ⚠️ NO VISTO EN CLASE: Stepper (botones − / + para la edad).
 //     Si no lo quieres, usa un Slider como el del peso.
+//  ⚠️ NO VISTO EN CLASE: step: en el Slider.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -55,7 +58,7 @@ struct DetalleMascotaView: View {
                         .padding(.horizontal, 14)
                         .padding(.vertical, 6)
                         .background(paletaPrimarioClaro)
-                        .clipShape(.capsule)
+                        .cornerRadius(50)       // radio grande = forma de cápsula (Clase 17 usa .cornerRadius)
 
                     // ── 2. Ficha de datos (renglones etiqueta-valor) ─
                     VStack(spacing: 0) {
@@ -105,6 +108,8 @@ struct DetalleMascotaView: View {
 
                         Text("Peso: \(mascota.peso, specifier: "%.1f") kg")
                             .foregroundStyle(paletaTexto)
+                        // ⚠️ NO VISTO EN CLASE: step: (avanza de 0.5 en 0.5).
+                        // Forma de clase (Clase 4): Slider(value: $x, in: 0 ... 100)
                         Slider(value: $mascota.peso, in: 0...60, step: 0.5)          // ✏️ rango
                             .tint(paletaPrimario)
                     }

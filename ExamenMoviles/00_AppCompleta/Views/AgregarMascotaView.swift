@@ -18,7 +18,12 @@
 //  NECESITA:   Model/Mascota.swift, Model/ModelDataMascotas.swift
 //              (especiesMascotas), Utils/PaletaMascotas.swift,
 //              Components/FotoMascotaView.swift
+//  DE CLASE: PhotosPicker pasos A–F (Clase 17), Picker(selection:label:)
+//     (Clase 4), alerta con .toggle() (Clase 3), @FocusState + .onTapGesture
+//     en el Stack principal (Clase 4), .sheet + dismiss() (Clases 17 y 6A).
 //  ⚠️ NO VISTO EN CLASE: .keyboardType(.numberPad) (teclado solo números).
+//  ⚠️ NO VISTO EN CLASE: ForEach dentro del Picker, step: del Slider y
+//     .aspectRatio(contentMode: .fill) en la foto elegida.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -66,9 +71,12 @@ struct AgregarMascotaView: View {
 
                     // ── 1. Foto opcional con PhotosPicker ───────────
                     HStack(spacing: 16) {
+                        // Paso F de la Clase 17: como es opcional, primero if let.
                         if let imagenBien = imagenSeleccionada {
                             Image(uiImage: imagenBien)
                                 .resizable(resizingMode: .stretch)
+                                // ⚠️ NO VISTO EN CLASE: .fill para que la foto (casi
+                                // nunca cuadrada) llene el círculo. En clase: .fit
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 80, height: 80)
                                 .clipShape(.circle)
@@ -87,13 +95,16 @@ struct AgregarMascotaView: View {
                                 .bold()
                                 .padding(.vertical, 6)
                         }
-                        // Los colores van AFUERA de las llaves del PhotosPicker:
-                        // adentro Swift 6 no deja usar constantes de la app
-                        // como paletaPrimario (sale un warning amarillo).
+                        // En clase (Clase 17, paso C) el estilo va DENTRO de las llaves:
+                        //   Label(...).padding(12).background(.purple)
+                        //       .foregroundStyle(.white).cornerRadius(12)
+                        // Con un color del sistema (.purple) funciona igual.
+                        // Aquí van AFUERA porque adentro Swift 6 no deja usar
+                        // constantes de la app como paletaPrimario (warning amarillo).
                         .buttonStyle(.borderedProminent)
                         .tint(paletaPrimario)
-                        // PhotosPickerItem no se puede mostrar: hay que
-                        // cargarlo como Data y convertirlo a UIImage.
+                        // Paso E de la Clase 17: PhotosPickerItem no se puede
+                        // mostrar; hay que cargarlo como Data y convertirlo a UIImage.
                         .onChange(of: fotoSeleccionada) { oldItem, newItem in
                             Task {
                                 if let data = try? await newItem?.loadTransferable(type: Data.self),
@@ -120,8 +131,10 @@ struct AgregarMascotaView: View {
                         Spacer()
                         Picker(selection: $especie, label: Text("Especie")) {
                             Text("Selecciona").tag("")      // "" = no ha elegido
+                            // ⚠️ NO VISTO EN CLASE: ForEach(arreglo, id: \.self).
                             // Las opciones salen del arreglo de ModelDataMascotas
-                            // para no escribirlas dos veces.
+                            // para no escribirlas dos veces. Forma de clase (Clase 4):
+                            // escribir cada una a mano →  Text("Perro").tag("Perro")
                             ForEach(especiesMascotas, id: \.self) { opcion in
                                 Text(opcion).tag(opcion)
                             }
@@ -143,6 +156,7 @@ struct AgregarMascotaView: View {
                     Text("Peso: \(peso, specifier: "%.1f") kg")
                         .font(.headline)
                         .foregroundStyle(paletaTexto)
+                    // ⚠️ NO VISTO EN CLASE: step: (de 0.5 en 0.5). Sin él es la forma de clase.
                     Slider(value: $peso, in: 0.5...60, step: 0.5)                // ✏️ rango
                         .tint(paletaPrimario)
 
@@ -183,6 +197,7 @@ struct AgregarMascotaView: View {
             }
         }
         // Tocar cualquier parte vacía esconde el teclado.
+        // Va en el Stack PRINCIPAL (el ZStack), como pide la Clase 4.
         .onTapGesture {
             tecladoActivo = false
         }
