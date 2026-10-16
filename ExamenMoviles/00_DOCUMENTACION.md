@@ -18940,6 +18940,12 @@ La tarea pide explicar cómo aplicaste estos puntos. Qué significan y cómo se 
 **Monocromático** = un solo color (matiz) en distintas claridades. **Análogo** = colores vecinos en el círculo cromático
 (ej. rojo-naranja-amarillo). La tarea pide uno de los dos.
 
+> 🎨 **¿Quieres más opciones?** En el repo hay **25 paletas** listas (10 monocromáticas claras, 10 análogas claras y 5
+> oscuras), con el contraste revisado y vista previa: carpeta `12_Paletas/Paletas/`. Cómo se usan en una pantalla
+> completa: `12_Paletas/ComoUsarPaletaView.swift`. En la app: menú **12 · Paletas de colores → Galería**.
+> Esas paletas son un `struct` (se usan con `let paleta = Paleta()` y `paleta.fondo`). Las de abajo son `let` globales.
+> Las dos formas son válidas y ninguna usa `static`.
+
 Todas usan los mismos nombres, así que puedes cambiar de paleta sin tocar las vistas. Van en `Utils/Paleta.swift`.
 Los números de contraste los calculé con la fórmula WCAG (la misma de coolors.co/contrast-checker). El mínimo
 recomendado para texto normal es **4.5:1**.

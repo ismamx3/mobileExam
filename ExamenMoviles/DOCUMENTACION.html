@@ -23172,6 +23172,13 @@ evaluará también la calidad de la solución y el dominio que el estudiante dem
 <p>🔎 paleta, colores, esquema monocromatico, esquema analogo, rgb, contraste, color scheme, colores bonitos</p>
 <p><strong>Monocromático</strong> = un solo color (matiz) en distintas claridades. <strong>Análogo</strong> = colores vecinos en el círculo cromático
 (ej. rojo-naranja-amarillo). La tarea pide uno de los dos.</p>
+<blockquote>
+<p>🎨 <strong>¿Quieres más opciones?</strong> En el repo hay <strong>25 paletas</strong> listas (10 monocromáticas claras, 10 análogas claras y 5
+oscuras), con el contraste revisado y vista previa: carpeta <code>12_Paletas/Paletas/</code>. Cómo se usan en una pantalla
+completa: <code>12_Paletas/ComoUsarPaletaView.swift</code>. En la app: menú <strong>12 · Paletas de colores → Galería</strong>.
+Esas paletas son un <code>struct</code> (se usan con <code>let paleta = Paleta()</code> y <code>paleta.fondo</code>). Las de abajo son <code>let</code> globales.
+Las dos formas son válidas y ninguna usa <code>static</code>.</p>
+</blockquote>
 <p>Todas usan los mismos nombres, así que puedes cambiar de paleta sin tocar las vistas. Van en <code>Utils/Paleta.swift</code>.
 Los números de contraste los calculé con la fórmula WCAG (la misma de coolors.co/contrast-checker). El mínimo
 recomendado para texto normal es <strong>4.5:1</strong>.</p>

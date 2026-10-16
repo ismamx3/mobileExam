@@ -117,6 +117,7 @@ TuApp/
 | `09_Graficas/` | Barras, líneas, puntos, pastel, dona, ProgressView | `GraficaInteractivaView`, `GraficaDesdeListaView` |
 | `10_FotosYCamara/` | PhotosPicker, CamaraPicker, permisos | `FotoPerfilView`, `RegistroConFotoView` |
 | `11_Extras/` | @AppStorage, UserDefaults, sonido | `AppStorageView` |
+| `12_Paletas/` | 25 paletas de colores listas (monocromáticas y análogas, claras y oscuras) | `ComoUsarPaletaView`, galería en el menú |
 | `_Menu/` + `ContentView.swift` | Menú de este repo | **No se copian** |
 
 ## Lo que enseñó la profesora, clase por clase
@@ -563,3 +564,46 @@ Todas llevan `import Charts`. Cada archivo trae su propio struct + datos + vista
 | Botones Play / Pausa / Stop y volumen | `11_Extras/SonidoView.swift` | `.play()`, `.pause()`, `.stop()` + `currentTime = 0`; `volume` es `Float` 0…1 |
 | Silenciar con un Toggle | `11_Extras/SonidoView.swift` | `.onChange(of: silencio) { oldValue, newValue in }` → `volume = silencio ? 0 : volumen` |
 
+## 12 · Paletas de colores (listas para usar)
+
+Todas son **monocromáticas o análogas** (lo que pide la rúbrica) y ya tienen el **contraste revisado** (texto ≥ 7:1, texto suave y texto de botón ≥ 4.5:1). Para verlas: corre la app → **12 · Paletas de colores → Galería**, o abre cualquier archivo y mira su `#Preview`.
+
+**Cómo usar una en tu app (3 pasos):**
+1. Copia el struct de la paleta a `Utils/Paleta.swift` y cámbiale el nombre a `struct Paleta {`.
+2. En cada vista: `let paleta = Paleta()` (sin `@State`: los colores no cambian; sin `static`).
+3. Usa `paleta.fondo`, `paleta.superficie`, `paleta.primario`, `paleta.secundario`, `paleta.texto`, `paleta.textoSuave`, `paleta.textoSobrePrimario`, `paleta.graficas[0…4]`.
+
+| Quiero… | Archivo | Notas |
+|---|---|---|
+| Ver cómo se usa una paleta en toda una pantalla | `12_Paletas/ComoUsarPaletaView.swift` | Fondo, textos, tarjeta, botones, `.tint`, íconos, gráfica con `chartForegroundStyleScale`, ProgressView |
+| Pintar Toggle / Slider / Picker / TabView con mi color | `12_Paletas/ComoUsarPaletaView.swift` → bloque 7 | Un solo `.tint(paleta.primario)` en el contenedor |
+| Colores de una gráfica que combinen | `12_Paletas/ComoUsarPaletaView.swift` → bloque 9 | `paleta.graficas[0]`… en `.chartForegroundStyleScale([...])` (opción C de la Clase 15) |
+| Usar una paleta oscura | cualquier `…Oscura.swift` | ⚠️ agrega `.preferredColorScheme(.dark)` a la vista raíz para que ejes y barra de estado salgan claros |
+
+| Paleta | Tipo | Modo | Ideal para | Archivo |
+|---|---|---|---|---|
+| Morado | Monocromática | Claro | Apps de estudio, música, tareas, cualquier tema | `12_Paletas/Paletas/PaletaMoradoMonocromatica.swift` |
+| Azul | Monocromática | Claro | Viajes, clima, finanzas, salud, apps serias | `12_Paletas/Paletas/PaletaAzulMonocromatica.swift` |
+| Verde | Monocromática | Claro | Plantas, salud, gym, finanzas, ecología | `12_Paletas/Paletas/PaletaVerdeMonocromatica.swift` |
+| Rojo | Monocromática | Claro | Comida, deportes, películas, alertas | `12_Paletas/Paletas/PaletaRojoMonocromatica.swift` |
+| Naranja | Monocromática | Claro | Comida, antojos, mascotas, apps alegres | `12_Paletas/Paletas/PaletaNaranjaMonocromatica.swift` |
+| Rosa | Monocromática | Claro | Postres, belleza, regalos, música pop | `12_Paletas/Paletas/PaletaRosaMonocromatica.swift` |
+| Turquesa | Monocromática | Claro | Playa, viajes, salud, agua | `12_Paletas/Paletas/PaletaTurquesaMonocromatica.swift` |
+| Café | Monocromática | Claro | Cafeterías, libros, recetas, madera | `12_Paletas/Paletas/PaletaCafeMonocromatica.swift` |
+| Gris | Monocromática | Claro | Apps serias, herramientas, tecnología, minimalista | `12_Paletas/Paletas/PaletaGrisMonocromatica.swift` |
+| Amarillo / mostaza | Monocromática | Claro | Comida rápida, verano, ideas, niños | `12_Paletas/Paletas/PaletaAmarilloMonocromatica.swift` |
+| Atardecer (rojo · naranja · ámbar) | Análoga | Claro | Antojos, eventos, conciertos, fotos de viajes | `12_Paletas/Paletas/PaletaAtardecerAnaloga.swift` |
+| Océano (azul · turquesa · verde agua) | Análoga | Claro | Viajes, playa, clima, salud | `12_Paletas/Paletas/PaletaOceanoAnaloga.swift` |
+| Bosque (verde olivo · verde · turquesa) | Análoga | Claro | Naturaleza, plantas, senderismo, ecología | `12_Paletas/Paletas/PaletaBosqueAnaloga.swift` |
+| Uva (índigo · morado · magenta) | Análoga | Claro | Música, fiestas, videojuegos, arte | `12_Paletas/Paletas/PaletaUvaAnaloga.swift` |
+| Frutos rojos (rojo · frambuesa · rosa) | Análoga | Claro | Postres, cafeterías, San Valentín, belleza | `12_Paletas/Paletas/PaletaFrutosRojosAnaloga.swift` |
+| Cítrico (verde lima · olivo · mostaza) | Análoga | Claro | Jugos, comida saludable, gym, primavera | `12_Paletas/Paletas/PaletaCitricoAnaloga.swift` |
+| Taquería (chile · naranja · maíz) | Análoga | Claro | Antojos de Monterrey, tacos, comida mexicana | `12_Paletas/Paletas/PaletaTaqueriaAnaloga.swift` |
+| Cafetería (café · caramelo · naranja tostado) | Análoga | Claro | Cafés, panaderías, libros, lugares para estudiar | `12_Paletas/Paletas/PaletaCafeteriaAnaloga.swift` |
+| Lavanda (azul periwinkle · lavanda · lila) | Análoga | Claro | Bienestar, meditación, diarios, notas | `12_Paletas/Paletas/PaletaLavandaAnaloga.swift` |
+| Menta (esmeralda · verde agua · azul petróleo) | Análoga | Claro | Salud, finanzas personales, hábitos, agua | `12_Paletas/Paletas/PaletaMentaAnaloga.swift` |
+| Noche azul | Monocromática | Oscuro | Watchlist, música, apps de noche, tecnología | `12_Paletas/Paletas/PaletaNocheAzulOscura.swift` |
+| Morado oscuro | Monocromática | Oscuro | Videojuegos, música, fiestas, cine | `12_Paletas/Paletas/PaletaMoradoOscura.swift` |
+| Gym neón | Monocromática | Oscuro | Gimnasio, deportes, rutinas, hábitos | `12_Paletas/Paletas/PaletaGymNeonOscura.swift` |
+| Cine (rojo · coral · naranja) | Análoga | Oscuro | Películas, series, watchlist, eventos | `12_Paletas/Paletas/PaletaCineOscuraAnaloga.swift` |
+| Grafito | Monocromática | Oscuro | Minimalista, herramientas, fotografía | `12_Paletas/Paletas/PaletaGrafitoOscura.swift` |
