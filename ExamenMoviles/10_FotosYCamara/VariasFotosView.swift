@@ -13,8 +13,11 @@
 //   2. Pega el archivo completo.
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   import PhotosUI (ya viene arriba). NO pide permiso.
-//  ⚠️ NO VISTO EN CLASE: maxSelectionCount (selección múltiple) y
-//                        LazyVGrid + GridItem (cuadrícula)
+//  ⚠️ NO VISTO EN CLASE: maxSelectionCount (selección múltiple),
+//                        LazyVGrid + GridItem (cuadrícula),
+//                        ForEach por índice y role: .destructive.
+//                        En clase solo se vio escoger UNA foto
+//                        (SeleccionarFotoView.swift).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -87,6 +90,7 @@ struct VariasFotosView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     } else {
                         LazyVGrid(columns: columnasFotos, spacing: 8) {
+                            // ⚠️ NO VISTO EN CLASE: ForEach por índice.
                             // UIImage no es Identifiable, por eso se recorre por posición (0, 1, 2...)
                             ForEach(0..<fotosCargadas.count, id: \.self) { indice in
                                 Image(uiImage: fotosCargadas[indice])
@@ -100,6 +104,7 @@ struct VariasFotosView: View {
 
                     // ── 4. Borrar todas ───────────────────────────
                     if !fotosCargadas.isEmpty {
+                        // ⚠️ NO VISTO EN CLASE: role: .destructive pinta el botón de rojo
                         Button("Borrar todas", role: .destructive) {
                             fotosCargadas = []
                             selectedItems = []

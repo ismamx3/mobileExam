@@ -28,7 +28,8 @@ struct RegistroConFotoView: View {
     // Esta vista es DUEÑA de la lista (@State).
     // El formulario la recibe con @Binding para poder agregar.
     @State private var registros: [RegistroConFoto] = [
-        // ✏️ dato de ejemplo. UIImage(named:) busca en Assets; si no existe da nil (sin foto).
+        // ✏️ dato de ejemplo.
+        // ⚠️ NO VISTO EN CLASE: UIImage(named:) busca en Assets; si no existe da nil (sin foto).
         RegistroConFoto(nombre: "Firulais", descripcion: "Perro muy juguetón", foto: UIImage(named: "mascota"))
     ]
 

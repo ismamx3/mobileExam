@@ -2,11 +2,19 @@
 //  CamaraPicker.swift  ·  10 Fotos y cámara
 // ───────────────────────────────────────────────────────────────
 //  QUÉ ES:     El archivo de la profesora (Canvas) que abre la cámara.
-//              SwiftUI no tiene cámara nativa: esto envuelve
-//              UIImagePickerController (UIKit) para usarlo en SwiftUI.
+//              SwiftUI todavía no tiene un equivalente a PhotosPicker
+//              para la cámara. Por eso se usa UIImagePickerController
+//              (del framework anterior, UIKit) dentro de una estructura
+//              propia, CamaraPicker, que implementa el protocolo
+//              UIViewControllerRepresentable (de SwiftUI). Así queda
+//              encapsulado y se usa en cualquier pantalla como un
+//              componente propio.
+//              (Para una cámara personalizada se usaría AVFoundation;
+//              solo se mencionó en clase.)
 //  ÚSALO PARA: tomar una foto con la cámara del iPhone.
 //  BUSCA:      camara, camera, CamaraPicker, UIImagePickerController,
-//              tomar foto, take photo, sheet camara
+//              UIViewControllerRepresentable, UIKit, tomar foto,
+//              take photo, sheet camara
 //
 //  CÓMO COPIARLO:
 //   1. Arrastra este archivo a tu proyecto (o el de Canvas).
@@ -25,6 +33,7 @@
 //      REGRESA la foto en tu variable (paso de valores ida y vuelta).
 //  NECESITA:   permiso "Privacy - Camera Usage Description" en la
 //              pestaña Info del target (si no, la app truena).
+//              Obligatorio desde iOS 10.
 //              Ver 10_FotosYCamara/TomarFotoView.swift.
 //              El simulador NO tiene cámara: prueba en iPhone físico.
 // ═══════════════════════════════════════════════════════════════

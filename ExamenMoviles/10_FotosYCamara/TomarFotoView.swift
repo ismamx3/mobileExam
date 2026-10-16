@@ -2,10 +2,14 @@
 //  TomarFotoView.swift  ·  10 Fotos y cámara
 // ───────────────────────────────────────────────────────────────
 //  QUÉ ES:     Botón que abre la cámara (CamaraPicker) en una sheet
-//              y muestra la foto tomada.
+//              y muestra la foto tomada. Pasos de la Clase 17:
+//              1) incluir CamaraPicker.swift, 2) @State UIImage? para
+//              el Binding, 3) @State Bool para abrir la cámara,
+//              4) Button + .sheet que llama a CamaraPicker.
 //  ÚSALO PARA: "el usuario toma una foto con la cámara".
 //  BUSCA:      camara, camera, tomar foto, take photo, sheet,
-//              CamaraPicker, permiso camara, NSCameraUsageDescription
+//              CamaraPicker, permiso camara, NSCameraUsageDescription,
+//              Privacy - Camera Usage Description, Custom iOS Target Properties
 //
 //  CÓMO COPIARLO:
 //   1. Primero copia 10_FotosYCamara/CamaraPicker.swift (sin cambiarlo).
@@ -17,12 +21,17 @@
 //         Properties" → "Add Row".
 //      d. Elige "Privacy - Camera Usage Description" y en "Value"
 //         escribe el mensaje, ej. "La app usa la cámara para tomar fotos."
+//      Desde iOS 10 este texto es OBLIGATORIO: es lo que ve el usuario
+//      cuando el iPhone le pide permiso para usar la cámara.
 //      (En ESTE repo ya está puesto en Build Settings como
 //       INFOPLIST_KEY_NSCameraUsageDescription. Es lo mismo.)
 //   4. Cambia lo marcado con ✏️
 //  NECESITA:   10_FotosYCamara/CamaraPicker.swift + permiso de cámara.
 //              El simulador NO tiene cámara → sale una alerta.
-//              Para probar de verdad usa un iPhone físico.
+//              IMPORTANTE (lámina): la prueba final de la cámara y sus
+//              permisos se hace en un iPhone físico (tutorial en CANVAS).
+//  NOTA:       Para una cámara personalizada se usaría AVFoundation
+//              (solo se mencionó en clase; no se usa aquí).
 //  ⚠️ NO VISTO EN CLASE: UIImagePickerController.isSourceTypeAvailable(.camera)
 // ═══════════════════════════════════════════════════════════════
 
@@ -49,6 +58,8 @@ struct TomarFotoView: View {
                         .font(.headline)
 
                     // ── 1. Mostrar la foto tomada ─────────────────
+                    // La lámina dice "Image(uiImage: selectedImage!)". Aquí se usa
+                    // if let porque el ! truena si todavía no hay foto (nil).
                     if let fotoTomada = selectedImage {
                         Image(uiImage: fotoTomada)
                             .resizable(resizingMode: .stretch)

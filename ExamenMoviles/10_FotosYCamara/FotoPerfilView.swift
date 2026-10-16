@@ -14,7 +14,8 @@
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   10_FotosYCamara/CamaraPicker.swift + permiso de cámara
 //              (pasos en 10_FotosYCamara/TomarFotoView.swift).
-//  ⚠️ NO VISTO EN CLASE: UIImagePickerController.isSourceTypeAvailable(.camera)
+//  ⚠️ NO VISTO EN CLASE: UIImagePickerController.isSourceTypeAvailable(.camera),
+//                        role: .destructive (botón "Quitar foto")
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -110,6 +111,7 @@ struct FotoPerfilView: View {
 
                     // ── 3. Quitar foto ────────────────────────────
                     if fotoPerfil != nil {
+                        // ⚠️ NO VISTO EN CLASE: role: .destructive pinta el botón de rojo
                         Button("Quitar foto", role: .destructive) {
                             fotoPerfil = nil
                             selectedItem = nil

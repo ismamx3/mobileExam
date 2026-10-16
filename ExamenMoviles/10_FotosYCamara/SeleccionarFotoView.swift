@@ -2,10 +2,14 @@
 //  SeleccionarFotoView.swift  ·  10 Fotos y cámara
 // ───────────────────────────────────────────────────────────────
 //  QUÉ ES:     Escoger UNA foto de la galería con PhotosPicker y
-//              mostrarla en pantalla. Pasos A–F de la clase.
+//              mostrarla en pantalla. Pasos A–F de la clase (Clase 17).
+//              Desde iOS 16 SwiftUI trae este componente NATIVO. Abre
+//              un image picker que toma el control del dispositivo;
+//              el usuario puede cancelar o seleccionar una foto.
 //  ÚSALO PARA: "el usuario elige una imagen de sus fotos".
-//  BUSCA:      galeria, fotos, photos, PhotosPicker, PhotosPickerItem,
-//              loadTransferable, UIImage, seleccionar foto, gallery
+//  BUSCA:      galeria, fotos, photos, PhotosPicker, PhotoPicker,
+//              PhotosPickerItem, loadTransferable, UIImage, uiImage,
+//              libreria de fotos, seleccionar foto, gallery
 //
 //  CÓMO COPIARLO:
 //   1. En tu proyecto crea Views/SeleccionarFotoView.swift.
@@ -13,6 +17,7 @@
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   import PhotosUI (ya viene arriba). NO pide permiso.
 //              Funciona en el simulador (trae fotos de ejemplo).
+//  ⚠️ NO VISTO EN CLASE: el botón extra "Quitar foto" con role: .destructive
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -39,7 +44,9 @@ struct SeleccionarFotoView: View {
                         .font(.headline)
 
                     // ── F. Mostrar la imagen ─────────────────────
-                    // Es opcional: primero se revisa con if let.
+                    // Image(uiImage: selectedImage) NO compila solo, porque
+                    // selectedImage es opcional (?). Primero se verifica que
+                    // no sea nula con if let; si es nula, un texto provisional.
                     if let selectedImageBien = selectedImage {
                         Image(uiImage: selectedImageBien)        // uiImage: (no es un asset)
                             .resizable(resizingMode: .stretch)
@@ -84,6 +91,7 @@ struct SeleccionarFotoView: View {
 
                     // ── Extra: quitar la foto ─────────────────────
                     if selectedImage != nil {
+                        // ⚠️ NO VISTO EN CLASE: role: .destructive pinta el botón de rojo
                         Button("Quitar foto", role: .destructive) {
                             selectedImage = nil
                             selectedItem = nil
