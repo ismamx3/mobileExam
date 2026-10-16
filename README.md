@@ -118,6 +118,7 @@ TuApp/
 | `10_FotosYCamara/` | PhotosPicker, CamaraPicker, permisos | `FotoPerfilView`, `RegistroConFotoView` |
 | `11_Extras/` | @AppStorage, UserDefaults, sonido | `AppStorageView` |
 | `12_Paletas/` | 25 paletas de colores listas (monocromáticas y análogas, claras y oscuras) | `ComoUsarPaletaView`, galería en el menú |
+| `13_SFSymbols/` | TODOS los íconos del sistema (7,006) + guía en español de cuál usar | Catálogo en la app, `SFSymbols_GUIA.md` |
 | `_Menu/` + `ContentView.swift` | Menú de este repo | **No se copian** |
 
 ## Lo que enseñó la profesora, clase por clase
@@ -607,3 +608,22 @@ Todas son **monocromáticas o análogas** (lo que pide la rúbrica) y ya tienen 
 | Gym neón | Monocromática | Oscuro | Gimnasio, deportes, rutinas, hábitos | `12_Paletas/Paletas/PaletaGymNeonOscura.swift` |
 | Cine (rojo · coral · naranja) | Análoga | Oscuro | Películas, series, watchlist, eventos | `12_Paletas/Paletas/PaletaCineOscuraAnaloga.swift` |
 | Grafito | Monocromática | Oscuro | Minimalista, herramientas, fotografía | `12_Paletas/Paletas/PaletaGrafitoOscura.swift` |
+
+## 13 · SF Symbols (los íconos que ya trae iOS)
+
+Se usan con `Image(systemName: "nombre")`. No se agregan a Assets. Para saber el **nombre exacto**:
+- **En la app:** 13 · SF Symbols → **Catálogo completo** (7,006 íconos, buscador en español e inglés, categorías, filtro "solo iOS 17"). Toca uno → **Copiar nombre** → pégalo en Xcode con ⌘V (el simulador comparte el portapapeles con tu Mac).
+- **Con ⌘F:** `13_SFSymbols/SFSymbols_GUIA.md` (300+ íconos por uso, en español) y `13_SFSymbols/SFSymbols_TODOS.md` (todos, con palabras clave en inglés).
+
+| Quiero… | Archivo | Notas |
+|---|---|---|
+| Saber qué ícono usar para algo (comida, borrar, perfil, gym…) | `13_SFSymbols/SFSymbols_GUIA.md` | También en la app: "¿Qué ícono uso para…?" |
+| Ver todos los íconos y copiar el nombre | `13_SFSymbols/SFSymbolsCatalogoView.swift` | En la app: "Catálogo completo" |
+| Cambiar el tamaño de un ícono | `13_SFSymbols/SFSymbolsComoUsarView.swift` → bloque 2 | `.font(.title)` / `.font(.system(size: 50))` / `.imageScale(.large)` |
+| Cambiar el color de un ícono | `13_SFSymbols/SFSymbolsComoUsarView.swift` → bloque 3 | `.foregroundStyle(.red)` |
+| Corazón vacío / lleno según favorito | `13_SFSymbols/SFSymbolsComoUsarView.swift` → bloque 4 | `esFavorito ? "heart.fill" : "heart"` |
+| Ícono con texto (pestañas, botones) | `13_SFSymbols/SFSymbolsComoUsarView.swift` → bloques 5 y 6 | `Label("Texto", systemImage: "…")`, `Button("Texto", systemImage: "…") { }` |
+| Ícono dentro de un círculo de color | `13_SFSymbols/SFSymbolsComoUsarView.swift` → bloque 7 | `.frame` + `.background` + `.clipShape(.circle)` |
+| Ícono de varios colores / que se llena / animado | `13_SFSymbols/SFSymbolsComoUsarView.swift` → bloques 8, 9 y 10 | ⚠️ `symbolRenderingMode`, `variableValue`, `symbolEffect` |
+
+> **Ojo con la versión:** el catálogo marca en naranja los íconos que requieren iOS 18 o 26. Si tu proyecto del examen es iOS 26 (lo normal en Xcode 26), funcionan todos.

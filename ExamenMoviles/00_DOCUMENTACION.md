@@ -4180,6 +4180,13 @@ struct FotoEsquinas: View {
 Catálogo oficial: app **SF Symbols** (https://developer.apple.com/sf-symbols/). Sin internet: escribe el nombre y,
 si no existe, no se ve nada (no truena).
 
+> 🔣 **Sin internet tienes TODOS los íconos en el repo** (carpeta `13_SFSymbols/`):
+> - En la app: **13 · SF Symbols → Catálogo completo** (7,006 íconos, buscador, categorías, filtro iOS 17). Toca uno y
+>   "Copiar nombre": el portapapeles del simulador se comparte con tu Mac, así que lo pegas en Xcode con ⌘V.
+> - **¿Qué ícono uso para…?** en español (300+ por uso: pestañas, acciones, comida, viajes, gym…):
+>   `13_SFSymbols/SFSymbols_GUIA.md` o en la app.
+> - Lista completa para ⌘F: `13_SFSymbols/SFSymbols_TODOS.md` (nombre, categorías, palabras clave en inglés y desde qué iOS existe).
+
 ```swift
 import SwiftUI
 
