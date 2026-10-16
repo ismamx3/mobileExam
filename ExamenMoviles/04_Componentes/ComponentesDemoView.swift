@@ -40,7 +40,7 @@ struct ComponentesDemoView: View {
                     // ── 1. Encabezado + imagen circular ─────────────────
                     EncabezadoPantalla(titulo: "Mi perfil", subtitulo: "Pantalla hecha solo con componentes", icono: "person.crop.circle") // ✏️
 
-                    ImagenCircular(nombreImagen: "perfil", tamano: 120, colorBorde: .purple) // ✏️
+                    ImagenCircular(nombreImagen: "perfil", ancho: 120, colorBorde: .purple) // ✏️
 
                     // ── 2. Chips + estrellas ────────────────────────────
                     HStack {
@@ -72,7 +72,7 @@ struct ComponentesDemoView: View {
                     }
                     .padding()
                     .background(Color.gray.opacity(0.1))
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .cornerRadius(16)
 
                     // ── 6. Campo que modifica el @State de esta vista ───
                     CampoConEtiqueta(etiqueta: "Tu nombre", placeholder: "Escribe tu nombre", texto: $nombre)

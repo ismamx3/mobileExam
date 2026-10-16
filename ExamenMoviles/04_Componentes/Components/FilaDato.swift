@@ -7,8 +7,9 @@
 //  BUSCA:      fila, renglon, row, etiqueta valor, detalle, label value, componente
 //
 //  CÓMO SE CREA (en tu proyecto):
-//   File → New → File from Template → "SwiftUI View" → nómbralo FilaDato
-//   → carpeta Components/. Borra lo que trae y pega este archivo.
+//   (pasos de clase) File → New → File from Template... → sección
+//   "User Interface" → "SwiftUI View" → Next → nómbralo FilaDato.swift
+//   → Create (en la carpeta Components/). Borra lo que trae y pega este archivo.
 //
 //  CÓMO SE USA desde otra vista:
 //       FilaDato(etiqueta: "Álbum", valor: "Take Care")

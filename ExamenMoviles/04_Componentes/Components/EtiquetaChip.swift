@@ -6,8 +6,9 @@
 //  BUSCA:      chip, etiqueta, tag, badge, capsula, categoria, estado, componente
 //
 //  CÓMO SE CREA (en tu proyecto):
-//   File → New → File from Template → "SwiftUI View" → nómbralo EtiquetaChip
-//   → carpeta Components/. Borra lo que trae y pega este archivo.
+//   (pasos de clase) File → New → File from Template... → sección
+//   "User Interface" → "SwiftUI View" → Next → nómbralo EtiquetaChip.swift
+//   → Create (en la carpeta Components/). Borra lo que trae y pega este archivo.
 //
 //  CÓMO SE USA desde otra vista:
 //       EtiquetaChip(texto: "Activo")
@@ -34,7 +35,7 @@ struct EtiquetaChip: View {
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
             .background(color)
-            .clipShape(Capsule())
+            .cornerRadius(50)   // radio grande = forma de cápsula
     }
 }
 

@@ -7,8 +7,9 @@
 //  BUSCA:      estrellas, rating, calificacion, star, puntuacion, componente
 //
 //  CÓMO SE CREA (en tu proyecto):
-//   File → New → File from Template → "SwiftUI View" → nómbralo EstrellasRating
-//   → carpeta Components/. Borra lo que trae y pega este archivo.
+//   (pasos de clase) File → New → File from Template... → sección
+//   "User Interface" → "SwiftUI View" → Next → nómbralo EstrellasRating.swift
+//   → Create (en la carpeta Components/). Borra lo que trae y pega este archivo.
 //
 //  CÓMO SE USA desde otra vista:
 //       EstrellasRating(calificacion: 4.5)
@@ -16,6 +17,7 @@
 //       EstrellasRating(calificacion: Double(miInt))      // si tu dato es Int
 //
 //  NECESITA:   nada más.
+//  ⚠️ NO VISTO EN CLASE: ForEach(1...maximo, id: \.self) para repetir la estrella.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -28,7 +30,8 @@ struct EstrellasRating: View {
 
     var body: some View {
         HStack(spacing: 4) {
-            // Repite una estrella por cada número del 1 al máximo.
+            // ⚠️ NO VISTO EN CLASE: ForEach repite la vista de adentro una vez
+            // por cada número del 1 al máximo (aquí, 5 estrellas).
             // id: \.self porque los números 1, 2, 3… ya son únicos.
             ForEach(1...maximo, id: \.self) { numero in
                 Image(systemName: nombreEstrella(numero: numero))

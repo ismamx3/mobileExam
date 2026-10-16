@@ -6,8 +6,9 @@
 //  BUSCA:      tarjeta, card, componente, reutilizable, icono, titulo, subtitulo
 //
 //  CÓMO SE CREA (en tu proyecto):
-//   File → New → File from Template → "SwiftUI View" → nómbralo TarjetaInfo
-//   → guárdalo en la carpeta Components/. Borra lo que trae y pega este archivo.
+//   (pasos de clase) File → New → File from Template... → sección
+//   "User Interface" → "SwiftUI View" → Next → nómbralo TarjetaInfo.swift
+//   → Create (en la carpeta Components/). Borra lo que trae y pega este archivo.
 //
 //  CÓMO SE USA desde otra vista (como si fuera un Text o un Image):
 //       TarjetaInfo(icono: "book.fill",
@@ -37,7 +38,7 @@ struct TarjetaInfo: View {
                 .foregroundStyle(.white)
                 .frame(width: 56, height: 56)
                 .background(color)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .cornerRadius(12)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(titulo)
@@ -51,7 +52,7 @@ struct TarjetaInfo: View {
         }
         .padding()
         .background(color.opacity(0.12))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .cornerRadius(16)
     }
 }
 

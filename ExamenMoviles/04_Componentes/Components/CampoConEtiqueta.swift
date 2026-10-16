@@ -8,8 +8,9 @@
 //  BUSCA:      campo, textfield, etiqueta, formulario, binding, componente, input
 //
 //  CÓMO SE CREA (en tu proyecto):
-//   File → New → File from Template → "SwiftUI View" → nómbralo CampoConEtiqueta
-//   → carpeta Components/. Borra lo que trae y pega este archivo.
+//   (pasos de clase) File → New → File from Template... → sección
+//   "User Interface" → "SwiftUI View" → Next → nómbralo CampoConEtiqueta.swift
+//   → Create (en la carpeta Components/). Borra lo que trae y pega este archivo.
 //
 //  CÓMO SE USA desde otra vista (3 pasos, igual que @Binding de clase):
 //   1. En la vista padre:   @State private var nombre: String = ""

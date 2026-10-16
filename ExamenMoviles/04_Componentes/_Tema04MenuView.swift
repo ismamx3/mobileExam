@@ -11,6 +11,52 @@ import SwiftUI
 struct Tema04MenuView: View {
     var body: some View {
         List {
+            Section("Ejemplo de clase 5A (Pokémon)") {
+                NavigationLink {
+                    PokemonEjemploView()
+                        .navigationTitle("Pokémon")
+                        .navigationBarTitleDisplayMode(.inline)
+                } label: {
+                    EjemploRow(titulo: "Pantalla Pokémon (portada + foto + datos)", archivo: "04_Componentes/PokemonEjemploView.swift", icono: "flame.fill")
+                }
+
+                NavigationLink {
+                    Tema04VitrinaView(titulo: "PokeImagenView", codigo: """
+                    ZStack {
+                        Image("portada")
+                            .resizable(resizingMode: .stretch)
+                            .aspectRatio(contentMode: .fit)
+                        PokeImagenView()
+                            .frame(width: 150)
+                            .offset(y: 120)
+                    }
+                    """) {
+                        PokeImagenView()
+                            .frame(width: 150)
+                            .frame(maxWidth: .infinity)
+                    }
+                } label: {
+                    EjemploRow(titulo: "PokeImagenView (foto circular de clase)", archivo: "04_Componentes/Components/PokeImagenView.swift", icono: "circle.circle")
+                }
+
+                NavigationLink {
+                    Tema04VitrinaView(titulo: "Mitad izquierda", codigo: """
+                    HStack {
+                        VStack { Image(...); Text(...) }
+                            .frame(maxWidth: .infinity)
+                        Spacer()
+                            .frame(maxWidth: .infinity)
+                    }
+                    """) {
+                        PokeMasDatosView()
+                        Divider()
+                        PokeUnaEvolucionView()
+                    }
+                } label: {
+                    EjemploRow(titulo: "Evoluciones / imagen en la mitad izquierda", archivo: "04_Componentes/Components/PokeMasDatosView.swift", icono: "rectangle.lefthalf.filled")
+                }
+            }
+
             Section("Pantalla de ejemplo") {
                 NavigationLink {
                     ComponentesDemoView()
@@ -45,12 +91,12 @@ struct Tema04MenuView: View {
                     Tema04VitrinaView(titulo: "ImagenCircular", codigo: """
                     ImagenCircular(nombreImagen: "perfil")
                     ImagenCircular(nombreImagen: "mascota",
-                                   tamano: 80,
+                                   ancho: 80,
                                    colorBorde: .purple)
                     """) {
                         HStack(spacing: 20) {
                             ImagenCircular(nombreImagen: "perfil")
-                            ImagenCircular(nombreImagen: "mascota", tamano: 80, colorBorde: .purple)
+                            ImagenCircular(nombreImagen: "mascota", ancho: 80, colorBorde: .purple)
                         }
                         .frame(maxWidth: .infinity)
                     }
@@ -165,7 +211,7 @@ struct Tema04VitrinaView<Contenido: View>: View {
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(Color.gray.opacity(0.08))
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .cornerRadius(16)
 
                 Text("Así se usa desde otra vista")
                     .font(.headline)
@@ -176,7 +222,7 @@ struct Tema04VitrinaView<Contenido: View>: View {
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Color.purple.opacity(0.1))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .cornerRadius(12)
             }
             .padding()
         }

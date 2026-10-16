@@ -7,8 +7,9 @@
 //  BUSCA:      encabezado, header, titulo, subtitulo, icono, componente
 //
 //  CÓMO SE CREA (en tu proyecto):
-//   File → New → File from Template → "SwiftUI View" → nómbralo EncabezadoPantalla
-//   → carpeta Components/. Borra lo que trae y pega este archivo.
+//   (pasos de clase) File → New → File from Template... → sección
+//   "User Interface" → "SwiftUI View" → Next → nómbralo EncabezadoPantalla.swift
+//   → Create (en la carpeta Components/). Borra lo que trae y pega este archivo.
 //
 //  CÓMO SE USA desde otra vista:
 //       EncabezadoPantalla(titulo: "Registro",

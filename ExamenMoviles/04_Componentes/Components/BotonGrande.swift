@@ -7,8 +7,9 @@
 //  BUSCA:      boton, button, reutilizable, accion, closure, ancho completo, componente
 //
 //  CÓMO SE CREA (en tu proyecto):
-//   File → New → File from Template → "SwiftUI View" → nómbralo BotonGrande
-//   → carpeta Components/. Borra lo que trae y pega este archivo.
+//   (pasos de clase) File → New → File from Template... → sección
+//   "User Interface" → "SwiftUI View" → Next → nómbralo BotonGrande.swift
+//   → Create (en la carpeta Components/). Borra lo que trae y pega este archivo.
 //
 //  CÓMO SE USA desde otra vista. Dos formas:
 //
@@ -35,7 +36,9 @@ struct BotonGrande: View {
 
     // ⚠️ NO VISTO EN CLASE: "() -> Void" es el tipo de una función que no recibe
     // nada y no regresa nada. Así el botón no sabe QUÉ hace: se lo dice quien lo usa.
-    // Es lo mismo que pasa con Button("Aceptar", action: CalcularValor).
+    // En clase (Mi primera app): "la acción es un método o una propiedad de
+    // cierre que hace algo cuando el usuario toca el botón". Aquí esa acción
+    // llega desde afuera, igual que en Button("Aceptar", action: CalcularValor).
     var accion: () -> Void
 
     var body: some View {

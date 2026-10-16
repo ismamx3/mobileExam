@@ -7,8 +7,9 @@
 //  BUSCA:      tile, estadistica, dashboard, resumen, numero grande, kpi, tarjeta, componente
 //
 //  CÓMO SE CREA (en tu proyecto):
-//   File → New → File from Template → "SwiftUI View" → nómbralo TileEstadistica
-//   → carpeta Components/. Borra lo que trae y pega este archivo.
+//   (pasos de clase) File → New → File from Template... → sección
+//   "User Interface" → "SwiftUI View" → Next → nómbralo TileEstadistica.swift
+//   → Create (en la carpeta Components/). Borra lo que trae y pega este archivo.
 //
 //  CÓMO SE USA desde otra vista:
 //       HStack(spacing: 12) {
@@ -48,7 +49,7 @@ struct TileEstadistica: View {
         .frame(maxWidth: .infinity)
         .padding()
         .background(color.opacity(0.12))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .cornerRadius(16)
     }
 }
 
