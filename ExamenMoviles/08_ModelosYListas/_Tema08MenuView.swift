@@ -12,9 +12,14 @@ struct Tema08MenuView: View {
         List {
             Section {
                 NavigationLink {
+                    ListaEstaticaJugadoresView()
+                } label: {
+                    EjemploRow(titulo: "Lista estática (paso 1 de clase)", archivo: "08_ModelosYListas/Views/ListaSimpleView.swift", icono: "list.number")
+                }
+                NavigationLink {
                     ListaSimpleView()
                 } label: {
-                    EjemploRow(titulo: "Lista simple", archivo: "08_ModelosYListas/Views/ListaSimpleView.swift", icono: "list.bullet")
+                    EjemploRow(titulo: "Lista dinámica (List + Identifiable)", archivo: "08_ModelosYListas/Views/ListaSimpleView.swift", icono: "list.bullet")
                 }
                 EjemploPantallaCompleta(titulo: "Lista → detalle", archivo: "08_ModelosYListas/Views/ListaConDetalleView.swift", icono: "list.bullet.indent") {
                     ListaConDetalleView()
@@ -25,7 +30,7 @@ struct Tema08MenuView: View {
             } header: {
                 Text("Lo básico")
             } footer: {
-                Text("Modelo: Model/Jugador.swift · Datos: Model/ModelDataJugadores.swift · Renglón: Components/JugadorRow.swift")
+                Text("Modelo: Model/Jugador.swift · Datos: Model/ModelDataJugadores.swift (función + var listaJugadores) · Renglón: Components/JugadorRow.swift")
             }
 
             Section("Agregar, borrar y buscar") {

@@ -11,7 +11,7 @@
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   08_ModelosYListas/Model/Jugador.swift
 //              08_ModelosYListas/Model/ModelDataJugadores.swift
-//              08_ModelosYListas/Components/JugadorRow.swift
+//              08_ModelosYListas/Components/JugadorRow.swift (usa JugadorConImagenRow)
 //  ⚠️ NO VISTO EN CLASE: Section, ForEach dentro de List
 // ═══════════════════════════════════════════════════════════════
 
@@ -40,7 +40,7 @@ struct ListaSeccionesView: View {
             // pero se puede poner DENTRO de otra cosa (una Section, un VStack).
             Section {
                 ForEach(jugadoresDe("Base")) { jugadorItem in        // ✏️
-                    JugadorRow(jugador: jugadorItem)
+                    JugadorConImagenRow(jugador: jugadorItem)
                 }
             } header: {
                 Text("Bases")                                        // ✏️
@@ -50,7 +50,7 @@ struct ListaSeccionesView: View {
 
             Section {
                 ForEach(jugadoresDe("Alero")) { jugadorItem in
-                    JugadorRow(jugador: jugadorItem)
+                    JugadorConImagenRow(jugador: jugadorItem)
                 }
             } header: {
                 Text("Aleros")
@@ -61,7 +61,7 @@ struct ListaSeccionesView: View {
             // Forma corta: solo con título.
             Section("Pívots") {
                 ForEach(jugadoresDe("Pívot")) { jugadorItem in
-                    JugadorRow(jugador: jugadorItem)
+                    JugadorConImagenRow(jugador: jugadorItem)
                 }
             }
         }

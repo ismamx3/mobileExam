@@ -1,9 +1,11 @@
 // ═══════════════════════════════════════════════════════════════
 //  ImagenRemotaView.swift  ·  08 Modelos y listas
 // ───────────────────────────────────────────────────────────────
-//  QUÉ ES:     Imágenes que se descargan de una URL con AsyncImage.
+//  QUÉ ES:     Imágenes que se descargan de una URL con AsyncImage
+//              (Anexo A "Imagen de URL" de la clase de Modelos y Listas).
 //  ÚSALO PARA: cuando el modelo trae un link de imagen (ligaImagen).
-//  BUSCA:      asyncimage, imagen url, imagen de internet, remote image, placeholder, link imagen
+//  BUSCA:      asyncimage, AsyncImage, imagen url, imagen de URL, imagen de internet,
+//              remote image, placeholder, link imagen, pokemon, scale
 //
 //  ⚠️ OJO EN EL EXAMEN: AsyncImage NECESITA INTERNET. Sin conexión solo verás
 //     el placeholder. Si no hay internet, usa imágenes en Assets:
@@ -22,7 +24,8 @@ import SwiftUI
 
 struct ImagenRemotaView: View {
 
-    let ligaImagen = "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png"   // ✏️ tu URL
+    // URL de la lámina. Otras de clase: .../pokedex/full/001.png, 002.png, 003.png
+    let ligaImagen = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/077.png"   // ✏️ tu URL
 
     var body: some View {
         ScrollView {
@@ -33,7 +36,6 @@ struct ImagenRemotaView: View {
                     .font(.headline)
                 // scale: 3 la hace 3 veces más chica que su tamaño original.
                 AsyncImage(url: URL(string: ligaImagen), scale: 3)
-                    .frame(maxWidth: .infinity)
 
                 Divider()
 
@@ -47,10 +49,9 @@ struct ImagenRemotaView: View {
                 } placeholder: {
                     // Lo que se ve MIENTRAS carga (o si no hay internet).
                     Color.gray
-                        .frame(width: 150, height: 150)
+                        .frame(height: 100)
                 }
-                .frame(height: 150)
-                .frame(maxWidth: .infinity)
+                .frame(height: 100)                            // ✏️ tamaño
 
                 Divider()
 
