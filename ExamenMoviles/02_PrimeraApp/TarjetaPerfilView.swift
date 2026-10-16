@@ -17,7 +17,8 @@
 //      TarjetaPerfilRenglon al final; puedes moverlo a Components/).
 //   3. Cambia tus datos y colores (todo lo marcado con ✏️).
 //  NECESITA:   imagen "perfil" en Assets (de preferencia cuadrada).
-//  ⚠️ NO VISTO EN CLASE: .preferredColorScheme(.light)
+//  ⚠️ NO VISTO EN CLASE: .preferredColorScheme(.light), bloque message:
+//              del .alert (la Clase 3 solo usa título y botones)
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -140,7 +141,7 @@ struct TarjetaPerfilView: View {
         .navigationTitle("Mi perfil")
         .alert("Contacto", isPresented: $showContacto) {
             Button("Cerrar") {}
-        } message: {
+        } message: {            // ⚠️ NO VISTO EN CLASE: cuerpo de varias líneas del alert
             Text("""
             \(nombre)
             \(correo)

@@ -9,12 +9,15 @@
 //  BUSCA:      image, imagen, foto, assets, resizable, aspectRatio, fit,
 //              fill, frame, circulo, circular, clipShape, borde, stroke,
 //              sombra, shadow, esquinas redondeadas, cornerRadius,
-//              SF Symbols, systemName, icono, imagen de fondo, background
+//              SF Symbols, systemName, icono, imagen de fondo, background,
+//              imageScale, tint, globe, Gravity
 //
 //  CÓMO COPIARLO:
 //   1. Copia la Image del bloque que quieras con sus modificadores.
 //   2. Cambia el nombre de la imagen ("foto1", "perfil"...) por el de
-//      tu asset. Para agregarla: arrástrala a Assets.xcassets.
+//      tu asset. Para agregarla (Clase 3): navegador del proyecto
+//      (izquierda) → Assets.xcassets → arrastra y suelta la imagen.
+//      En el código va su nombre: Image("Gravity").
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   imágenes "foto1", "foto2", "foto3", "foto4" y "perfil"
 //              en Assets (o cambia los nombres por los tuyos).
@@ -39,6 +42,7 @@ struct ImagenesView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("1. Imagen de Assets")
                             .font(.headline)
+                        // Sin modificadores la imagen queda muy grande.
                         // Sin .resizable el .frame NO hace nada.
                         // .fit evita que se deforme. .frame pone el tamaño final.
                         Image("foto1")                                   // ✏️ nombre de tu asset
@@ -126,6 +130,15 @@ struct ImagenesView: View {
                                 .foregroundStyle(.blue)
                         }
                         .frame(maxWidth: .infinity)
+
+                        // Así viene el símbolo en el ContentView de un proyecto nuevo:
+                        HStack {
+                            Image(systemName: "globe")
+                                .imageScale(.large)                      // .small .medium .large
+                                .foregroundStyle(.tint)                  // color de acento de la app
+                            Text("Hola Mundo")
+                        }
+
                         Text("Busca nombres en la app SF Symbols de la Mac.")
                             .font(.caption)
                             .foregroundStyle(.secondary)

@@ -18,6 +18,8 @@
 //  NECESITA:   nada más.
 //  Para dividir la pantalla en partes iguales, grids y renglones
 //  más completos, ve al tema 05_Layouts.
+//  ⚠️ NO VISTO EN CLASE: Rectangle()/Circle() con .fill. Aquí solo
+//              dibujan cajas de color para que se vea el acomodo.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -33,6 +35,8 @@ struct StacksBasicosView: View {
                 VStack(alignment: .leading, spacing: 28) {
 
                     // ── 1. VStack, HStack y ZStack ───────────────
+                    // HStack = horizontal · VStack = vertical · ZStack = en profundidad.
+                    // Se pueden meter Stacks dentro de Stacks para organizar mejor (bloque 10).
                     VStack(alignment: .leading, spacing: 8) {
                         Text("1. VStack, HStack y ZStack")
                             .font(.headline)
@@ -111,6 +115,11 @@ struct StacksBasicosView: View {
                             Rectangle().fill(.purple).frame(width: 40, height: 80)
                             Rectangle().fill(.orange).frame(width: 40, height: 40)
                             Text(".bottom")
+                        }
+                        HStack(alignment: .center) {             // en medio (es el default)
+                            Rectangle().fill(.purple).frame(width: 40, height: 80)
+                            Rectangle().fill(.orange).frame(width: 40, height: 40)
+                            Text(".center")
                         }
                     }
 
@@ -206,6 +215,18 @@ struct StacksBasicosView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("9. frame(maxWidth: .infinity, alignment:)")
                             .font(.headline)
+
+                        // Alinear TODO el VStack hacia la izquierda (forma de clase).
+                        // La profesora: primero intenta acomodar los elementos
+                        // dentro del VStack; usa este .frame solo si no basta.
+                        VStack(alignment: .leading) {
+                            Text("Todo el VStack")
+                            Text("pegado a la izquierda")
+                        }
+                        .frame(
+                            maxWidth: .infinity,
+                            alignment: .leading)                    // ✏️ .leading .center .trailing
+                        .background(Color.orange.opacity(0.15))
 
                         Text("a la izquierda")
                             .frame(maxWidth: .infinity, alignment: .leading)

@@ -10,6 +10,14 @@ import SwiftUI
 struct Tema02MenuView: View {
     var body: some View {
         List {
+            Section("La app de la Clase 3") {
+                NavigationLink {
+                    MiPrimeraAppView()
+                } label: {
+                    EjemploRow(titulo: "HelloWorld: nombre → botón → saludo", archivo: "02_PrimeraApp/MiPrimeraAppView.swift", icono: "hand.wave")
+                }
+            }
+
             Section("Elementos básicos") {
                 NavigationLink {
                     TextosView()

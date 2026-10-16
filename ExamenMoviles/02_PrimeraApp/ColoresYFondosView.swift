@@ -10,7 +10,7 @@
 //  BUSCA:      color, colores, rgb, red green blue, 255, opacity,
 //              opacidad, transparente, paleta, palette, monocromatico,
 //              analogo, contraste, fondo, background, degradado,
-//              gradiente, gradient, LinearGradient, flatuicolors
+//              gradiente, gradient, LinearGradient, flatuicolors, coolors, image picker
 //
 //  CÓMO COPIARLO:
 //   1. Paleta: copia los `let` de colores (arriba del body) dentro de
@@ -28,7 +28,8 @@ import SwiftUI
 struct ColoresYFondosView: View {
 
     // ── Paleta MONOCROMÁTICA: mismo tono (morado), cambia solo lo claro/oscuro ──
-    // Códigos de color: flatuicolors.com · Contraste: coolors.co/contrast-checker
+    // Herramientas de la Clase 4: códigos de color flatuicolors.com ·
+    // contraste coolors.co/contrast-checker · paleta desde una imagen coolors.co/image-picker
     let moradoOscuro = Color(red: 72/255, green: 52/255, blue: 212/255)      // ✏️ tus colores
     let morado       = Color(red: 108/255, green: 92/255, blue: 231/255)
     let moradoMedio  = Color(red: 162/255, green: 155/255, blue: 254/255)
