@@ -12,8 +12,11 @@ struct Tema07MenuView: View {
     var body: some View {
         List {
             Section("Pestañas") {
-                EjemploPantallaCompleta(titulo: "TabView básico (3 pestañas)", archivo: "07_TabView/TabViewBasicoView.swift", icono: "rectangle.split.3x1") {
+                EjemploPantallaCompleta(titulo: "TabView de la clase (Charmander)", archivo: "07_TabView/TabViewBasicoView.swift", icono: "rectangle.split.3x1") {
                     TabViewBasicoView()
+                }
+                EjemploPantallaCompleta(titulo: "TabView rápido en un solo archivo", archivo: "07_TabView/TabViewUnArchivoView.swift", icono: "doc") {
+                    TabViewUnArchivoView()
                 }
                 EjemploPantallaCompleta(titulo: "Pestañas con navegación", archivo: "07_TabView/TabConNavegacionView.swift", icono: "rectangle.stack") {
                     TabConNavegacionView()
@@ -23,6 +26,32 @@ struct Tema07MenuView: View {
                 }
                 EjemploPantallaCompleta(titulo: "Cambiar de pestaña por código + badge", archivo: "07_TabView/TabSeleccionView.swift", icono: "app.badge") {
                     TabSeleccionView()
+                }
+            }
+
+            Section("Vistas de cada pestaña (clase)") {
+                NavigationLink {
+                    PrincipalView()
+                } label: {
+                    EjemploRow(titulo: "PrincipalView", archivo: "07_TabView/PrincipalView.swift", icono: "house.circle")
+                }
+                NavigationLink {
+                    DetallesView()
+                } label: {
+                    EjemploRow(titulo: "DetallesView", archivo: "07_TabView/DetallesView.swift", icono: "doc.richtext.fill")
+                }
+                NavigationLink {
+                    EvolucionesView()
+                } label: {
+                    EjemploRow(titulo: "EvolucionesView", archivo: "07_TabView/EvolucionesView.swift", icono: "bolt.heart.fill")
+                }
+                NavigationLink {
+                    VStack {
+                        PokemonEncabezado(nombre: "Charmander", icono: "flame.fill")
+                        Spacer()
+                    }
+                } label: {
+                    EjemploRow(titulo: "Encabezado (componente)", archivo: "07_TabView/PokemonEncabezado.swift", icono: "rectangle.topthird.inset.filled")
                 }
             }
 

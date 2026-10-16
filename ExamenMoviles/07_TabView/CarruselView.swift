@@ -2,17 +2,21 @@
 //  CarruselView.swift  ·  07 TabView
 // ───────────────────────────────────────────────────────────────
 //  QUÉ ES:     Carrusel de fotos que se desliza de lado, con puntitos
-//              abajo. Es un TabView con estilo .page (visto en clase).
+//              abajo. Es un TabView con estilo .page (Clase 7).
+//              Bloque 1 = código EXACTO de la clase (SF Symbols de
+//              deportes). Bloque 2 = con fotos de Assets y texto encima.
 //  ÚSALO PARA: galería de fotos, banners, destacados, portada.
-//  BUSCA:      carrusel, carousel, galeria, deslizar fotos, swipe, page,
-//              tabViewStyle, indexViewStyle, puntitos, slider de imagenes
+//  BUSCA:      carrusel, carrusel de fotos, carousel, galeria, deslizar
+//              fotos, swipe, page, tabViewStyle, indexViewStyle,
+//              backgroundDisplayMode, puntitos, figure.baseball
 //
 //  CÓMO COPIARLO:
-//   1. En tu proyecto crea Views/CarruselView.swift (o pega solo el TabView).
+//   1. En tu proyecto crea Views/CarruselView.swift (o pega solo el TabView
+//      del bloque que quieras).
 //   2. Pega el archivo completo (trae CarruselPagina al final).
 //   3. Cambia lo marcado con ✏️ (nombres de tus imágenes y textos)
-//  NECESITA:   imágenes "foto1"…"foto4" en Assets.xcassets
-//              (arrastra cualquier imagen y ponle ese nombre).
+//  NECESITA:   bloque 1: nada. Bloque 2: imágenes "foto1"…"foto4" en
+//              Assets.xcassets (arrastra cualquier imagen y ponle ese nombre).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -22,11 +26,38 @@ struct CarruselView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
 
-                Text("Desliza las fotos hacia los lados")
+                // ── 1. Carrusel de la clase (código exacto) ─────────
+                Text("1. Carrusel de la clase")
                     .font(.headline)
 
-                // ── El carrusel ─────────────────────────────────────
                 // Cada vista dentro del TabView es una "página".
+                TabView {
+                    //Poner imágenes con alto de 300
+                    Image(systemName: "figure.baseball")                 // ✏️
+                        .resizable(resizingMode: .stretch)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 300)
+                    Image(systemName: "figure.bowling")
+                        .resizable(resizingMode: .stretch)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 300)
+                    Image(systemName: "figure.american.football")
+                        .resizable(resizingMode: .stretch)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 300)
+                    Image(systemName: "figure.volleyball")
+                        .resizable(resizingMode: .stretch)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 300)
+                }
+                .tabViewStyle(.page)                                     // páginas que se deslizan
+                .indexViewStyle(.page(backgroundDisplayMode: .always))   // fondo detrás de los puntitos
+                .frame(height: 430)                                      // alto total del carrusel
+
+                // ── 2. Con fotos de Assets y texto encima ───────────
+                Text("2. Con tus fotos y texto encima")
+                    .font(.headline)
+
                 TabView {
                     CarruselPagina(imagen: "foto1", texto: "Montaña")    // ✏️
                     CarruselPagina(imagen: "foto2", texto: "Playa")      // ✏️
