@@ -88,10 +88,15 @@ struct ContentView: View {
                     } label: {
                         EjemploRow(titulo: "11 · Extras", archivo: "11_Extras/", icono: "sparkles")
                     }
+                    NavigationLink {
+                        Tema12MenuView()
+                    } label: {
+                        EjemploRow(titulo: "12 · Paletas de colores", archivo: "12_Paletas/", icono: "paintpalette")
+                    }
                 } header: {
                     Text("Extras de otras tareas")
                 } footer: {
-                    Text("Persistencia con @AppStorage / UserDefaults y sonido con AVAudioPlayer.")
+                    Text("Persistencia con @AppStorage / UserDefaults, sonido con AVAudioPlayer y 25 paletas de colores listas para usar.")
                 }
             }
             .navigationTitle("Examen Móviles")
