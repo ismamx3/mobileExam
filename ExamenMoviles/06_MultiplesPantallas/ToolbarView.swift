@@ -74,9 +74,10 @@ struct ToolbarView: View {
                 }
             }
 
-            // ── 3. Esconder la barra (forma de la clase) ────────────
-            // En clase:  .toolbar(.hidden)
-            // Aquí depende del Toggle: escondida o visible.
+            // ── 3. Esconder la barra (forma de la clase 6A) ─────────
+            // Clase: en el Stack principal de la pantalla deseada se
+            // agrega el modificador:   .toolbar(.hidden)
+            // Aquí depende del Toggle: escondida (.hidden) o visible (.visible).
             .toolbar(esconderBarra ? .hidden : .visible)
         }
     }

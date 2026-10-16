@@ -18,7 +18,8 @@ import SwiftUI
 
 struct RecibeValoresView: View {
 
-    // Paso 1 de la clase: variables que NO son private y NO llevan @State.
+    // Paso 1 de la clase: variables de clase que NO son private
+    // (tampoco requieren el @State).
     // Así la pantalla anterior puede asignarlas al llamar la vista:
     //     RecibeValoresView(nombre: "Cristina", edad: 20)
     var nombre: String      // ✏️

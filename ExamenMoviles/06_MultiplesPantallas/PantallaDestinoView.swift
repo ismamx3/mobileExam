@@ -14,6 +14,18 @@
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   nada más. (NO lleva NavigationStack: ya viene de la
 //              pantalla anterior.)
+//
+//  CÓMO SE CREA (clase 6A, Paso 2): menú File > New > File (SwiftUI View)
+//  y se le pone nombre. En la clase se llamó DetalleView y mostraba
+//  "Esta es la segunda pantalla" con Image(systemName: "gamecontroller.fill").
+//
+//  REGRESAR POR CÓDIGO (clase 6A): la flecha (<) ya regresa, pero con
+//  código tienes más control de CUÁNDO y CÓMO regresar:
+//   1. En la pantalla de Detalle, una variable de clase:
+//          @Environment(\.dismiss) private var dismiss
+//   2. Llamar dismiss() donde quieras regresar (ej. en un botón).
+//  NOTA de la clase: DismissAction llegó en iOS 15. En versiones
+//  anteriores se usaba PresentationMode.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -25,9 +37,9 @@ struct PantallaDestinoView: View {
     // sin pasar nada, o PantallaDestinoView(titulo: "Perfil", color: .orange).
     var titulo: String = "Pantalla destino"   // ✏️
     var color: Color = .purple                 // ✏️
-    var icono: String = "star.fill"            // ✏️ nombre de un SF Symbol
+    var icono: String = "gamecontroller.fill"  // ✏️ nombre de un SF Symbol (el de la clase)
 
-    // 1. Para regresar por código a la pantalla anterior
+    // 1. Variable de clase para regresar por código a la pantalla anterior (base)
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {

@@ -7,7 +7,7 @@
 //              y le manda el nombre del usuario.
 //  ÚSALO PARA: pantalla de inicio de sesión, "acceso", "entrar".
 //  BUSCA:      login, iniciar sesion, usuario, contraseña, contrasena, password,
-//              securefield, validar, credenciales, entrar, navigationDestination,
+//              securefield, validar, credenciales, entrar, navigationDestination, isValid,
 //              ocultar teclado, focusstate
 //
 //  CÓMO COPIARLO:
@@ -15,6 +15,8 @@
 //   2. Pega el archivo completo.
 //   3. Cambia lo marcado con ✏️ (sobre todo usuario y contraseña correctos)
 //  NECESITA:   06_MultiplesPantallas/BienvenidaView.swift
+//  PATRÓN DE LA CLASE 6C: isValid + Button (no NavigationLink) +
+//  .alert y .navigationDestination(isPresented: $isValid) puestos AL BOTÓN.
 //  ⚠️ NO VISTO EN CLASE: SecureField, .textInputAutocapitalization,
 //                       .autocorrectionDisabled
 // ═══════════════════════════════════════════════════════════════
@@ -32,7 +34,7 @@ struct LoginView: View {
 
     @State private var showAlert = false
     @State private var alertMessage = ""
-    @State private var entrar = false       // true = ya pasó la validación
+    @State private var isValid = false      // paso 1 de la clase 6C: true = ya pasó la validación
 
     // Para esconder el teclado
     @FocusState private var campoEnFoco: Bool
@@ -80,6 +82,7 @@ struct LoginView: View {
                         }
 
                         // ── 4. Botón que valida ─────────────────────────
+                        // Paso 2 de la clase 6C: Button en lugar de NavigationLink.
                         Button {
                             validar()
                         } label: {
@@ -91,6 +94,14 @@ struct LoginView: View {
                         .buttonStyle(.borderedProminent)
                         .tint(.indigo)
                         .padding(.top, 10)
+                        .alert(alertMessage, isPresented: $showAlert) {
+                            Button("OK") {}
+                        }
+                        // Paso 3: modificador AL BOTÓN. Navega cuando isValid = true
+                        // y le manda el usuario a la otra pantalla.
+                        .navigationDestination(isPresented: $isValid) {
+                            BienvenidaView(usuario: usuario)      // ✏️ tu pantalla de inicio
+                        }
 
                         Text("Prueba con usuario admin y contraseña 1234")  // ✏️ bórralo en tu app
                             .font(.footnote)
@@ -103,13 +114,6 @@ struct LoginView: View {
             .onTapGesture {
                 campoEnFoco = false
             }
-            .alert(alertMessage, isPresented: $showAlert) {
-                Button("OK") {}
-            }
-            // Navega cuando entrar = true. Le manda el usuario a la otra pantalla.
-            .navigationDestination(isPresented: $entrar) {
-                BienvenidaView(usuario: usuario)              // ✏️ tu pantalla de inicio
-            }
         }
     }
 
@@ -119,16 +123,19 @@ struct LoginView: View {
 
         if usuario.isEmpty {
             alertMessage = "Escribe tu usuario"
+            isValid = false
             showAlert.toggle()
         } else if contrasena.isEmpty {
             alertMessage = "Escribe tu contraseña"
+            isValid = false
             showAlert.toggle()
         } else if usuario != usuarioCorrecto || contrasena != contrasenaCorrecta {
             alertMessage = "Usuario o contraseña incorrectos"
+            isValid = false
             showAlert.toggle()
         } else {
             contrasena = ""     // al cerrar sesión el campo ya sale vacío
-            entrar = true
+            isValid = true
         }
     }
 }

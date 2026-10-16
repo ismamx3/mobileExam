@@ -1,8 +1,10 @@
 // ═══════════════════════════════════════════════════════════════
 //  NavegacionBasicaView.swift  ·  06 Múltiples pantallas
 // ───────────────────────────────────────────────────────────────
-//  QUÉ ES:     NavigationStack con las 3 formas de NavigationLink de
-//              la clase, más un NavigationLink con aspecto de botón.
+//  QUÉ ES:     NavigationStack con las 2 formas de NavigationLink de la
+//              clase 6A (bloques 1 y 2), la forma con label: que se usa
+//              en listas (bloque 3) y el Paso 3 de la clase: darle
+//              aspecto de botón (bloques 4 y 5).
 //  ÚSALO PARA: pasar de una pantalla a otra (lista → detalle,
 //              inicio → perfil). Es la base de "múltiples pantallas".
 //  BUSCA:      navigationstack, navigationlink, navegar, ir a otra pantalla,
@@ -15,19 +17,31 @@
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   06_MultiplesPantallas/PantallaDestinoView.swift
 //              (o cambia PantallaDestinoView() por tu propia pantalla).
+//
+//  LO QUE DICE LA CLASE (6A):
+//   - NavigationStack presenta una PILA (stack) de vistas sobre una
+//     vista raíz.
+//   - Las nuevas vistas se agregan "encima" al tocar un NavigationLink.
+//   - Se quitan con controles integrados: el Back (<) del iPhone o un
+//     gesto de deslizamiento.
+//   - La pila siempre muestra la vista agregada más recientemente y NO
+//     permite que se elimine la vista raíz.
+//   - El NavigationLink se ve como botón/liga.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
 
 struct NavegacionBasicaView: View {
     var body: some View {
-        // Paso 1: envolver la pantalla principal en un NavigationStack.
+        // Paso 1: agregar el NavigationStack en toda la vista principal
+        // (o inclusive, en solamente una sección).
         // Solo va UNO, en la pantalla raíz. Las pantallas destino NO lo llevan.
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
 
-                    // ── 1. Forma corta: texto + destino ─────────────────
+                    // ── 1. Forma 1 de la clase: texto + destino ─────────
+                    // Paso 2: el NavigationLink hace la liga a la nueva pantalla.
                     Text("1. Forma corta")
                         .font(.headline)
 
@@ -37,7 +51,7 @@ struct NavegacionBasicaView: View {
 
                     Divider()
 
-                    // ── 2. Con destination: ─────────────────────────────
+                    // ── 2. Forma 2 de la clase: con destination: ─────────
                     Text("2. Con destination:")
                         .font(.headline)
 
@@ -48,6 +62,7 @@ struct NavegacionBasicaView: View {
                     Divider()
 
                     // ── 3. Con label personalizado (para renglones y tarjetas)
+                    // Es la forma que se usa en las listas: { destino } label: { lo que se ve }
                     Text("3. Con label personalizado")
                         .font(.headline)
 
@@ -81,6 +96,7 @@ struct NavegacionBasicaView: View {
                     Divider()
 
                     // ── 4. Paso 3 de la clase: darle aspecto de botón ───
+                    // Se le da formato al NavigationLink con modificadores.
                     Text("4. Con aspecto de botón")
                         .font(.headline)
 

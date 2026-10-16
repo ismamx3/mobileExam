@@ -15,6 +15,14 @@
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   06_MultiplesPantallas/RecibeValoresView.swift
 //
+//  LOS 2 PASOS DE LA CLASE (6B, "paso simple de valores"):
+//   1. En la pantalla de Detalle, una variable de clase que NO sea
+//      privada (tampoco requiere el @State).
+//   2. En la pantalla Base, asignar la variable nombrada al llamar la
+//      vista (en los paréntesis). Ejemplo de la clase:
+//          DetalleView(nombreDetalle: "Cristina")
+//      Aquí:  RecibeValoresView(nombre: nombre, edad: Int(edad))
+//
 //  OJO: si la pantalla 2 cambia el valor, NO regresa a esta.
 //       Para ida y vuelta mira BindingIdaYVueltaView.swift (@Binding).
 // ═══════════════════════════════════════════════════════════════
@@ -49,7 +57,7 @@ struct PasoDeValoresView: View {
                     Spacer()
 
                     // ── 2. Mandar los datos al llamar la vista ──────────
-                    // Se asignan como parámetros: RecibeValoresView(nombre:edad:)
+                    // Paso 2: se asignan en los paréntesis: RecibeValoresView(nombre:edad:)
                     NavigationLink {
                         RecibeValoresView(nombre: nombre, edad: Int(edad))
                     } label: {

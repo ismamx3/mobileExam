@@ -4,7 +4,7 @@
 //  QUÉ ES:     Pantalla de edición que recibe @Binding. Lo que escribes
 //              aquí cambia el dato de la pantalla anterior.
 //  ÚSALO PARA: editar perfil, cambiar ajustes, modificar un elemento.
-//  BUSCA:      binding, @Binding, editar, modificar, constant, preview binding,
+//  BUSCA:      binding, @Binding, editar, modificar, constant, .constant, preview binding,
 //              dismiss, guardar y regresar, toggle
 //
 //  CÓMO COPIARLO:
@@ -18,8 +18,8 @@ import SwiftUI
 
 struct EditarNicknameView: View {
 
-    // Paso 1: @Binding, NO private y SIN valor inicial.
-    // El valor real vive en la pantalla anterior.
+    // Paso 1: 1) @Binding, 2) NO private y 3) SIN valor inicial.
+    // El valor real vive en la pantalla anterior (la fuente de verdad).
     @Binding var nickname: String          // ✏️
     @Binding var notificaciones: Bool      // ✏️
 
@@ -64,8 +64,10 @@ struct EditarNicknameView: View {
 }
 
 #Preview {
-    // En el preview no hay pantalla anterior, así que se inyecta un
-    // binding de prueba con .constant(...) (de solo lectura).
+    // En el #Preview no existe un parent view real que pase el Binding,
+    // así que hay que "inyectar" un Binding de prueba. La forma más limpia
+    // (clase 6B) es .constant(...): un Binding de solo lectura con valor fijo.
+    // Clase:  DetalleView(nickname: .constant(""))
     NavigationStack {
         EditarNicknameView(nickname: .constant("Neo"), notificaciones: .constant(true))
     }

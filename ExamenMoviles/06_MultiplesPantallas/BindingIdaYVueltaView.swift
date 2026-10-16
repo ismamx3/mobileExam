@@ -8,7 +8,8 @@
 //  ÚSALO PARA: editar perfil, ajustes, cualquier pantalla que MODIFICA
 //              un dato de la pantalla anterior.
 //  BUSCA:      binding, @Binding, ida y vuelta, regresar valor, modificar
-//              dato de otra pantalla, editar, state vs binding, $
+//              dato de otra pantalla, editar, state vs binding, $,
+//              fuente de verdad, observable, observer, bindable
 //
 //  CÓMO COPIARLO:
 //   1. En tu proyecto crea Views/BindingIdaYVueltaView.swift
@@ -16,18 +17,38 @@
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   06_MultiplesPantallas/EditarNicknameView.swift
 //
-//  LOS CONCEPTOS (para defenderlo):
-//   @State   = esta vista es DUEÑA del dato.
-//   @Binding = esta vista recibe PERMISO para leer y modificar el dato
+//  LOS CONCEPTOS (recapitulación de la clase 6B, para defenderlo):
+//   @State   = esta vista es dueña del dato.
+//   @Binding = esta vista recibe permiso para leer y modificar el dato
 //              de otra vista.
-//   Un binding se parece a pasar por referencia, pero además NOTIFICA:
-//   cuando el valor cambia, SwiftUI redibuja todas las vistas que
-//   dependen de él. Por eso el cambio aparece solo al regresar.
+//   - La vista base (@State) es la ÚNICA FUENTE DE VERDAD: ahí se
+//     guarda el valor real.
+//   - Con $nickname se pasa una referencia al dato (un Binding) a la
+//     vista hija. La hija NO guarda el dato: solo tiene acceso para
+//     leerlo y cambiarlo. Cuando lo modifica, el cambio viaja de regreso
+//     y actualiza el dato en la vista base.
+//   - Ideal para: valores individuales o pocos datos sencillos.
 //
-//  LOS 3 PASOS:
-//   1. Detalle: @Binding var dato (no private, sin valor inicial).
-//   2. Base:    @State private var dato.
-//   3. Base:    llamar la vista CON $  →  EditarNicknameView(nickname: $nickname)
+//  LOS 3 PASOS DE LA CLASE:
+//   1. Detalle: variable de clase que 1) sea @Binding, 2) NO sea
+//      privada y 3) no tenga valor inicial.
+//   2. Base:    generar una variable @State private.
+//   3. Base:    asignarla al llamar la vista PERO con la variable
+//               @State. No olvidar el $:
+//          Clase:  DetalleView(nickname: $nickname)
+//          Aquí:   EditarNicknameView(nickname: $nickname, ...)
+//
+//  ¿Y SI LOS DATOS CRECEN? (clase 6B)
+//   Para modelos más complejos Swift tiene el framework Observation
+//   (@Observable en el modelo, @Bindable en la vista hija): las vistas
+//   "observan" el objeto y se actualizan solas cuando cambia.
+//   La profesora dijo: "No lo utilizaremos todavía". Por eso este repo
+//   NO usa @Observable.
+//   Tarea que dejó: investigar el patrón de diseño OBSERVER. En corto:
+//   un objeto (el sujeto) avisa automáticamente a todos los que lo
+//   observan cuando cambia, sin que tengan que estar preguntando.
+//   @Observable aplica ese patrón: el modelo es el sujeto y las vistas
+//   son los observadores.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
