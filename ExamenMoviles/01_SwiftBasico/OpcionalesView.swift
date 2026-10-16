@@ -2,14 +2,17 @@
 //  OpcionalesView.swift  ·  01 Swift básico
 // ───────────────────────────────────────────────────────────────
 //  QUÉ ES:     Opcionales (valores que pueden ser nil) y cómo
-//              abrirlos sin que truene la app con if let.
-//              Incluye el caso típico de examen: convertir lo que
-//              escribe el usuario en un TextField a número.
+//              abrirlos: con ! (unwrapping) y con if let (optional
+//              binding, el recomendado por Swift). Mismos ejemplos de
+//              la Clase 2. Incluye el caso de la lámina: un campo de
+//              texto donde el usuario debe teclear un número.
 //  ÚSALO PARA: validar que un texto sea número, manejar datos que
 //              pueden no existir (nil).
 //  BUSCA:      opcional, optional, nil, if let, unwrap, desempacar,
 //              force unwrap, !, convertir texto a numero, Int(texto),
-//              Double(texto), validar numero, ??, guard let
+//              Double(texto), validar numero, ??, guard let, unwrapping,
+//              optional binding, numero != nil, cantidadPesos,
+//              tipoDeCambio, campo vacio, nil no es cero
 //
 //  CÓMO COPIARLO:
 //   1. Para validar un número: copia las 4 variables @State, el
@@ -48,25 +51,30 @@ struct OpcionalesView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
 
-                    // ── 2. Abrir con if let (la forma recomendada) ─
+                    // ── 2. Sacar el valor con ! (unwrapping) ─────
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("2. Abrir con if let")
+                        Text("2. Sacar el valor con ! (unwrapping)")
+                            .font(.headline)
+                        Text(ejemploUnwrapping())
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .background(Color.purple.opacity(0.1))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        Text("Si haces unwrap de una variable opcional que tiene nulo, el programa truena. Por eso con ! se tiene que incluir la comparación != nil, o mejor usar if let.")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .background(Color.red.opacity(0.1))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+
+                    // ── 3. if let (optional binding, el recomendado) ─
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("3. if let (optional binding)")
                             .font(.headline)
                         Text(ejemploIfLet())
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
                             .background(Color.purple.opacity(0.1))
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                    }
-
-                    // ── 3. Por qué NO usar ! ─────────────────────
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("3. Por qué NO usar !")
-                            .font(.headline)
-                        Text("Int(\"hola\")! truena la app porque Int(\"hola\") es nil. Con if let, si es nil, simplemente entra al else.")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .background(Color.red.opacity(0.1))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
 
@@ -131,22 +139,64 @@ struct OpcionalesView: View {
     }
 
     // ── 1. Declarar ──────────────────────────────────
+    // Un opcional puede contener un valor del tipo especificado, o bien,
+    // nulo (nil). nil NO es 0 ni "" (texto vacío): es "no hay valor".
+    // Usa ? para declararlo (ejemplos de la lámina):
     func ejemploDeclarar() -> String {
-        let segundoNombre: String? = nil     // no tiene valor
-        let edad: Int? = 20                  // sí tiene valor, pero "envuelto"
+        var segundoNombre: String?           // empieza en nil
+        var edad: Int?
+        var estatura: Float?
+
+        edad = 20                            // ahora sí tiene valor, pero "envuelto"
+        estatura = 1.75
+        segundoNombre = nil                  // puede seguir (o volver a) nil
 
         // Comparar contra nil es seguro
-        return "¿segundoNombre es nil? \(segundoNombre == nil)\n¿edad es nil? \(edad == nil)"
+        return """
+        ¿segundoNombre es nil? \(segundoNombre == nil)
+        ¿edad es nil? \(edad == nil)
+        ¿estatura es nil? \(estatura == nil)
+        """
     }
 
-    // ── 2. if let ────────────────────────────────────
+    // ── 2. Unwrapping con ! ──────────────────────────
+    // Lámina: "Usa ! para SACAR un valor de una variable opcional…
+    // un valor nulo no se puede convertir (SACAR)". Se le llama unwrapping.
+    func ejemploUnwrapping() -> String {
+        let datoTxt: String? = "42"          // ✏️ en la lámina: DatoTxt (texto de un campo)
+        let numero = Int(datoTxt!)           // Int(...) también regresa un opcional
+
+        var respuesta = "numero es nil"
+        if numero != nil {                   // se tiene que incluir la comparación
+            respuesta = "El valor numérico es \(numero!)."
+        }
+        return respuesta
+    }
+
+    // ── 3. if let ────────────────────────────────────
+    // Optional binding: "verifica si un valor no es nulo". Recomendado por Swift.
+    // Dentro del if se escribe solamente el nombre de la constante (sin !).
     func ejemploIfLet() -> String {
         var respuesta = ""
 
-        if let numero = Int("21") {          // "21" sí se puede convertir
-            respuesta = "Int(\"21\") → \(numero). Dentro del if ya NO es opcional: \(numero) + 1 = \(numero + 1)"
+        // Ejemplo de la lámina: pesos → dólares
+        let cantidadPesosTxt: String? = "1800"   // ✏️
+        let tipoDeCambio = 18
+        if let cantidadPesos = Int(cantidadPesosTxt!) {
+            let cantidadDolares = cantidadPesos / tipoDeCambio
+            respuesta = "\(cantidadPesos) pesos = \(cantidadDolares) dólares"
         } else {
+            // si la variable opcional es nula se va aquí
             respuesta = "No se pudo convertir"
+        }
+
+        // En la lámina el texto lleva ! porque en UIKit el texto de un campo es
+        // opcional. En SwiftUI el @State del TextField es un String normal, así
+        // que va SIN !: if let numero = Int(textoNumero) (ver bloque 4).
+        if let numero = Int("21") {          // "21" sí se puede convertir
+            respuesta += "\nInt(\"21\") → \(numero). Dentro del if ya NO es opcional: \(numero) + 1 = \(numero + 1)"
+        } else {
+            respuesta += "\nNo se pudo convertir"
         }
 
         if let otro = Int("hola") {          // "hola" NO se puede convertir
@@ -159,6 +209,9 @@ struct OpcionalesView: View {
     }
 
     // ── 4. Convertir el TextField ────────────────────
+    // Caso de la lámina: "Hay un campo de texto donde el usuario debe teclear
+    // un valor numérico… ¿qué pasa si se deja vacío el campo?" → Double("")
+    // es nil. Por eso primero se revisa vacío y luego se usa if let.
     func convertirNumero() {
         if textoNumero.isEmpty {
             alertMessage = "Escribe un número primero"                 // ✏️ mensaje

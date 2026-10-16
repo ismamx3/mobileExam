@@ -19,7 +19,7 @@
 //   2. Para cálculos: copia la función del bloque que quieras.
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   nada más.
-//  ⚠️ NO VISTO EN CLASE: diccionarios, .filter, .sorted, .contains
+//  ⚠️ NO VISTO EN CLASE: ForEach (bloque 6), diccionarios, .filter, .sorted, .contains
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -135,8 +135,9 @@ struct ArreglosYCiclosView: View {
                         Text("Total: \(frutas.count) frutas")
                             .foregroundStyle(.secondary)
 
+                        // ⚠️ NO VISTO EN CLASE: ForEach no viene en las láminas.
                         // id: \.self sirve para arreglos SIMPLES de String/Int.
-                        // Para modelos (structs) usa Identifiable + List (tema 08).
+                        // Para modelos (structs) usa Identifiable + List (tema 08, forma de clase).
                         ForEach(frutas, id: \.self) { fruta in
                             HStack {
                                 Image(systemName: "leaf.fill")

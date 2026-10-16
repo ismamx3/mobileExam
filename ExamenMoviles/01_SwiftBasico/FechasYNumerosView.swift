@@ -3,31 +3,39 @@
 // ───────────────────────────────────────────────────────────────
 //  QUÉ ES:     Fechas (Date, DateFormatter, sumar días/meses) y
 //              formato de números (decimales, moneda, porcentaje,
-//              años sin coma).
+//              años sin coma). Sigue la Clase 3B (Manejo de Fechas y
+//              Formatos) con los mismos nombres de las láminas.
 //  ÚSALO PARA: mostrar la fecha de hoy en español, una fecha futura,
 //              precios en pesos, promedios con 2 decimales.
 //  BUSCA:      fecha, date, hoy, DateFormatter, formato fecha, dateStyle,
 //              dateFormat, dd/MM/yyyy, sumar dias, sumar meses, Calendar,
 //              DateComponents, edad, dias entre fechas, numero, decimales,
 //              moneda, pesos, currency, MXN, precio, porcentaje, percent,
-//              specifier, %.2f, formatted, grouping, año sin coma
+//              specifier, %.2f, formatted, grouping, año sin coma,
+//              timeStyle, hora, Locale, es_MX, numeroBase, precioBase,
+//              NumberFormatter, spellOut, ordinal, numero con letra,
+//              fractionLength, currentDate, futureDate
 //
 //  CÓMO COPIARLO:
 //   1. Copia la función del bloque que necesites (están abajo).
 //   2. Para números en pantalla copia el Text del bloque 6, 7 u 8.
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   nada más.
-//  ⚠️ NO VISTO EN CLASE: Calendar.current.dateComponents (días entre
-//              fechas / edad), format: .percent
+//  ⚠️ NO VISTO EN CLASE: Calendar.current.date(from:) y
+//              Calendar.current.dateComponents (bloque 5: fecha fija,
+//              edad, días entre fechas). format: .percent y el código
+//              con NumberFormatter() del bloque 10 no se escribieron en
+//              clase, pero sus estilos SÍ vienen en la tabla
+//              "Formatos predefinidos (Número)" de la Clase 3B.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
 
 struct FechasYNumerosView: View {
 
-    let precio = 1234.5               // ✏️ tus números
+    let numeroBase = 1234567.891      // ✏️ tus números (nombres de la lámina)
+    let precioBase = 1234.5
     let promedio = 87.6666
-    let numeroGrande = 1234567.891
     let anio = 2026
     let rating = 4.25
     let avance = 0.75                 // 0.75 = 75 %
@@ -56,10 +64,15 @@ struct FechasYNumerosView: View {
                         Text("2. Estilos (.short .medium .long .full)")
                             .font(.headline)
                         Text("""
-                        .short → \(fechaConEstilo(estilo: DateFormatter.Style.short))
-                        .medium → \(fechaConEstilo(estilo: DateFormatter.Style.medium))
-                        .long → \(fechaConEstilo(estilo: DateFormatter.Style.long))
-                        .full → \(fechaConEstilo(estilo: DateFormatter.Style.full))
+                        dateStyle .short → \(fechaConEstilo(estilo: DateFormatter.Style.short))
+                        dateStyle .medium → \(fechaConEstilo(estilo: DateFormatter.Style.medium))
+                        dateStyle .long → \(fechaConEstilo(estilo: DateFormatter.Style.long))
+                        dateStyle .full → \(fechaConEstilo(estilo: DateFormatter.Style.full))
+
+                        timeStyle .short → \(horaConEstilo(estilo: DateFormatter.Style.short))
+                        timeStyle .medium → \(horaConEstilo(estilo: DateFormatter.Style.medium))
+                        timeStyle .long → \(horaConEstilo(estilo: DateFormatter.Style.long))
+                        timeStyle .full → \(horaConEstilo(estilo: DateFormatter.Style.full))
                         """)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
@@ -108,13 +121,15 @@ struct FechasYNumerosView: View {
 
                     // ── 6. Números dentro de un Text ─────────────
                     VStack(alignment: .leading, spacing: 8) {
+                        // Lámina "Formatear Número": para un número que va en un elemento Text()
                         Text("6. Números con format:")
                             .font(.headline)
                         VStack(alignment: .leading, spacing: 6) {
-                            Text(numeroGrande, format: .number)
+                            Text(numeroBase, format: .number)
                             Text(promedio, format: .number.precision(.fractionLength(2)))
-                            Text(precio, format: .currency(code: "MXN"))
-                            Text(avance, format: .percent)       // ⚠️ NO VISTO EN CLASE: porcentaje
+                            Text(precioBase, format: .currency(code: "MXN"))
+                            // ⚠️ NO VISTO EN CLASE: format: .percent (el estilo percent sí está en la tabla de la Clase 3B)
+                            Text(avance, format: .percent)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
@@ -129,7 +144,7 @@ struct FechasYNumerosView: View {
                         VStack(alignment: .leading, spacing: 6) {
                             Text("Calificación: \(rating, specifier: "%.1f") ⭐️")
                             Text("Promedio: \(promedio, specifier: "%.2f")")
-                            Text("Total: \(precio.formatted(.currency(code: "MXN")))")
+                            Text("Total: \(precioBase.formatted(.currency(code: "MXN")))")
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
@@ -153,9 +168,27 @@ struct FechasYNumerosView: View {
 
                     // ── 9. Convertir número a String ─────────────
                     VStack(alignment: .leading, spacing: 8) {
+                        // Lámina: "para convertir a un texto formateado para asignar a un String"
                         Text("9. Número → String con formato")
                             .font(.headline)
                         Text(numerosComoTexto())
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .background(Color.purple.opacity(0.1))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+
+                    // ── 10. Otros estilos predefinidos (NumberFormatter.Style) ──
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("10. Número con letra, ordinal, científico")
+                            .font(.headline)
+                        Text("""
+                        .spellOut → \(numeroConEstilo(numero: 123, estilo: NumberFormatter.Style.spellOut))
+                        .ordinal → \(numeroConEstilo(numero: 3, estilo: NumberFormatter.Style.ordinal))
+                        .decimal → \(numeroConEstilo(numero: 1234.568, estilo: NumberFormatter.Style.decimal))
+                        .percent → \(numeroConEstilo(numero: 0.12, estilo: NumberFormatter.Style.percent))
+                        .scientific → \(numeroConEstilo(numero: 1234.5678, estilo: NumberFormatter.Style.scientific))
+                        """)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
                             .background(Color.purple.opacity(0.1))
@@ -169,18 +202,20 @@ struct FechasYNumerosView: View {
     }
 
     // ── 1. Fecha de hoy ──────────────────────────────
+    // Los 3 pasos de la lámina "La clase DateFormatter":
     func fechaDeHoy() -> String {
-        let fechaActual = Date()                         // fecha y hora de este momento
+        let fechaActual = Date()                         // constructor vacío = fecha y hora actual
 
-        let formato = DateFormatter()
-        formato.dateStyle = DateFormatter.Style.long
-        formato.timeStyle = DateFormatter.Style.none     // sin hora
-        formato.locale = Locale(identifier: "es_MX")     // en español
+        let formato = DateFormatter()                    // 1. generar el formateador
+        formato.dateStyle = DateFormatter.Style.long     // 2. elegir el estilo predefinido
+        formato.timeStyle = DateFormatter.Style.none     //    no muestra hora
+        formato.locale = Locale(identifier: "es_MX")     //    español de México
 
-        return formato.string(from: fechaActual)
+        return formato.string(from: fechaActual)         // 3. obtener el string formateado
     }
 
     // ── 2. Estilos ───────────────────────────────────
+    // Sin locale salen en inglés como en la tabla de la lámina (Jan 20, 2016 · 9:54 PM).
     func fechaConEstilo(estilo: DateFormatter.Style) -> String {
         let formato = DateFormatter()
         formato.dateStyle = estilo
@@ -189,9 +224,20 @@ struct FechasYNumerosView: View {
         return formato.string(from: Date())
     }
 
+    // Igual, pero solo la HORA (timeStyle) y sin fecha
+    func horaConEstilo(estilo: DateFormatter.Style) -> String {
+        let formato = DateFormatter()
+        formato.dateStyle = DateFormatter.Style.none
+        formato.timeStyle = estilo
+        formato.locale = Locale(identifier: "es_MX")
+        return formato.string(from: Date())
+    }
+
     // ── 3. Formato a la medida ───────────────────────
+    // Para un formato diferente a los predefinidos se usa el atributo dateFormat.
     // dd = día, MM = mes en número, MMMM = mes con letra,
     // yyyy = año, EEE = día corto, EEEE = día completo, HH:mm = hora
+    // Lámina: "EEE, dd 'de' MMMM" → Wed, 20 de January (en inglés sin locale)
     func fechaConFormato(formato: String) -> String {
         let formateador = DateFormatter()
         formateador.dateFormat = formato                  // ✏️ ej. "dd/MM/yyyy"
@@ -207,7 +253,7 @@ struct FechasYNumerosView: View {
         dateComponent.month = 2                           // ✏️ meses a sumar
         dateComponent.day = 10                            // ✏️ días a sumar
 
-        // date(byAdding:) regresa OPCIONAL → if let
+        // date(byAdding:) regresa OPCIONAL ("Solo aguas… esta constante es OPCIONAL") → if let
         if let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate) {
             return "Hoy + 2 meses y 10 días = \(fechaComoTexto(fecha: futureDate))"
         } else {
@@ -217,7 +263,8 @@ struct FechasYNumerosView: View {
 
     // ── 5. Días entre fechas y edad ──────────────────
     func diferenciaDeFechas() -> String {
-        // Crear una fecha específica: también regresa opcional
+        // ⚠️ NO VISTO EN CLASE: Calendar.current.date(from:) crea una fecha específica
+        // a partir de año/mes/día. También regresa opcional → if let.
         var componentes = DateComponents()
         componentes.year = 2004                           // ✏️ fecha de nacimiento
         componentes.month = 5
@@ -252,11 +299,27 @@ struct FechasYNumerosView: View {
     }
 
     // ── 9. Número → String ───────────────────────────
+    // a) .number   b) .number.precision(.fractionLength(2))   c) .currency(code: "MXN")
     func numerosComoTexto() -> String {
-        let numeroStr = numeroGrande.formatted(.number)
+        let numeroStr = numeroBase.formatted(.number)
         let decimalesStr = promedio.formatted(.number.precision(.fractionLength(2)))
-        let precioStr = precio.formatted(.currency(code: "MXN"))
+        let precioStr = precioBase.formatted(.currency(code: "MXN"))
         return "\(numeroStr)\n\(decimalesStr)\n\(precioStr)"
+    }
+
+    // ── 10. Estilos de la tabla "Formatos predefinidos (Número)" ──
+    // ⚠️ NO VISTO EN CLASE: el código con NumberFormatter(). Los pasos son
+    // iguales a DateFormatter: generar el formateador, elegir estilo,
+    // pedir el string. string(from:) regresa OPCIONAL → if let.
+    func numeroConEstilo(numero: Double, estilo: NumberFormatter.Style) -> String {
+        let formateador = NumberFormatter()
+        formateador.numberStyle = estilo
+        formateador.locale = Locale(identifier: "es_MX")
+        if let texto = formateador.string(from: NSNumber(value: numero)) {
+            return texto
+        } else {
+            return "Sin formato"
+        }
     }
 }
 

@@ -2,13 +2,17 @@
 //  TiposYVariablesView.swift  ·  01 Swift básico
 // ───────────────────────────────────────────────────────────────
 //  QUÉ ES:     var y let, tipos de datos, strings, operaciones,
-//              conversiones entre tipos y el operador ternario.
+//              conversiones entre tipos, el operador ternario y print.
+//              Bloques 1–3 y 8 siguen la Clase 2 (Conceptos Básicos
+//              de Swift) con los mismos ejemplos de las láminas.
 //  ÚSALO PARA: repasar la sintaxis base o copiar una conversión
 //              (por ejemplo, de texto a número).
 //  BUSCA:      var, let, constante, variable, Int, Double, Float, Bool,
 //              String, Character, interpolacion, concatenar, operadores,
 //              division, modulo, residuo, %, convertir, conversion, cast,
-//              ternario, ? :, and, or, &&, ||, tipos de datos
+//              ternario, ? :, and, or, &&, ||, tipos de datos, print,
+//              consola, Playground, tipo explicito, sin valor inicial,
+//              infiere el tipo, diagonal invertida, option + ', emoji
 //
 //  CÓMO COPIARLO:
 //   1. Copia solo la FUNCIÓN del bloque que necesites (están abajo
@@ -106,6 +110,24 @@ struct TiposYVariablesView: View {
                             .background(Color.purple.opacity(0.1))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
+
+                    // ── 8. print en la consola ───────────────────
+                    // Lámina "Playground": usa print para mostrar valores en la consola.
+                    // Playground = File → New → Playground (⌥⇧⌘N), sirve para probar código Swift.
+                    // En una app, print también sale en la consola de Xcode (abajo): útil para revisar valores.
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("8. print (mira la consola de Xcode)")
+                            .font(.headline)
+                        Button("Imprimir en consola") {
+                            var greeting = "Hello, playground"
+                            print(greeting)
+                            greeting = "Bye"
+                            print(greeting)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.purple)
+                        .controlSize(.large)
+                    }
                 }
                 .padding()
             }
@@ -114,20 +136,45 @@ struct TiposYVariablesView: View {
     }
 
     // ── 1. var y let ─────────────────────────────────
+    // Mismos ejemplos de las láminas "Variables" y "Constantes" (Clase 2).
     func ejemploVarLet() -> String {
-        var cantidad = 38              // Swift infiere que es Int
-        cantidad = 20                  // var SÍ se puede cambiar
+        // var = VARIABLE. Swift infiere el tipo de dato.
+        var cantidad = 38              // infiere el tipo Int
+        cantidad = 20                  // cambia el valor de la variable
 
-        let precio: Double = 60.45     // let NO se puede cambiar
-        // precio = 70                 // ERROR: es constante
+        var numeroPaginas: Int         // declara la variable de tipo Int SIN valor inicial
+        numeroPaginas = 238            // (antes de usarla hay que darle un valor)
+        numeroPaginas = numeroPaginas + 2
 
-        var titulo = "Mensaje"         // infiere String
+        var paginasLeidas: Int = 238   // declara la variable de tipo Int CON valor inicial
+        paginasLeidas = 100
+
+        var titulo = "Mensaje inicial" // infiere el tipo String
         titulo = "Nuevo mensaje"
 
-        return "cantidad = \(cantidad)\nprecio = \(precio)\ntitulo = \(titulo)"
+        // let = CONSTANTE. Solo se le puede asignar valor UNA vez.
+        let precio: Double = 60.45     // se define explícitamente el tipo
+        // precio = 70                 // ERROR: es constante
+
+        // El valor de una constante no se tiene que conocer al compilar,
+        // pero solamente se le puede asignar valor una vez:
+        let hora: Int
+        hora = Int.random(in: 1...12)  // se decide al correr la app
+        // hora = 5                    // ERROR: ya tenía valor
+
+        return """
+        cantidad = \(cantidad)
+        numeroPaginas = \(numeroPaginas)
+        paginasLeidas = \(paginasLeidas)
+        titulo = \(titulo)
+        precio = \(precio)
+        hora = \(hora)
+        """
     }
 
     // ── 2. Tipos de datos ────────────────────────────
+    // Int = enteros · Double, Float = punto decimal · Bool = booleanos
+    // String = cadena de caracteres (texto) · Character = 1 caracter solamente
     func ejemploTipos() -> String {
         let entero: Int = 25               // ✏️ números sin decimales
         let decimal: Double = 3.1416       // ✏️ números con decimales
@@ -148,11 +195,16 @@ struct TiposYVariablesView: View {
 
     // ── 3. Strings ───────────────────────────────────
     func ejemploStrings() -> String {
-        // Interpolación: meter una variable dentro del texto con \( )
+        // Un String es texto entre comillas. Acepta emojis.
+        let conEmojis = "Este es otro 😎😬🤓🤪 string"
+
+        // Interpolación: usa \( ) para incluir el valor de una variable.
+        // La diagonal invertida \ se escribe con option + ' en el Mac.
         let paginas = 78
         let mensaje = "El libro tiene \(paginas) páginas"
 
-        // Concatenación: unir textos con + y +=
+        // Concatenación: usa + o += para unir textos.
+        // (En la lámina signo es var; aquí es let porque nunca cambia y Xcode lo marca.)
         var saludo = "Hola"
         let signo = "!!!"
         saludo += " Daniel" + signo
@@ -162,7 +214,7 @@ struct TiposYVariablesView: View {
         let estaVacio = vacio.isEmpty           // true
         let letras = saludo.count               // número de caracteres
 
-        return "\(mensaje)\n\(saludo)\n¿vacío? \(estaVacio)\nletras de saludo: \(letras)"
+        return "\(conEmojis)\n\(mensaje)\n\(saludo)\n¿vacío? \(estaVacio)\nletras de saludo: \(letras)"
     }
 
     // ── 4. Operaciones ───────────────────────────────
