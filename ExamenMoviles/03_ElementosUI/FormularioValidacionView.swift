@@ -21,7 +21,8 @@
 //  NECESITA:   nada más.
 //  ⚠️ NO VISTO EN CLASE: .keyboardType, .textInputAutocapitalization,
 //                        .contains("@"), role: .destructive, bloque message:
-//                        del .alert (lo usaste en actSwift).
+//                        del .alert (lo usaste en actSwift), ForEach en el
+//                        Picker de carrera y step: del Slider.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -167,6 +168,7 @@ struct FormularioValidacionView: View {
                         Spacer()
                         Picker(selection: $carrera, label: Text("Carrera")) {
                             Text("Selecciona…").tag("")
+                            // ⚠️ NO VISTO EN CLASE: ForEach crea un Text(...).tag(...) por cada carrera del arreglo.
                             ForEach(carreras, id: \.self) { opcion in
                                 Text(opcion).tag(opcion)
                             }
@@ -181,6 +183,7 @@ struct FormularioValidacionView: View {
                     // ── 6. Horas de estudio (Slider) ────────────
                     Text("Horas de estudio al día: \(Int(horasEstudio))")
                         .font(.headline)
+                    // ⚠️ NO VISTO EN CLASE: step: 1 hace que avance de 1 en 1.
                     Slider(value: $horasEstudio, in: 0 ... 12, step: 1)
                         .tint(.purple)
 
@@ -230,9 +233,10 @@ struct FormularioValidacionView: View {
                 }
                 .padding()
             }
-            .onTapGesture {
-                campoEnFoco = false
-            }
+        }
+        // Clase 4: tocar cualquier parte esconde el teclado (va en el Stack principal)
+        .onTapGesture {
+            campoEnFoco = false
         }
         .navigationTitle("Formulario")
     }

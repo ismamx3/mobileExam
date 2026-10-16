@@ -13,7 +13,9 @@
 //   2. Pega el archivo completo.
 //   3. Cambia lo marcado con ✏️ (países, ciudades y textos).
 //  NECESITA:   nada más.
-//  ⚠️ NO VISTO EN CLASE: nada.
+//  ⚠️ NO VISTO EN CLASE: ForEach(arreglo, id: \.self) para crear las opciones
+//                        (no viene en las láminas; lo usaste en actSwift).
+//                        .onChange con oldValue/newValue SÍ es de la Clase 4.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -53,6 +55,7 @@ struct PickersDependientesView: View {
 
                     Picker(selection: $pais, label: Text("País")) {
                         Text("Selecciona…").tag("")
+                        // ⚠️ NO VISTO EN CLASE: ForEach crea un Text(...).tag(...) por cada país.
                         ForEach(paises, id: \.self) { opcion in
                             Text(opcion).tag(opcion)
                         }

@@ -16,7 +16,8 @@
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   nada más.
 //  ⚠️ NO VISTO EN CLASE: Stepper, DatePicker, ColorPicker, Link,
-//                        .environment(\.locale, ...). (ProgressView sí se vio en Gráficas.)
+//                        .environment(\.locale, ...), step: del Slider.
+//                        (ProgressView sí se vio en Gráficas.)
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -101,6 +102,7 @@ struct OtrosControlesView: View {
                     Text("5. ProgressView con Slider")
                         .font(.headline)
 
+                    // ⚠️ NO VISTO EN CLASE: step: 1 hace que avance de 1 en 1.
                     Slider(value: $avance, in: 0 ... 100, step: 1)
                         .tint(.purple)
 

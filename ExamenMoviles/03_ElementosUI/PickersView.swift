@@ -1,28 +1,36 @@
 // ═══════════════════════════════════════════════════════════════
 //  PickersView.swift  ·  03 Elementos UI
 // ───────────────────────────────────────────────────────────────
-//  QUÉ ES:     Picker en sus 3 estilos (.wheel, .segmented, .menu),
-//              con tags Int y String, opciones desde un arreglo
-//              y opción "Selecciona…" con validación.
+//  QUÉ ES:     Picker en sus 3 estilos (.wheel = "select", .segmented =
+//              "segment control", .menu), con tags Int y String,
+//              .onChange para "hacer algo" cuando cambia, opciones desde
+//              un arreglo y opción "Selecciona…" con validación.
+//              (Clase 4 · Elementos interactuables de UI)
 //  ÚSALO PARA: elegir color, carrera, semestre, tamaño, categoría.
-//  BUSCA:      picker, selector, opciones, ruleta, wheel, segmented, segmentos,
-//              menu, dropdown, desplegable, tag, foreach, arreglo, seleccionar,
-//              validar seleccion, opcion vacia
+//  BUSCA:      picker, select, selector, opciones, ruleta, wheel, segmented,
+//              segment control, segmentos, menu, dropdown, desplegable, tag,
+//              onchange, oldValue, newValue, hacer algo cuando cambie,
+//              selectedColor, foreach, arreglo, seleccionar, validar seleccion,
+//              opcion vacia
 //
 //  CÓMO COPIARLO:
 //   1. En tu proyecto crea Views/PickersView.swift (o pega solo el bloque que quieras).
 //   2. Pega el archivo completo.
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   nada más.
-//  ⚠️ NO VISTO EN CLASE: nada (ForEach con id: \.self lo usaste en actSwift).
+//  ⚠️ NO VISTO EN CLASE: ForEach(arreglo, id: \.self) en los bloques 3 y 4
+//                        (no viene en las láminas; lo usaste en actSwift).
+//                        Versión 100% de clase: escribir cada
+//                        Text("...").tag(...) a mano, como en los bloques 1 y 2.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
 
 struct PickersView: View {
 
-    // Bloque 1: tag Int
+    // Bloque 1: tag Int (en la lámina: @State private var selectedColor: Int = 1)
     @State private var colorElegido: Int = 1
+    @State private var cambioDeColor: String = ""
 
     // Bloque 2: tag String
     @State private var tamano: String = "Mediano"
@@ -57,11 +65,13 @@ struct PickersView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
 
-                    // ── 1. Picker .wheel (ruleta) con tag Int ───
-                    Text("1. Ruleta (.wheel) con tag Int")
+                    // ── 1. Picker .wheel ("select") con tag Int + .onChange ───
+                    Text("1. Ruleta (.wheel) con tag Int y .onChange")
                         .font(.headline)
 
-                    // El Text es lo que se VE; el .tag es lo que se GUARDA en la variable
+                    // El Picker nos permite seleccionar valores de una lista.
+                    // El más utilizado es el conocido como "select" (.wheel).
+                    // El Text es lo que se VE; el .tag es lo que se GUARDA en la variable.
                     Picker(selection: $colorElegido, label: Text("Color")) {
                         Text("Rojo").tag(1)              // ✏️ opciones
                         Text("Amarillo").tag(2)
@@ -69,16 +79,27 @@ struct PickersView: View {
                     }
                     .pickerStyle(.wheel)
                     .frame(height: 130)
+                    // Para "hacer algo" cuando cambie el valor seleccionado: .onChange
+                    .onChange(of: colorElegido) { oldValue, newValue in
+                        cambioDeColor = "Cambió de \(oldValue) a \(newValue)"   // ✏️ lo que quieras hacer
+                    }
 
                     RoundedRectangle(cornerRadius: 12)
                         .fill(colorDelPicker)
                         .frame(height: 40)
 
-                    // ── 2. Picker .segmented con tag String ─────
+                    if cambioDeColor != "" {
+                        Text(cambioDeColor)
+                            .font(.caption)
+                            .foregroundStyle(.gray)
+                    }
+
+                    // ── 2. Picker .segmented ("segment control") con tag String ─────
                     Text("2. Segmentos (.segmented) con tag String")
                         .font(.headline)
 
-                    // .segmented se ve bien con 2 a 4 opciones
+                    // Pequeña variación del Picker que deja ver las opciones abiertas.
+                    // No se recomienda con muchas opciones (3-4 máximo recomendado).
                     Picker(selection: $tamano, label: Text("Tamaño")) {
                         Text("Chico").tag("Chico")
                         Text("Mediano").tag("Mediano")
@@ -95,7 +116,8 @@ struct PickersView: View {
                     HStack {
                         Text("Semestre:")
                         Spacer()
-                        // ForEach recorre el arreglo. id: \.self porque los textos no se repiten.
+                        // ⚠️ NO VISTO EN CLASE: ForEach recorre el arreglo y crea un Text por opción.
+                        // id: \.self porque los textos no se repiten.
                         Picker(selection: $semestre, label: Text("Semestre")) {
                             ForEach(semestres, id: \.self) { opcion in
                                 Text(opcion).tag(opcion)
@@ -117,6 +139,7 @@ struct PickersView: View {
                         Spacer()
                         Picker(selection: $carrera, label: Text("Carrera")) {
                             Text("Selecciona…").tag("")          // opción "no ha elegido"
+                            // ⚠️ NO VISTO EN CLASE: ForEach (ver bloque 3)
                             ForEach(carreras, id: \.self) { opcion in
                                 Text(opcion).tag(opcion)
                             }

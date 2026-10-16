@@ -30,7 +30,7 @@ struct Tema03MenuView: View {
                 NavigationLink {
                     PickersView()
                 } label: {
-                    EjemploRow(titulo: "Picker (ruleta, segmentos, menú)", archivo: "03_ElementosUI/PickersView.swift", icono: "list.bullet.circle")
+                    EjemploRow(titulo: "Picker (select, segment control, menú)", archivo: "03_ElementosUI/PickersView.swift", icono: "list.bullet.circle")
                 }
                 NavigationLink {
                     PickersDependientesView()
@@ -40,7 +40,7 @@ struct Tema03MenuView: View {
                 NavigationLink {
                     SliderYToggleView()
                 } label: {
-                    EjemploRow(titulo: "Slider y Toggle", archivo: "03_ElementosUI/SliderYToggleView.swift", icono: "slider.horizontal.3")
+                    EjemploRow(titulo: "Slider y Toggle (con onChange)", archivo: "03_ElementosUI/SliderYToggleView.swift", icono: "slider.horizontal.3")
                 }
                 NavigationLink {
                     ImagenSegunValorView()

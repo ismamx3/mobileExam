@@ -7,7 +7,8 @@
 //  ÚSALO PARA: pedir nombre, edad, precio, contraseña, comentarios.
 //  BUSCA:      textfield, campo de texto, input, roundedBorder, securefield,
 //              contrasena, password, teclado, keyboard, numberPad, decimalPad,
-//              focusstate, esconder teclado, ocultar teclado, contador, limite
+//              focusstate, focused, campoEnFoco, onTapGesture, mostrar ocultar
+//              teclado, esconder teclado, ocultar teclado, contador, limite
 //
 //  CÓMO COPIARLO:
 //   1. En tu proyecto crea Views/TextFieldsView.swift (o pega solo el bloque que quieras).
@@ -29,8 +30,10 @@ struct TextFieldsView: View {
     @State private var precioTexto: String = ""
     @State private var comentario: String = ""
 
-    // Para esconder el teclado (3 pasos de clase):
-    // 1) esta variable  2) .focused($campoEnFoco) en cada campo  3) campoEnFoco = false
+    // Mostrar/ocultar teclado (3 pasos de la Clase 4):
+    // 1) agregar esta variable dentro del View
+    // 2) ligar el focus a cada TextField con el modifier .focused($campoEnFoco)
+    // 3) cuando se quiera esconder (ej. al presionar un botón): campoEnFoco = false
     @FocusState private var campoEnFoco: Bool
 
     let limiteCaracteres = 40        // ✏️ máximo de letras del bloque 7
@@ -165,10 +168,11 @@ struct TextFieldsView: View {
                 }
                 .padding()
             }
-            // Tocar cualquier parte de la pantalla esconde el teclado
-            .onTapGesture {
-                campoEnFoco = false
-            }
+        }
+        // Clase 4: para que el teclado desaparezca al dar clic en cualquier parte
+        // de la pantalla, el .onTapGesture va en el Stack principal (este ZStack).
+        .onTapGesture {
+            campoEnFoco = false
         }
         .navigationTitle("TextField")
     }

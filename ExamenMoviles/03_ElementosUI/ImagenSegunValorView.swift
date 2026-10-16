@@ -16,7 +16,7 @@
 //   3. Cambia lo marcado con ✏️ (nombres de imágenes y rangos).
 //  NECESITA:   imágenes "foto1", "foto2", "foto3", "foto4" en Assets
 //              (arrastra 4 imágenes a Assets.xcassets y nómbralas así).
-//  ⚠️ NO VISTO EN CLASE: nada.
+//  ⚠️ NO VISTO EN CLASE: step: del Slider (lo usaste en actSwift).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -107,6 +107,7 @@ struct ImagenSegunValorView: View {
                     Text("Nivel: \(Int(nivel))")
                         .font(.title3)
 
+                    // ⚠️ NO VISTO EN CLASE: step: 1 hace que avance de 1 en 1 (sin decimales).
                     Slider(value: $nivel, in: 0 ... 100, step: 1)
                         .tint(colorSegunNivel)
 
