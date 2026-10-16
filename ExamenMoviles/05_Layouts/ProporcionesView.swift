@@ -31,7 +31,7 @@ struct ProporcionesView: View {
                 Text("1. Un tercio / dos tercios")
                     .font(.headline)
 
-                // ⚠️ GeometryReader: "geo" trae el tamaño que tiene para dibujar.
+                // ⚠️ NO VISTO EN CLASE: GeometryReader. "geo" trae el tamaño que tiene para dibujar.
                 GeometryReader { geo in
                     VStack(spacing: 0) {
                         Text("1/3")                  // ✏️ tu contenido

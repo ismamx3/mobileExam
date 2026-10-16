@@ -15,8 +15,9 @@
 //   3. Bloques 3 y 4: copia también las constantes de arriba
 //      (fotosGaleria, iconosMenu, nombresMenu) y cambia sus valores.
 //  NECESITA:   imágenes "foto1", "foto2", "foto3", "foto4" para el bloque 3.
-//  ⚠️ NO VISTO EN CLASE: LazyVGrid y GridItem (bloques 3 y 4).
-//     Si no quieres usarlos, los bloques 1 y 2 hacen lo mismo con stacks.
+//  ⚠️ NO VISTO EN CLASE: LazyVGrid y GridItem (bloques 3 y 4), y ForEach
+//     (bloques 2, 3 y 4). El bloque 1 usa solo VStack + HStack (de clase):
+//     si no quieres arriesgar, repite ese patrón a mano.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -49,27 +50,28 @@ struct CuadriculaView: View {
                         Text("Arriba izq.")           // ✏️
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(Color.purple.opacity(0.3))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .cornerRadius(12)
                         Text("Arriba der.")           // ✏️
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(Color.orange.opacity(0.3))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .cornerRadius(12)
                     }
                     HStack(spacing: 8) {
                         Text("Abajo izq.")            // ✏️
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(Color.blue.opacity(0.3))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .cornerRadius(12)
                         Text("Abajo der.")            // ✏️
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(Color.green.opacity(0.3))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .cornerRadius(12)
                     }
                 }
                 .bold()
                 .frame(height: 260)   // ✏️ DEMO: bórralo para usar toda la pantalla
 
                 // ── 2. Cuadrícula 3x3 con ForEach ───────────────────────
+                // ⚠️ NO VISTO EN CLASE: ForEach repite la vista de adentro.
                 // Dos ForEach anidados: el de afuera hace 3 renglones, el de
                 // adentro 3 columnas. "fila * 3 + columna + 1" numera del 1 al 9.
                 Text("2. Cuadrícula 3x3")
@@ -84,7 +86,7 @@ struct CuadriculaView: View {
                                     .bold()
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                                     .background(Color.indigo.opacity(0.15 + Double(fila) * 0.15))
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .cornerRadius(10)
                             }
                         }
                     }
@@ -102,7 +104,7 @@ struct CuadriculaView: View {
                         Image(fotosGaleria[indice])
                             .resizable(resizingMode: .stretch)
                             .aspectRatio(contentMode: .fit)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .cornerRadius(12)
                     }
                 }
 
@@ -123,7 +125,7 @@ struct CuadriculaView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 18)
                         .background(Color.purple.opacity(0.12))
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .cornerRadius(14)
                     }
                 }
             }

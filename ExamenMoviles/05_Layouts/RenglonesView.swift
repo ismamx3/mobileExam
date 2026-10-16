@@ -15,6 +15,8 @@
 //      de abajo y el arreglo "filasTabla", y cambia sus datos.
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   imagen "mascota" para el bloque 3.
+//  ⚠️ NO VISTO EN CLASE: ForEach(…, id: \.self) en la tabla (bloque 4).
+//     Si son pocos renglones, puedes escribir cada HStack a mano.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -77,7 +79,7 @@ struct RenglonesView: View {
                 }
                 .padding(.horizontal)
                 .background(Color.gray.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 14))
+                .cornerRadius(14)
 
                 // ── 2. Ícono + texto + flecha (estilo Ajustes) ──────────
                 Text("2. Ícono + texto + flecha")
@@ -89,7 +91,7 @@ struct RenglonesView: View {
                             .foregroundStyle(.white)
                             .frame(width: 32, height: 32)
                             .background(Color.blue)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .cornerRadius(8)
                         Text("Perfil")                             // ✏️
                         Spacer()
                         Image(systemName: "chevron.right")
@@ -102,7 +104,7 @@ struct RenglonesView: View {
                             .foregroundStyle(.white)
                             .frame(width: 32, height: 32)
                             .background(Color.red)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .cornerRadius(8)
                         Text("Notificaciones")
                         Spacer()
                         Text("Activadas")
@@ -117,7 +119,7 @@ struct RenglonesView: View {
                             .foregroundStyle(.white)
                             .frame(width: 32, height: 32)
                             .background(Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .cornerRadius(8)
                         Text("Privacidad")
                         Spacer()
                         Image(systemName: "chevron.right")
@@ -127,7 +129,7 @@ struct RenglonesView: View {
                 }
                 .padding(.horizontal)
                 .background(Color.gray.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 14))
+                .cornerRadius(14)
 
                 // ── 3. Renglón tipo lista: imagen + 2 textos + valor ────
                 // Es el mismo diseño de un JugadorRow / CancionRow.
@@ -137,9 +139,9 @@ struct RenglonesView: View {
                 HStack(spacing: 12) {
                     Image("mascota")                               // ✏️
                         .resizable(resizingMode: .stretch)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 56, height: 56)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 56)
+                        .cornerRadius(10)
 
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Firulais")                           // ✏️ título
@@ -157,7 +159,7 @@ struct RenglonesView: View {
                 }
                 .padding()
                 .background(Color.purple.opacity(0.08))
-                .clipShape(RoundedRectangle(cornerRadius: 14))
+                .cornerRadius(14)
 
                 // ── 4. Tabla: columnas alineadas + color alternado ──────
                 // Cada columna tiene un .frame de ancho FIJO (o maxWidth en la
@@ -184,6 +186,7 @@ struct RenglonesView: View {
                     .background(Color.purple)
 
                     // Renglones. Usamos el índice para saber si es par o impar.
+                    // ⚠️ NO VISTO EN CLASE: ForEach repite el HStack por cada fila.
                     ForEach(0..<filasTabla.count, id: \.self) { indice in
                         HStack {
                             Text(filasTabla[indice].nombre)
@@ -199,7 +202,7 @@ struct RenglonesView: View {
                         .background(indice % 2 == 0 ? Color.purple.opacity(0.08) : Color.clear)
                     }
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .cornerRadius(12)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.purple.opacity(0.4), lineWidth: 1)

@@ -6,7 +6,8 @@
 //  ÚSALO PARA: "el botón hasta abajo", "el título a la izquierda",
 //              "un ícono en la esquina", "todo centrado".
 //  BUSCA:      alinear, alineacion, alignment, esquina, centrar, centrado, pegado abajo,
-//              izquierda, derecha, leading, trailing, Spacer, frame alignment, overlay
+//              izquierda, derecha, leading, trailing, Spacer, frame alignment, overlay,
+//              HStack alignment top bottom center, alinear hijos, VStack a la izquierda
 //
 //  CÓMO COPIARLO:
 //   1. Copia SOLO el bloque que quieras (entre las líneas  // ── N. ──).
@@ -15,8 +16,11 @@
 //  ⚠️ NO VISTO EN CLASE: .overlay(alignment: .topTrailing) del bloque 6
 //     (en clase se vio .overlay { } sin alignment, para bordes).
 //
-//  REGLA RÁPIDA:
-//   · Dentro de un stack:  VStack(alignment: .leading)  alinea a los HIJOS.
+//  REGLA RÁPIDA (clase "Mi primera app", diapositivas de Stacks):
+//   · Dentro de un stack:  VStack(alignment: .leading / .trailing / .center)
+//     y HStack(alignment: .top / .bottom / .center)  alinean a los HIJOS.
+//   · Todo el VStack a la izquierda: .frame(maxWidth: .infinity, alignment: .leading)
+//     (pero primero intenta acomodar todo DENTRO del VStack).
 //   · Para mover algo dentro de su espacio:
 //       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
 //     "ocupa todo y acomódate en la esquina de abajo a la derecha".
@@ -192,6 +196,61 @@ struct AlineacionView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical)
+
+                // ── 7. HStack(alignment: .top / .center / .bottom) ──────
+                // Diapositiva de clase "Alinear elementos hijos en HStack":
+                //   a) Arriba    HStack(alignment: .top) { }
+                //   b) Abajo     HStack(alignment: .bottom) { }
+                //   c) En medio  HStack(alignment: .center) { }
+                // Se nota cuando los hijos tienen distinta altura.
+                Text("7. HStack(alignment: .top / .center / .bottom)")
+                    .font(.headline)
+
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(alignment: .top) {                       // a) Arriba
+                        Text(".top").bold().frame(width: 70, alignment: .leading)
+                        Color.purple.opacity(0.4).frame(width: 40, height: 60)   // bloque alto
+                        Text("chico")
+                    }
+                    HStack(alignment: .center) {                    // c) En medio
+                        Text(".center").bold().frame(width: 70, alignment: .leading)
+                        Color.purple.opacity(0.4).frame(width: 40, height: 60)   // bloque alto
+                        Text("chico")
+                    }
+                    HStack(alignment: .bottom) {                    // b) Abajo
+                        Text(".bottom").bold().frame(width: 70, alignment: .leading)
+                        Color.purple.opacity(0.4).frame(width: 40, height: 60)   // bloque alto
+                        Text("chico")
+                    }
+                }
+                .font(.footnote)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.purple.opacity(0.06))
+
+                // ── 8. Alinear TODO el VStack hacia la izquierda ────────
+                // Código exacto de la clase "Mi primera app":
+                //     VStack(alignment: .leading) {
+                //     }
+                //     .frame(
+                //         maxWidth: .infinity,
+                //         alignment: .leading)
+                // Consejo de la profesora: "primero intenta colocar todos los
+                // elementos dentro del VStack antes de recurrir a este
+                // modificador .frame".
+                Text("8. Todo el VStack pegado a la izquierda")
+                    .font(.headline)
+
+                VStack(alignment: .leading) {
+                    Text("Teclea tu nombre:")                       // ✏️
+                    Text("Este bloque está pegado a la izquierda")
+                        .foregroundStyle(.secondary)
+                }
+                .frame(
+                    maxWidth: .infinity,
+                    alignment: .leading)
+                .padding()
+                .background(Color.blue.opacity(0.12))
             }
             .padding()
         }

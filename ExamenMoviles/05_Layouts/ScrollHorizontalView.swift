@@ -13,6 +13,9 @@
 //   2. Copia también los arreglos de arriba que use ese bloque y cambia
 //      sus datos (mismo orden en fotos y títulos).
 //  NECESITA:   imágenes "foto1"…"foto4" para el bloque 1.
+//  ⚠️ NO VISTO EN CLASE: ScrollView(.horizontal) (en clase no hay ejemplo
+//     de ScrollView; la rúbrica sí pide scroll si no cabe) y
+//     ForEach(…, id: \.self) para repetir las tarjetas.
 //
 //  CLAVE:  ScrollView(.horizontal) + HStack adentro = scroll de lado.
 //          ScrollView normal (vertical) + VStack adentro = scroll hacia abajo.
@@ -47,7 +50,7 @@ struct ScrollHorizontalView: View {
                                     .resizable(resizingMode: .stretch)
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 220)               // ✏️ ancho de cada tarjeta
-                                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                                    .cornerRadius(14)
                                 Text(titulosCarrusel[indice])
                                     .font(.headline)
                                 Text("Desliza a la izquierda →")
@@ -56,7 +59,7 @@ struct ScrollHorizontalView: View {
                             }
                             .padding(10)
                             .background(Color.purple.opacity(0.08))
-                            .clipShape(RoundedRectangle(cornerRadius: 18))
+                            .cornerRadius(18)
                         }
                     }
                     .padding(.horizontal, 2)
@@ -79,7 +82,7 @@ struct ScrollHorizontalView: View {
                             .padding(.vertical, 10)
                             .foregroundStyle(categoria == categoriaElegida ? Color.white : Color.purple)
                             .background(categoria == categoriaElegida ? Color.purple : Color.purple.opacity(0.12))
-                            .clipShape(Capsule())
+                            .cornerRadius(50)   // radio grande = forma de cápsula
                         }
                     }
                 }
@@ -103,7 +106,7 @@ struct ScrollHorizontalView: View {
                         }
                         .padding()
                         .background(Color.gray.opacity(0.1))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .cornerRadius(10)
                     }
                 }
             }

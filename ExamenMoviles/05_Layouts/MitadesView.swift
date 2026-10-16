@@ -6,7 +6,8 @@
 //  ÚSALO PARA: "la mitad de arriba una imagen y la de abajo los datos",
 //              pantallas partidas, comparar dos cosas lado a lado.
 //  BUSCA:      mitad, mitades, dividir pantalla, partir, 50/50, split, arriba abajo,
-//              izquierda derecha, espacios iguales, maxHeight infinity
+//              izquierda derecha, espacios iguales, maxHeight infinity,
+//              mitad izquierda, elemento complementario, Spacer frame maxWidth infinity
 //
 //  CÓMO COPIARLO:
 //   1. Copia SOLO el bloque que quieras (entre las líneas  // ── N. ──).
@@ -15,7 +16,7 @@
 //      ese alto es solo para que aquí quepan varios ejemplos. Sin él,
 //      las mitades ocupan TODA la pantalla.
 //   4. Cambia los Text("…") por tu contenido.
-//  NECESITA:   imagen "foto1" solo para el bloque 3.
+//  NECESITA:   imagen "foto1" (bloque 3) y "foto2" (bloque 5).
 //
 //  ¿POR QUÉ SALEN IGUALES?
 //   Cada mitad lleva .frame(maxWidth: .infinity, maxHeight: .infinity):
@@ -88,7 +89,7 @@ struct MitadesView: View {
                         Image("foto1")               // ✏️ tu imagen
                             .resizable(resizingMode: .stretch)
                             .aspectRatio(contentMode: .fit)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .cornerRadius(12)
                     }
                     .padding()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -124,7 +125,7 @@ struct MitadesView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.orange.opacity(0.3))
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .cornerRadius(16)
 
                     VStack(spacing: 6) {
                         Image(systemName: "moon.stars.fill")
@@ -134,9 +135,33 @@ struct MitadesView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.indigo.opacity(0.3))
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .cornerRadius(16)
                 }
                 .frame(height: 160)   // ✏️ DEMO: alto de las tarjetas
+
+                // ── 5. Algo SOLO en la mitad izquierda (técnica de clase) ─
+                // PAUSA de la clase 5A: "¿Cómo ponemos una imagen en la mitad
+                // izquierda de la pantalla?" → con el elemento complementario
+                // (espacio en blanco):  Spacer().frame(maxWidth: .infinity)
+                // La imagen y el Spacer piden todo el ancho; el HStack les da
+                // una mitad a cada uno. Para la mitad DERECHA, pon el Spacer primero.
+                Text("5. Imagen en la mitad izquierda")
+                    .font(.headline)
+
+                HStack {
+                    VStack {
+                        Image("foto2")               // ✏️ tu imagen
+                            .resizable(resizingMode: .stretch)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 110)
+                        Text("Mitad izquierda")      // ✏️
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.green.opacity(0.15))
+
+                    Spacer()
+                        .frame(maxWidth: .infinity)  // ← la mitad derecha queda vacía
+                }
             }
             .padding()
         }

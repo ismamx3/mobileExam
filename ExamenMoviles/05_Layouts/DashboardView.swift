@@ -14,6 +14,7 @@
 //      TileDashboard, TarjetaDashboard y RenglonDashboard).
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   imagen "perfil" en Assets. Nada más (no depende de 04_Componentes).
+//  ⚠️ NO VISTO EN CLASE: .preferredColorScheme(.light) (lo usaste en Movil2).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -45,8 +46,8 @@ struct DashboardView: View {
                         Spacer()
                         Image("perfil")                                 // ✏️
                             .resizable(resizingMode: .stretch)
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 60, height: 60)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 60)
                             .clipShape(.circle)
                     }
 
@@ -89,7 +90,7 @@ struct DashboardView: View {
                     }
                     .padding(.horizontal)
                     .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .cornerRadius(16)
 
                     // ── 5. Botón principal ──────────────────────────────
                     Button {
@@ -106,8 +107,9 @@ struct DashboardView: View {
                 .padding()
             }
         }
-        // El fondo es claro fijo, así que forzamos modo claro para que los
-        // textos .primary no se vuelvan blancos en modo oscuro.
+        // ⚠️ NO VISTO EN CLASE (lo usaste en tu tarea Movil2): el fondo es
+        // claro fijo, así que forzamos modo claro para que los textos
+        // .primary no se vuelvan blancos en modo oscuro.
         .preferredColorScheme(.light)
     }
 }
@@ -134,7 +136,7 @@ struct TileDashboard: View {
         .frame(maxWidth: .infinity)      // ← así los 3 quedan iguales
         .padding(.vertical)
         .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .cornerRadius(16)
     }
 }
 
@@ -151,14 +153,14 @@ struct TarjetaDashboard: View {
                 .foregroundStyle(.white)
                 .frame(width: 44, height: 44)
                 .background(color)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .cornerRadius(12)
             Text(titulo)
                 .font(.headline)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)   // ← 2 por renglón, iguales
         .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .cornerRadius(16)
     }
 }
 
