@@ -23,10 +23,22 @@ struct ContentView: View {
                     EjemploPantallaCompleta(titulo: "App completa: Mis Mascotas", archivo: "00_AppCompleta/Views/AppCompletaView.swift", icono: "pawprint.fill") {
                         AppCompletaView()
                     }
+                    EjemploPantallaCompleta(titulo: "App Agenda: fechas a fondo", archivo: "14_AppAgenda/Views/AgendaAppView.swift", icono: "calendar") {
+                        AgendaAppView()
+                    }
+                    EjemploPantallaCompleta(titulo: "App Gastos: login, pesos y 6C", archivo: "15_AppGastos/Views/GastosAppView.swift", icono: "creditcard.fill") {
+                        GastosAppView()
+                    }
+                    EjemploPantallaCompleta(titulo: "App Viajes: JSON, cámara y fotos", archivo: "16_AppViajes/Views/ViajesAppView.swift", icono: "airplane") {
+                        ViajesAppView()
+                    }
+                    EjemploPantallaCompleta(titulo: "App Gym: protocolos y guardar lista", archivo: "17_AppGym/Views/GymAppView.swift", icono: "dumbbell.fill") {
+                        GymAppView()
+                    }
                 } header: {
                     Text("Empieza aquí")
                 } footer: {
-                    Text("Una app que junta todos los temas: TabView, lista con detalle, formulario con validación, gráficas, fotos y @AppStorage. Lee 00_AppCompleta/LEEME_AppCompleta.md.")
+                    Text("Apps completas para copiar. Mis Mascotas junta todos los temas. Agenda: fechas. Gastos: login, dinero y paso de valores. Viajes: JSON, onboarding, cámara y varias fotos. Gym: protocolos, Picker dependiente y lista guardada. Cada una trae su LEEME_*.md.")
                 }
 
                 Section("Temas del examen") {
