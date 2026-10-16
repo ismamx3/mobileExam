@@ -3,6 +3,10 @@
 Repo de consulta para el examen final (VIE 16 Oct). Todo funciona **sin internet**.
 Cada ejemplo es un archivo `.swift` que se copia y se pega. Lo que hay que cambiar está marcado con `✏️`.
 
+> 📖 **Documentación completa:** `00_DOCUMENTACION.md` (o `DOCUMENTACION.html` en la carpeta del repo: doble clic y se abre bonito en Safari). Explica TODO: Xcode, Swift, SwiftUI, cada control y método, errores de Xcode con su arreglo, recetas paso a paso y preguntas de defensa. Búscale con ⌘F.
+>
+> 🧪 **Para practicar:** `00_PRACTICA_EXAMEN.md` es un simulacro del examen con el formato de la profesora (todos los temas, 3 horas). Al final trae una guía de qué archivo del repo usar para cada requisito.
+
 ## Cómo encontrar algo en 10 segundos
 
 | Quiero… | Haz esto |
