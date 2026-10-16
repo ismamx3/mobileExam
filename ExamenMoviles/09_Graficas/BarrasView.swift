@@ -3,25 +3,35 @@
 // ───────────────────────────────────────────────────────────────
 //  QUÉ ES:     Gráficas de barras: fijas, con arreglo, con colores,
 //              horizontales y con el valor encima de cada barra.
-//  ÚSALO PARA: comparar categorías (votos por comida, ventas por mes,
-//              alumnos por carrera).
-//  BUSCA:      barras, bar chart, BarMark, columnas, comparar, Chart,
+//  ÚSALO PARA: COMPARAR CATEGORÍAS (así lo define la clase): votos por
+//              comida, ventas por mes, alumnos por carrera.
+//  BUSCA:      barras, bar chart, BarMark, columnas, comparar categorias,
+//              Chart, import Charts, Comida, dataBarChart, colores barras,
 //              foregroundStyle by, chartForegroundStyleScale, horizontal,
 //              annotation, valor encima, grafica, gráfica
+//
+//  CLASE 15 (Gráficas): SwiftUI hace gráficas con la librería Charts
+//  (o dibujando figuras geométricas desde cero, que no se practicó).
+//  Pasos de la lámina: 1) import Charts  2) Chart { BarMark(x:, y:) }.
+//  En la lámina el struct se llama Comida y el arreglo dataBarChart.
+//  Aquí se llaman ComidaVotos / datosComidaVotos para que no choquen
+//  con otros archivos del repo; en tu app puedes usar los de la lámina.
 //
 //  CÓMO COPIARLO:
 //   1. En tu proyecto crea Views/BarrasView.swift (o pega solo el bloque que quieras).
 //   2. Pega el archivo completo: trae el struct, los datos y la vista.
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   import Charts (ya viene arriba). iOS 16 o más.
-//  ⚠️ NO VISTO EN CLASE: .annotation (bloque 7) para escribir el valor
-//              encima de la barra.
+//  ⚠️ NO VISTO EN CLASE: barras horizontales (bloque 6: mismo BarMark con
+//              x y y intercambiados) y .annotation (bloque 7) para
+//              escribir el valor encima de la barra.
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
 import Charts
 
 // El modelo de una gráfica es igual que el de una lista: Identifiable.
+// Lámina: struct Comida: Identifiable { let id: Int; let tipo: String; let votos: Double }
 struct ComidaVotos: Identifiable {
     let id: Int
     let tipo: String      // ✏️ la categoría (eje X)
@@ -42,6 +52,9 @@ struct BarrasView: View {
             VStack(alignment: .leading, spacing: 16) {
 
                 // ── 1. Barras estáticas (cada barra escrita a mano) ──────
+                // Idéntico a la lámina. Cada BarMark es una barra:
+                //   x: .value("Etiqueta del eje X", valor de X)
+                //   y: .value("Etiqueta del eje Y", valor de Y)
                 Text("1. Barras estáticas")
                     .font(.headline)
 
@@ -64,7 +77,8 @@ struct BarrasView: View {
                 Divider()
 
                 // ── 2. Barras con datos de un arreglo ─────────────────
-                // Chart(arreglo) recorre el arreglo, igual que List(arreglo).
+                // "Llenamos dinámicamente la gráfica": Chart(arreglo) recorre
+                // el arreglo, igual que List(arreglo).
                 Text("2. Barras con un arreglo")
                     .font(.headline)
 
@@ -79,6 +93,8 @@ struct BarrasView: View {
                 Divider()
 
                 // ── 3. Todas del mismo color ──────────────────────────
+                // Lámina "Cambiar colores", opción A (TODAS): el modificador
+                // va en el BarMark.
                 Text("3. Todas del mismo color")
                     .font(.headline)
 
@@ -94,6 +110,8 @@ struct BarrasView: View {
                 Divider()
 
                 // ── 4. Un color automático por categoría (con leyenda) ──
+                // Opción B (DIFERENTES, automáticos): en el BarMark, diciendo
+                // cuál es el campo de las categorías.
                 Text("4. Color automático por categoría")
                     .font(.headline)
 
@@ -109,7 +127,9 @@ struct BarrasView: View {
                 Divider()
 
                 // ── 5. Tus propios colores por categoría ─────────────
-                // chartForegroundStyleScale va sobre el Chart, no sobre el BarMark.
+                // Opción C (DIFERENTES, personalizados): ADEMÁS de la B
+                // (foregroundStyle(by:) en el BarMark), agrega al Chart
+                // .chartForegroundStyleScale. Va sobre el Chart, no sobre el BarMark.
                 // Los nombres deben ser EXACTAMENTE los mismos que en los datos.
                 Text("5. Colores propios por categoría")
                     .font(.headline)
@@ -132,7 +152,9 @@ struct BarrasView: View {
                 Divider()
 
                 // ── 6. Barras horizontales ────────────────────────────
-                // Solo se intercambian x y y. Sirve cuando los nombres son largos.
+                // ⚠️ NO VISTO EN CLASE (las láminas solo muestran barras
+                // verticales). Solo se intercambian x y y. Sirve cuando los
+                // nombres son largos.
                 Text("6. Barras horizontales")
                     .font(.headline)
 

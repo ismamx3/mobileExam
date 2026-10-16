@@ -1,43 +1,55 @@
 // ═══════════════════════════════════════════════════════════════
 //  LineasView.swift  ·  09 Gráficas
 // ───────────────────────────────────────────────────────────────
-//  QUÉ ES:     Gráficas de líneas: una línea, línea con puntos, varias
-//              líneas (series), línea de promedio y línea curva.
-//  ÚSALO PARA: tendencias en el tiempo (ventas por mes, temperatura
-//              por día, peso por semana).
+//  QUÉ ES:     Gráficas de líneas: estática, con arreglo, línea con
+//              puntos, varias líneas (series), línea de promedio y
+//              línea curva.
+//  ÚSALO PARA: EVOLUCIONES, TENDENCIAS, TIEMPO (así lo define la clase):
+//              ventas por mes, temperatura por día, peso por semana.
 //  BUSCA:      lineas, línea, line chart, LineMark, tendencia, tiempo,
-//              series, varias lineas, promedio, RuleMark, curva,
-//              catmullRom, PointMark, grafica, gráfica
+//              evolucion, meses, Punto, dataLinesXY, series, varias lineas,
+//              promedio, RuleMark, curva, catmullRom, PointMark, grafica,
+//              gráfica
+//
+//  ⚠️ NOTA IMPORTANTE DE LA PROFESORA (Clase 15): la gráfica de líneas
+//  NO se usa para comparar categorías (para eso son las barras). Se usa
+//  para ver la tendencia en el tiempo de una misma variable.
+//
+//  En la lámina el struct se llama Punto y el arreglo dataLinesXY.
+//  Aquí se llaman PuntoMes / datosPuntoMes para que no choquen con otros
+//  archivos del repo; los campos (x, y) y el id son iguales a la lámina.
 //
 //  CÓMO COPIARLO:
 //   1. En tu proyecto crea Views/LineasView.swift (o pega solo el bloque que quieras).
 //   2. Pega el archivo completo: trae los structs, los datos y la vista.
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   import Charts (ya viene arriba). iOS 16 o más.
-//  ⚠️ NO VISTO EN CLASE: RuleMark + ForEach dentro de Chart (bloque 4;
+//  ⚠️ NO VISTO EN CLASE: juntar LineMark + PointMark en el mismo Chart
+//              (bloques 3 y 4; la lámina los muestra por separado),
+//              RuleMark + ForEach + .lineStyle + .annotation (bloque 5;
 //              lo usaste en tu tarea "graficas") y .interpolationMethod
-//              (bloque 5).
+//              (bloque 6).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
 import Charts
 
-// Igual que en clase: si ya hay un campo único (mes), el id puede
+// Igual que en la lámina: si ya hay un campo único (x), el id puede
 // ser una propiedad calculada que lo regresa.
 struct PuntoMes: Identifiable {
-    var id: Int { return mes }
-    let mes: Int         // ✏️ eje X (número de mes)
-    let valor: Double    // ✏️ eje Y
+    var id: Int { return x }
+    let x: Int           // ✏️ eje X (número de mes)
+    let y: Double        // ✏️ eje Y
 }
 
-// ✏️ tus datos
+// ✏️ tus datos (los 3 primeros son los de la lámina)
 let datosPuntoMes: [PuntoMes] = [
-    PuntoMes(mes: 1, valor: 20),
-    PuntoMes(mes: 2, valor: 100),
-    PuntoMes(mes: 3, valor: 60),
-    PuntoMes(mes: 4, valor: 80),
-    PuntoMes(mes: 5, valor: 45),
-    PuntoMes(mes: 6, valor: 90)
+    PuntoMes(x: 1, y: 20),
+    PuntoMes(x: 2, y: 100),
+    PuntoMes(x: 3, y: 60),
+    PuntoMes(x: 4, y: 80),
+    PuntoMes(x: 5, y: 45),
+    PuntoMes(x: 6, y: 90)
 ]
 
 // Para varias líneas: cada dato dice a qué serie (tienda) pertenece.
@@ -62,14 +74,14 @@ let datosVentaSerie: [VentaSerie] = [
 
 struct LineasView: View {
 
-    // Promedio calculado con un for, para dibujar la línea del bloque 4.
+    // Promedio calculado con un for, para dibujar la línea del bloque 5.
     var promedio: Double {
         if datosPuntoMes.isEmpty {
             return 0
         }
         var suma = 0.0
         for punto in datosPuntoMes {
-            suma += punto.valor
+            suma += punto.y
         }
         return suma / Double(datosPuntoMes.count)
     }
@@ -78,35 +90,60 @@ struct LineasView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
 
-                // ── 1. Una línea ──────────────────────────────────────
-                Text("1. Una línea")
+                // ── 1. Líneas estáticas (cada punto escrito a mano) ───
+                // Idéntico a la lámina: cada LineMark es un punto de la línea
+                // y Charts los une en orden.
+                Text("1. Línea estática")
                     .font(.headline)
 
-                Chart(datosPuntoMes) { item in
+                Chart {
                     LineMark(
-                        x: .value("Mes", item.mes),
-                        y: .value("Valor", item.valor)
+                        x: .value("Meses", 1),
+                        y: .value("Votos", 20)
+                    )
+                    LineMark(
+                        x: .value("Meses", 2),
+                        y: .value("Votos", 100)
+                    )
+                    LineMark(
+                        x: .value("Meses", 3),
+                        y: .value("Votos", 60)
                     )
                 }
                 .frame(height: 200)
 
                 Divider()
 
-                // ── 2. Línea con puntos ───────────────────────────────
-                // Dentro de un Chart puedes poner dos marcas por dato.
-                Text("2. Línea con puntos")
+                // ── 2. Línea con datos de un arreglo ──────────────────
+                // Igual que la lámina: Chart(dataLinesXY) { item in LineMark(...) }
+                Text("2. Línea con un arreglo")
                     .font(.headline)
 
                 Chart(datosPuntoMes) { item in
                     LineMark(
-                        x: .value("Mes", item.mes),
-                        y: .value("Valor", item.valor)
+                        x: .value("Meses", item.x),
+                        y: .value("Votos", item.y)
+                    )
+                }
+                .frame(height: 200)
+
+                Divider()
+
+                // ── 3. Línea con puntos ───────────────────────────────
+                // Dentro de un Chart puedes poner dos marcas por dato.
+                Text("3. Línea con puntos")
+                    .font(.headline)
+
+                Chart(datosPuntoMes) { item in
+                    LineMark(
+                        x: .value("Meses", item.x),
+                        y: .value("Votos", item.y)
                     )
                     .foregroundStyle(.purple)
 
                     PointMark(
-                        x: .value("Mes", item.mes),
-                        y: .value("Valor", item.valor)
+                        x: .value("Meses", item.x),
+                        y: .value("Votos", item.y)
                     )
                     .foregroundStyle(.purple)
                 }
@@ -114,10 +151,11 @@ struct LineasView: View {
 
                 Divider()
 
-                // ── 3. Varias líneas (una por serie) ──────────────────
-                // foregroundStyle(by:) separa los datos en una línea por tienda
-                // y le da a cada una su color y su leyenda.
-                Text("3. Varias líneas")
+                // ── 4. Varias líneas (una por serie) ──────────────────
+                // foregroundStyle(by:) (el mismo de las barras) separa los
+                // datos en una línea por tienda y le da a cada una su color
+                // y su leyenda. Sigue siendo tiempo (meses) en el eje X.
+                Text("4. Varias líneas")
                     .font(.headline)
 
                 Chart(datosVentaSerie) { item in
@@ -137,18 +175,19 @@ struct LineasView: View {
 
                 Divider()
 
-                // ── 4. Línea de promedio (RuleMark) ───────────────────
+                // ── 5. Línea de promedio (RuleMark) ───────────────────
                 // ⚠️ NO VISTO EN CLASE: RuleMark dibuja una línea fija de lado a lado.
                 // Para mezclarla con los datos se usa ForEach dentro de Chart
                 // (así lo hiciste en tu tarea de gráficas con "Nivel de peligro").
-                Text("4. Línea de promedio")
+                // .lineStyle la hace punteada y .annotation le pone un texto.
+                Text("5. Línea de promedio")
                     .font(.headline)
 
                 Chart {
                     ForEach(datosPuntoMes) { item in
                         LineMark(
-                            x: .value("Mes", item.mes),
-                            y: .value("Valor", item.valor)
+                            x: .value("Meses", item.x),
+                            y: .value("Votos", item.y)
                         )
                         .foregroundStyle(.indigo)
                     }
@@ -166,15 +205,15 @@ struct LineasView: View {
 
                 Divider()
 
-                // ── 5. Línea curva (suavizada) ────────────────────────
+                // ── 6. Línea curva (suavizada) ────────────────────────
                 // ⚠️ NO VISTO EN CLASE: .interpolationMethod(.catmullRom) redondea la línea.
-                Text("5. Línea curva")
+                Text("6. Línea curva")
                     .font(.headline)
 
                 Chart(datosPuntoMes) { item in
                     LineMark(
-                        x: .value("Mes", item.mes),
-                        y: .value("Valor", item.valor)
+                        x: .value("Meses", item.x),
+                        y: .value("Votos", item.y)
                     )
                     .interpolationMethod(.catmullRom)
                     .foregroundStyle(.green)

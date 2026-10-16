@@ -3,17 +3,23 @@
 // ───────────────────────────────────────────────────────────────
 //  QUÉ ES:     Gráfica de puntos (dispersión): básica y con color
 //              y forma por grupo.
-//  ÚSALO PARA: ver si dos números se relacionan (horas de estudio vs
+//  ÚSALO PARA: RELACIÓN ENTRE VARIABLES (así lo define la clase): ver si
+//              dos números se relacionan (horas de estudio vs
 //              calificación, edad vs estatura).
 //  BUSCA:      puntos, dispersion, dispersión, scatter, PointMark,
-//              relacion, correlacion, grupo, symbol, grafica, gráfica
+//              relacion entre variables, correlacion, grupo, $0,
+//              otra forma, symbol, grafica, gráfica
+//
+//  CLASE 15: PointMark "es una variación de LineMark, muestra relación
+//  entre 2 variables, pero NO UNE los puntos". Si ya tienes una gráfica
+//  de líneas, cambia LineMark por PointMark y listo (mismos datos).
 //
 //  CÓMO COPIARLO:
 //   1. En tu proyecto crea Views/PuntosView.swift (o pega solo el bloque que quieras).
 //   2. Pega el archivo completo: trae el struct, los datos y la vista.
 //   3. Cambia lo marcado con ✏️
 //  NECESITA:   import Charts (ya viene arriba). iOS 16 o más.
-//  ⚠️ NO VISTO EN CLASE: .symbol(by:) y .symbolSize (bloque 3).
+//  ⚠️ NO VISTO EN CLASE: .symbol(by:) y .symbolSize (bloque 4).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -59,8 +65,25 @@ struct PuntosView: View {
 
                 Divider()
 
-                // ── 2. Un color por grupo ─────────────────────────────
-                Text("2. Color por grupo")
+                // ── 2. Otra forma de definirlo (con $0) ───────────────
+                // Lámina "Otra forma de definirlo": sin escribir "item in".
+                // $0 es el elemento actual del arreglo (lo mismo que item).
+                Text("2. Otra forma: con $0")
+                    .font(.headline)
+
+                Chart(datosDispersion) {
+                    PointMark(
+                        x: .value("Horas de estudio", $0.horasEstudio),
+                        y: .value("Calificación", $0.calificacion)
+                    )
+                }
+                .frame(height: 220)
+
+                Divider()
+
+                // ── 3. Un color por grupo ─────────────────────────────
+                // El mismo foregroundStyle(by:) de las barras.
+                Text("3. Color por grupo")
                     .font(.headline)
 
                 Chart(datosDispersion) { item in
@@ -74,10 +97,10 @@ struct PuntosView: View {
 
                 Divider()
 
-                // ── 3. Color y forma por grupo, puntos más grandes ────
+                // ── 4. Color y forma por grupo, puntos más grandes ────
                 // ⚠️ NO VISTO EN CLASE: .symbol(by:) cambia la figura (círculo,
                 // cuadro…) según el grupo; .symbolSize cambia el tamaño del punto.
-                Text("3. Color, forma y tamaño")
+                Text("4. Color, forma y tamaño")
                     .font(.headline)
 
                 Chart(datosDispersion) { item in

@@ -46,6 +46,8 @@ let datosRegistrosGrafica: [RegistroGraficaLista] = [
 ]
 
 // El resultado ya agrupado: una categoría y su número.
+// El id es una propiedad calculada, igual que el struct Punto de la lámina
+// (var id: Int {return x}): la categoría ya es única.
 struct ResumenCategoriaGrafica: Identifiable {
     var id: String { return categoria }
     let categoria: String

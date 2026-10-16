@@ -17,7 +17,8 @@
 //  NECESITA:   import Charts (ya viene arriba). iOS 16 o más.
 //  ⚠️ NO VISTO EN CLASE: .chartYScale (bloque 1), .chartXAxisLabel /
 //              .chartYAxisLabel (bloque 2), .chartXAxis(.hidden) /
-//              .chartYAxis(.hidden) (bloque 3), RuleMark (bloque 5).
+//              .chartYAxis(.hidden) (bloque 3), RuleMark + ForEach +
+//              .lineStyle + .annotation (bloque 5).
 // ═══════════════════════════════════════════════════════════════
 
 import SwiftUI
@@ -81,11 +82,13 @@ struct EjesYEstiloView: View {
                 // ── 3. Sin ejes (gráfica mini) ────────────────────────
                 // ⚠️ NO VISTO EN CLASE: .chartXAxis(.hidden) y .chartYAxis(.hidden).
                 // Útil para una gráfica chiquita dentro de una tarjeta.
+                // Barras y no líneas: las materias son categorías, y la
+                // profesora dice que las líneas NO se usan para comparar categorías.
                 Text("3. Sin ejes")
                     .font(.headline)
 
                 Chart(datosCalificacionesGrafica) { item in
-                    LineMark(
+                    BarMark(
                         x: .value("Materia", item.materia),
                         y: .value("Calificación", item.calificacion)
                     )

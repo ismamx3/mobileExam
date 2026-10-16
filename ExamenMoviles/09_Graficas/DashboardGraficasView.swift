@@ -15,6 +15,11 @@
 //   2. Pega el archivo completo: trae los 4 structs, sus datos y la vista.
 //   3. Cambia lo marcado con ✏️ (títulos, colores y datos).
 //  NECESITA:   import Charts (ya viene arriba). La dona pide iOS 17 o más.
+//  CADA GRÁFICA PARA LO QUE DICE LA CLASE 15:
+//              barras = comparar categorías (ventas por día),
+//              líneas = tendencia en el tiempo (visitas por semana),
+//              dona/pastel = proporciones de un total (canales),
+//              puntos = relación entre 2 variables (precio vs unidades).
 //  CÓMO SE DIVIDE EN PARTES IGUALES: cada tarjeta lleva
 //              .frame(maxWidth: .infinity); dentro de un HStack, todas las
 //              que lo tengan se reparten el ancho por igual.

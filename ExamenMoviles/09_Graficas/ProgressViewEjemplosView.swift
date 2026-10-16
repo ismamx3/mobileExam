@@ -6,6 +6,10 @@
 //              circulito de "cargando".
 //  ÚSALO PARA: mostrar un porcentaje (avance de un curso, meta de
 //              ahorro, nivel de energía) sin necesitar Charts.
+//  CLASE 15 ("Algo extra: ¿Barra de progreso?"): si necesitamos una
+//  barra de progreso, usamos el componente ProgressView:
+//      ProgressView(value: 75, total: 100)
+//          .scaleEffect(x: 1, y: 3)
 //  BUSCA:      progreso, progress, ProgressView, avance, porcentaje,
 //              meta, barra de avance, cargando, loading, spinner,
 //              scaleEffect, tint
@@ -46,20 +50,23 @@ struct ProgressViewEjemplosView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
 
-                // ── 1. Básica ─────────────────────────────────────────
-                Text("1. Barra de avance básica")
+                // ── 1. Básica (idéntica a la lámina) ──────────────────
+                // scaleEffect(x: 1, y: 3): mismo ancho, 3 veces más gruesa.
+                Text("1. Barra de avance (como en clase)")
                     .font(.headline)
 
                 VStack(alignment: .leading) {
                     Text("Avance:")
                     ProgressView(value: 75, total: 100)    // ✏️ valor y total
+                        .scaleEffect(x: 1, y: 3)
                 }
 
                 Divider()
 
                 // ── 2. Gruesa y de color ──────────────────────────────
-                // scaleEffect(x: 1, y: 3): mismo ancho, 3 veces más gruesa.
-                // Ojo: scaleEffect no aparta espacio, por eso el padding.
+                // .tint cambia el color de la barra.
+                // Ojo: scaleEffect no aparta espacio; si se encima con lo de
+                // arriba o abajo, agrega el padding vertical.
                 Text("2. Gruesa y de color")
                     .font(.headline)
 

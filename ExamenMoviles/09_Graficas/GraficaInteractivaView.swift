@@ -4,11 +4,14 @@
 //  QUÉ ES:     Gráfica TIPO EXAMEN: el usuario escribe una categoría y
 //              una cantidad, se valida con alertas, se agrega al arreglo
 //              y la gráfica se actualiza sola. Un Picker cambia entre
-//              barras, línea y pastel con los MISMOS datos.
+//              barras, pastel y dona con los MISMOS datos.
+//              No hay opción de LÍNEA a propósito: los datos son categorías
+//              y la profesora dice que las líneas NO se usan para comparar
+//              categorías (solo para tendencias en el tiempo).
 //  ÚSALO PARA: "el usuario captura datos y se muestran en una gráfica".
 //  BUSCA:      grafica interactiva, agregar dato, capturar, TextField,
 //              validar, alerta, append, @State arreglo, Picker segmented,
-//              cambiar tipo de grafica, barras linea pastel, borrar,
+//              cambiar tipo de grafica, barras pastel dona, borrar,
 //              removeLast, total, gráfica
 //
 //  CÓMO COPIARLO:
@@ -42,7 +45,7 @@ struct GraficaInteractivaView: View {
     @State private var nombre: String = ""
     @State private var cantidadTexto: String = ""
 
-    // 1 = barras, 2 = línea, 3 = pastel
+    // 1 = barras, 2 = pastel, 3 = dona
     @State private var tipoGrafica: Int = 1
 
     @State private var showAlert = false
@@ -68,14 +71,17 @@ struct GraficaInteractivaView: View {
 
                 Picker(selection: $tipoGrafica, label: Text("Tipo de gráfica")) {
                     Text("Barras").tag(1)
-                    Text("Línea").tag(2)
-                    Text("Pastel").tag(3)
+                    Text("Pastel").tag(2)
+                    Text("Dona").tag(3)
                 }
                 .pickerStyle(.segmented)
 
                 // ── 2. La gráfica (mismos datos, distinta marca) ──────
                 // Un if por tipo: cada rama es un Chart completo, así se
                 // puede copiar solo el que necesites.
+                Text("2. La gráfica")
+                    .font(.headline)
+
                 if tipoGrafica == 1 {
                     Chart(gastos) { gasto in
                         BarMark(
@@ -87,18 +93,10 @@ struct GraficaInteractivaView: View {
                     .frame(height: 250)
                 } else if tipoGrafica == 2 {
                     Chart(gastos) { gasto in
-                        LineMark(
-                            x: .value("Categoría", gasto.nombre),
-                            y: .value("Cantidad", gasto.cantidad)
-                        )
-                        .foregroundStyle(.purple)
-
-                        PointMark(
-                            x: .value("Categoría", gasto.nombre),
-                            y: .value("Cantidad", gasto.cantidad)
-                        )
-                        .foregroundStyle(.purple)
+                        SectorMark(angle: .value("Cantidad", gasto.cantidad))
+                            .foregroundStyle(by: .value("Categoría", gasto.nombre))
                     }
+                    .chartLegend(position: .bottom, alignment: .center)
                     .frame(height: 250)
                 } else {
                     Chart(gastos) { gasto in
