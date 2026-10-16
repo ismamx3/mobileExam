@@ -3,7 +3,7 @@
 Repo de consulta para el examen final (VIE 16 Oct). Todo funciona **sin internet**.
 Cada ejemplo es un archivo `.swift` que se copia y se pega. Lo que hay que cambiar está marcado con `✏️`.
 
-> 📖 **Documentación completa:** `00_DOCUMENTACION.md` (o `DOCUMENTACION.html` en la carpeta del repo: doble clic y se abre bonito en Safari). Explica TODO: Xcode, Swift, SwiftUI, cada control y método, errores de Xcode con su arreglo, recetas paso a paso y preguntas de defensa. Búscale con ⌘F.
+> 📖 **Documentación completa:** `00_DOCUMENTACION.md` (o `DOCUMENTACION.html` en la carpeta del repo: doble clic y se abre bonito en Safari). Explica TODO: Xcode, Swift (fechas a fondo en 2.21), SwiftUI y cómo acomoda las vistas (3.32–3.37), cada control y método, recetas paso a paso, preguntas de defensa, **422 errores de compilación con su arreglo** (Parte 13, índice A–Z para ⌘F), crashes, consola y Preview (Parte 14), cómo están hechas las apps de ejemplo (Parte 15) y glosario (Parte 16). Búscale con ⌘F.
 >
 > 🧪 **Para practicar:** `00_PRACTICA_EXAMEN.md` es un simulacro del examen con el formato de la profesora (todos los temas, 3 horas). Al final trae una guía de qué archivo del repo usar para cada requisito.
 
@@ -119,6 +119,10 @@ TuApp/
 | `11_Extras/` | @AppStorage, UserDefaults, sonido | `AppStorageView` |
 | `12_Paletas/` | 25 paletas de colores listas (monocromáticas y análogas, claras y oscuras) | `ComoUsarPaletaView`, galería en el menú |
 | `13_SFSymbols/` | TODOS los íconos del sistema (7,006) + guía en español de cuál usar | Catálogo en la app, `SFSymbols_GUIA.md` |
+| `14_AppAgenda/` | App de agenda: **fechas a fondo** (formatos, sumar, comparar, agrupar por día, DatePicker) | Pestaña "Fechas" = laboratorio `AgendaGuiaFechasView`, `Utils/FechasAgenda.swift` |
+| `15_AppGastos/` | App de gastos: login, dinero en pesos, 6B/6C, secciones + buscador, dona y RuleMark | `GastosAppView` (login con `if`), `GastosCalculadoraView` (6C exacto) |
+| `16_AppViajes/` | App de viajes: JSON del bundle, onboarding, chips, LazyVGrid, carrusel, cámara y varias fotos | `DestinoViajes.swift` (JSON), `DetalleViajeViajesView` (cámara + galería) |
+| `17_AppGym/` | App de gym: protocolo + 3 clases, Picker dependiente, lista guardada en UserDefaults, puntos/barras/líneas | `EjercicioGym.swift`, `GymRegistrarView`, `PersistenciaGym.swift` |
 | `_Menu/` + `ContentView.swift` | Menú de este repo | **No se copian** |
 
 ## Lo que enseñó la profesora, clase por clase
@@ -208,6 +212,7 @@ Instrucciones paso a paso: `00_AppCompleta/LEEME_AppCompleta.md`
 | Fecha con formato tipo dd/MM/yyyy | `01_SwiftBasico/FechasYNumerosView.swift` → bloque 3 `fechaConFormato()` | `MMMM` = mes con letra, `EEEE` = día |
 | Sumar días o meses a una fecha | `01_SwiftBasico/FechasYNumerosView.swift` → bloque 4 `fechaFutura()` | Regresa opcional ("solo aguas") → `if let` |
 | Calcular edad o días entre fechas | `01_SwiftBasico/FechasYNumerosView.swift` → bloque 5 `diferenciaDeFechas()` | ⚠️ `date(from:)` y `dateComponents(from:to:)` no vistos |
+| **Ver TODAS las fechas en vivo** (laboratorio) y una app que las usa en todo | `14_AppAgenda/Views/AgendaGuiaFechasView.swift` → bloques 1–7 | Corre la app → App Agenda → pestaña Fechas. Explicación: `14_AppAgenda/LEEME_Agenda.md` |
 | Mostrar precio en pesos, 2 decimales o porcentaje | `01_SwiftBasico/FechasYNumerosView.swift` → bloques 6, 7 y 9 | Nombres de la lámina: `numeroBase`, `precioBase`; `.currency(code: "MXN")`, `specifier: "%.2f"` |
 | Que un año no salga "2,026" | `01_SwiftBasico/FechasYNumerosView.swift` → bloque 8 | `.number.grouping(.never)` |
 | Número con letra u ordinal (123 → "ciento veintitrés", 3 → "3.º") | `01_SwiftBasico/FechasYNumerosView.swift` → bloque 10 `numeroConEstilo()` | ⚠️ `NumberFormatter()`; los estilos vienen en la tabla de la Clase 3B |
@@ -627,3 +632,90 @@ Se usan con `Image(systemName: "nombre")`. No se agregan a Assets. Para saber el
 | Ícono de varios colores / que se llena / animado | `13_SFSymbols/SFSymbolsComoUsarView.swift` → bloques 8, 9 y 10 | ⚠️ `symbolRenderingMode`, `variableValue`, `symbolEffect` |
 
 > **Ojo con la versión:** el catálogo marca en naranja los íconos que requieren iOS 18 o 26. Si tu proyecto del examen es iOS 26 (lo normal en Xcode 26), funcionan todos.
+
+## 14 · App "Mi Agenda" (FECHAS a fondo)
+Instrucciones y explicación de fechas paso a paso: `14_AppAgenda/LEEME_Agenda.md`. En la app: menú → Empieza aquí → App Agenda.
+
+| Quiero… | Archivo | Notas |
+|---|---|---|
+| **Entender las fechas jugando** (cada estilo, cada `dateFormat`, sumar, comparar, texto → fecha) | `14_AppAgenda/Views/AgendaGuiaFechasView.swift` → bloques 1–7 | Pestaña "Fechas": eliges una fecha y ves el resultado EN VIVO con el código al lado |
+| Funciones de fecha listas para copiar | `14_AppAgenda/Utils/FechasAgenda.swift` → bloques 1–6 | Fecha relativa a hoy, fecha exacta ⚠️, formato a la medida, estilo, ¿mismo día?, días que faltan ⚠️ |
+| Fecha de hoy + N días (fecha DISTINTA para cada elemento) | `14_AppAgenda/Utils/FechasAgenda.swift` → bloque 1 | `DateComponents` + `Calendar.current.date(byAdding:to:)` + `if let` (Clase 3B) |
+| Fecha exacta ("16/10/2026 07:30") | `14_AppAgenda/Utils/FechasAgenda.swift` → bloque 2 | ⚠️ `date(from:)`; el texto debe coincidir con el `dateFormat` |
+| `dateFormat` a la medida ("jueves 15 de octubre", "7:30 a.m.") | `14_AppAgenda/Utils/FechasAgenda.swift` → bloque 3 | `formato.dateFormat = "…"` con **=** (es propiedad, no función) |
+| ¿Cuántos días faltan? / "Faltan 3 días" | `14_AppAgenda/Utils/FechasAgenda.swift` → bloque 6 + `14_AppAgenda/Model/EventoAgenda.swift` | ⚠️ `startOfDay` + `dateComponents([.day], from:to:)`; `textoCuandoFalta` con `switch` |
+| ModelData con fechas distintas | `14_AppAgenda/Model/ModelDataAgenda.swift` | Todo DENTRO de la func (fuera = "top level") |
+| Saludo según la hora + fecha de hoy en 3 formatos | `14_AppAgenda/Views/AgendaHoyView.swift` → bloque 1 | `Int(… "HH")` con `if let` + `switch` |
+| La misma fecha en 7 formatos | `14_AppAgenda/Views/AgendaDetalleView.swift` → bloque 3 | `.long`, `.full`, `.short`, `dateFormat`… |
+| Lista **agrupada por día** ("Hoy", "Mañana", "martes 20") | `14_AppAgenda/Views/AgendaListaView.swift` → bloque 2 | ⚠️ `Section` por día + `.swipeActions` para borrar |
+| Filtro Pendientes / Todos / Hechos | `14_AppAgenda/Views/AgendaListaView.swift` → bloque 1 | Picker `.segmented` (Clase 4) |
+| Agregar con fecha y hora futura | `14_AppAgenda/Views/AgendaAgregarView.swift` → bloque 4 | ⚠️ `DatePicker(…, in: Date()...)` + validación "ya pasó" |
+| Los próximos 7 días como botones | `14_AppAgenda/Views/AgendaSemanaView.swift` → bloque 2 | Arriba del body, un `for i in 0..<7` suma i días a hoy |
+| Gráfica de líneas en el tiempo (eje con texto y eje con fechas) | `14_AppAgenda/Views/AgendaProgresoView.swift` → bloques 1 y 2 | ⚠️ `unit: .day` en el bloque 2 |
+| Barras por categoría + % con ProgressView | `14_AppAgenda/Views/AgendaProgresoView.swift` → bloques 3 y 4 | `.scaleEffect(x: 1, y: 3)` |
+
+## 15 · App "Mis Gastos" (login, dinero y paso de valores)
+Instrucciones: `15_AppGastos/LEEME_Gastos.md`. Usuario `alumno`, contraseña `1234`.
+
+| Quiero… | Archivo | Notas |
+|---|---|---|
+| **Login** antes de la app sin anidar NavigationStack | `15_AppGastos/Views/GastosAppView.swift` → bloques 1 y 3 + `15_AppGastos/Views/GastosLoginView.swift` → bloque 3 | `if sesionIniciada { TabView } else { Login }`; el login recibe `@Binding` |
+| Cerrar sesión con confirmación | `15_AppGastos/Views/GastosPerfilView.swift` → bloque 4 | `.alert` con 2 botones (⚠️ `role:`); pone la `@Binding` en `false` |
+| **Patrón 6C exacto** (validar y luego navegar) | `15_AppGastos/Views/GastosCalculadoraView.swift` → bloque 4 | `Button` + `.alert` + `.navigationDestination(isPresented:)` |
+| Pantalla que recibe valores (paso de IDA) | `15_AppGastos/Views/GastosResultadoAhorroView.swift` → bloque 1 | `var meta: Double` sin `@State` ni `private` |
+| Ida y vuelta en 2 niveles (`@State` → `@Binding` → `@Binding`) | `15_AppGastos/Views/GastosPerfilView.swift` → bloque 3 + `15_AppGastos/Views/GastosEditarPresupuestoView.swift` | El cambio se ve en todas las pestañas al regresar |
+| Mostrar dinero en pesos (todas las formas) | `15_AppGastos/Views/GastoDetalleView.swift` → bloque 3 | `.currency(code: "MXN")`, `specifier: "%.2f"`, `$` siempre con `es_MX` ⚠️ |
+| Texto → `Double` aceptando coma decimal | `15_AppGastos/Views/GastoAgregarView.swift` → bloque 3 + `guardarGasto()` | `if let monto = Double(texto)` + `replacingOccurrences` ⚠️ |
+| Presupuesto con barra verde / naranja / roja | `15_AppGastos/Views/GastosResumenView.swift` → bloque 2 | `switch` con rangos + `ProgressView(value:total:)` |
+| Total, promedio (sin dividir entre 0), mayor y porcentaje | `15_AppGastos/Views/GastosResumenView.swift` | Propiedades calculadas con `for` |
+| ¿El gasto es de este mes? | `15_AppGastos/Model/GastoApp.swift` | Compara `"MM/yyyy"` de las dos fechas |
+| Lista por categoría con subtotal, buscador y borrar | `15_AppGastos/Views/GastosListaView.swift` → bloque 2 | ⚠️ `Section` + `.searchable` + `.onDelete` (traduce la posición al id) |
+| "Borrar todo" con confirmación | `15_AppGastos/Views/GastosListaView.swift` | ⚠️ `ToolbarItem` + `confirmationDialog` |
+| Dona con colores propios | `15_AppGastos/Views/GastosEstadisticasView.swift` → bloque 1 | `SectorMark(… innerRadius: .ratio(0.5))` |
+| Línea por día con línea de límite (`RuleMark`) | `15_AppGastos/Views/GastosEstadisticasView.swift` → bloque 2 | ⚠️ `RuleMark` + `.annotation` |
+| Meses con Stepper y meta con Slider | `15_AppGastos/Views/GastosCalculadoraView.swift` → bloques 1 y 2 | ⚠️ `Stepper`, `step:` |
+| Fecha de hoy + N meses ("llegas a tu meta el…") | `15_AppGastos/Views/GastosResultadoAhorroView.swift` → bloque 5 | `dateComponent.month = meses` |
+
+## 16 · App "Mis Viajes" (JSON, onboarding, cámara y varias fotos)
+Instrucciones: `16_AppViajes/LEEME_Viajes.md`.
+
+| Quiero… | Archivo | Notas |
+|---|---|---|
+| **Cargar datos de un archivo .json** de la app | `16_AppViajes/Model/DestinoViajes.swift` + `16_AppViajes/Model/destinos_viajes.json` | ⚠️ `Bundle.main.url` + `Data(contentsOf:)` + `JSONDecoder` con do/try/catch |
+| **Bienvenida** (onboarding) que sale solo la primera vez | `16_AppViajes/Views/ViajesAppView.swift` → bloque 1 + `16_AppViajes/Views/OnboardingViajesView.swift` → bloque 2 | `@AppStorage` + `if` en la raíz; páginas con `.tabViewStyle(.page)` |
+| Volver a ver la bienvenida | `16_AppViajes/Views/AjustesViajesView.swift` → bloque 3 | La misma llave de `@AppStorage` |
+| Chips de categorías que se deslizan | `16_AppViajes/Views/ExplorarViajesView.swift` → bloque 2 | ⚠️ `ScrollView(.horizontal)` |
+| Cuadrícula de tarjetas (2 columnas) | `16_AppViajes/Views/ExplorarViajesView.swift` → bloque 3 | ⚠️ `LazyVGrid` |
+| Filtrar con chips + buscador sin perder el `$` | `16_AppViajes/Views/ExplorarViajesView.swift` | `indicesFiltrados` (posiciones) |
+| Tarjeta con texto encima de la imagen | `16_AppViajes/Components/TarjetaDestinoViajes.swift` | `ZStack(alignment: .bottomLeading)` ⚠️ |
+| **Carrusel** dentro de un ScrollView | `16_AppViajes/Views/DetalleDestinoViajesView.swift` → bloque 1 | `.tabViewStyle(.page)` + `.frame(height:)` (sin esto NO se ve) |
+| Estrellas de calificación | `16_AppViajes/Components/EstrellasViajes.swift` | ⚠️ `ForEach(1...5, id: \.self)` + ternario `star.fill` / `star` |
+| Formulario en sheet con fechas y personas | `16_AppViajes/Views/PlanearViajeViajesView.swift` → bloques 2 y 3 | ⚠️ `DatePicker`, `Stepper` |
+| Costo calculado en vivo (costo × personas × días) | `16_AppViajes/Views/PlanearViajeViajesView.swift` → bloque 4 | Propiedad calculada |
+| Que el regreso sea después de la ida | `16_AppViajes/Views/PlanearViajeViajesView.swift` | `.onChange(of: fechaIda)` + alerta |
+| Días entre dos fechas | `16_AppViajes/Utils/FechasViajes.swift` → bloque 4 | ⚠️ `dateComponents([.day], from:to:)` |
+| **Cámara** (solo si el dispositivo tiene) + **varias fotos** de la galería | `16_AppViajes/Views/DetalleViajeViajesView.swift` → bloque 4 | `CamaraPicker` + `isSourceTypeAvailable` ⚠️ + `maxSelectionCount` ⚠️ |
+| Cuadrícula de fotos y verla en grande | `16_AppViajes/Views/DetalleViajeViajesView.swift` → bloque 5 | ⚠️ `.fullScreenCover(item:)` |
+| Toggle que modifica el elemento de la lista | `16_AppViajes/Views/DetalleViajeViajesView.swift` → bloque 3 | `$viaje.yaFui` |
+| Lista con borrar deslizando y mensaje si está vacía | `16_AppViajes/Views/MisViajesView.swift` → bloques 1 y 2 | `ForEach($viajes)` + `.onDelete` ⚠️ |
+
+## 17 · App "Mi Gym" (protocolos, Picker dependiente y lista guardada)
+Instrucciones: `17_AppGym/LEEME_Gym.md`. Usa paleta oscura: `.preferredColorScheme(.dark)`.
+
+| Quiero… | Archivo | Notas |
+|---|---|---|
+| **Protocolo** con `{ get }` / `{ get set }` y **3 clases** que lo cumplen | `17_AppGym/Model/EjercicioGym.swift` → bloques 1–5 | Cada clase calcula las calorías con su propia fórmula (Clase 8) |
+| Lista del tipo del protocolo (clases mezcladas) | `17_AppGym/Model/ModelDataGym.swift` → bloque 2 | `[EjercicioGym]` con `CardioGym`, `FuerzaGym` y `FlexibilidadGym` |
+| **Picker dependiente** (grupo → ejercicio) que se resetea | `17_AppGym/Views/GymRegistrarView.swift` → bloques 1 y 2 | `.onChange(of:) { oldValue, newValue in }` |
+| Picker `.wheel` y `.segmented` | `17_AppGym/Views/GymRegistrarView.swift` → bloques 3 y 4 | `.tag` del mismo tipo que la variable |
+| Mostrar controles solo si aplica | `17_AppGym/Views/GymRegistrarView.swift` → bloque 5 | `if` + Stepper ⚠️ + Slider |
+| **Guardar la lista** aunque se cierre la app | `17_AppGym/Model/PersistenciaGym.swift` → bloques 1–3 + `17_AppGym/Views/GymAppView.swift` → bloque 3 | ⚠️ JSON (`Codable`) dentro de `UserDefaults`; se guarda en `.onChange` |
+| **Racha** de días seguidos | `17_AppGym/Views/GymHoyView.swift` → bloque 2 | `while` + "¿hubo entrenamiento ese día?" (bloque 1) |
+| Sumar lo de los últimos 7 días | `17_AppGym/Views/GymHoyView.swift` → bloque 3 | Fechas + `for` |
+| Mensaje / nivel con `switch` de rangos | `17_AppGym/Views/GymHoyView.swift` → bloques 4 y 5 | `case 1...2:` |
+| El más reciente / sorpresa al azar | `17_AppGym/Views/GymHoyView.swift` → bloques 6 y 11 | Comparar fechas con `>` · `randomElement()` + `if let` |
+| 🔥🔥🔥 repetido según un número | `17_AppGym/Views/GymHoyView.swift` → bloque 9 | `String(repeating:count:)` |
+| Lista por secciones, ordenada, borrar deslizando | `17_AppGym/Views/GymHistorialView.swift` → bloques 1, 2 y 4 | ⚠️ `Section`, `sorted`, `.swipeActions` |
+| Gráfica de **puntos** (relación entre 2 datos) | `17_AppGym/Views/GymProgresoView.swift` → bloque 3 | `PointMark` + colores B y C |
+| Barras por categoría y líneas de los últimos 7 días | `17_AppGym/Views/GymProgresoView.swift` → bloques 4 y 5 | Sumado con `for` (bloques 1 y 2) |
+| Clases dentro de `@State` que sí redibujan | `17_AppGym/Views/GymEjerciciosView.swift` → bloque 3 | Un contador "tick" (las clases son referencia) |
