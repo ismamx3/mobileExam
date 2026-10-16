@@ -93,10 +93,15 @@ struct ContentView: View {
                     } label: {
                         EjemploRow(titulo: "12 · Paletas de colores", archivo: "12_Paletas/", icono: "paintpalette")
                     }
+                    NavigationLink {
+                        Tema13MenuView()
+                    } label: {
+                        EjemploRow(titulo: "13 · SF Symbols (íconos del sistema)", archivo: "13_SFSymbols/", icono: "star.square.on.square")
+                    }
                 } header: {
                     Text("Extras de otras tareas")
                 } footer: {
-                    Text("Persistencia con @AppStorage / UserDefaults, sonido con AVAudioPlayer y 25 paletas de colores listas para usar.")
+                    Text("Persistencia con @AppStorage / UserDefaults, sonido con AVAudioPlayer 25 paletas de colores y el catálogo de todos los íconos del sistema.")
                 }
             }
             .navigationTitle("Examen Móviles")

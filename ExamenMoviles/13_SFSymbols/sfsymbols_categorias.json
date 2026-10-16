@@ -1,0 +1,142 @@
+[
+ {
+  "clave": "all",
+  "nombre": "Todos",
+  "icono": "square.grid.2x2"
+ },
+ {
+  "clave": "communication",
+  "nombre": "Comunicación",
+  "icono": "message"
+ },
+ {
+  "clave": "weather",
+  "nombre": "Clima",
+  "icono": "cloud.sun"
+ },
+ {
+  "clave": "maps",
+  "nombre": "Mapas",
+  "icono": "map"
+ },
+ {
+  "clave": "objectsandtools",
+  "nombre": "Objetos y herramientas",
+  "icono": "folder"
+ },
+ {
+  "clave": "devices",
+  "nombre": "Dispositivos",
+  "icono": "desktopcomputer"
+ },
+ {
+  "clave": "cameraandphotos",
+  "nombre": "Cámara y fotos",
+  "icono": "camera"
+ },
+ {
+  "clave": "gaming",
+  "nombre": "Videojuegos",
+  "icono": "gamecontroller"
+ },
+ {
+  "clave": "connectivity",
+  "nombre": "Conectividad",
+  "icono": "antenna.radiowaves.left.and.right"
+ },
+ {
+  "clave": "transportation",
+  "nombre": "Transporte",
+  "icono": "car.fill"
+ },
+ {
+  "clave": "automotive",
+  "nombre": "Automóvil",
+  "icono": "steeringwheel"
+ },
+ {
+  "clave": "accessibility",
+  "nombre": "Accesibilidad",
+  "icono": "accessibility"
+ },
+ {
+  "clave": "privacyandsecurity",
+  "nombre": "Privacidad y seguridad",
+  "icono": "lock"
+ },
+ {
+  "clave": "human",
+  "nombre": "Personas",
+  "icono": "person.crop.circle"
+ },
+ {
+  "clave": "home",
+  "nombre": "Hogar",
+  "icono": "house"
+ },
+ {
+  "clave": "fitness",
+  "nombre": "Ejercicio",
+  "icono": "figure.run"
+ },
+ {
+  "clave": "nature",
+  "nombre": "Naturaleza",
+  "icono": "leaf"
+ },
+ {
+  "clave": "editing",
+  "nombre": "Edición",
+  "icono": "slider.horizontal.3"
+ },
+ {
+  "clave": "textformatting",
+  "nombre": "Formato de texto",
+  "icono": "textformat"
+ },
+ {
+  "clave": "media",
+  "nombre": "Multimedia",
+  "icono": "playpause"
+ },
+ {
+  "clave": "keyboard",
+  "nombre": "Teclado",
+  "icono": "command"
+ },
+ {
+  "clave": "commerce",
+  "nombre": "Dinero y compras",
+  "icono": "cart"
+ },
+ {
+  "clave": "time",
+  "nombre": "Fechas y tiempo",
+  "icono": "timer"
+ },
+ {
+  "clave": "health",
+  "nombre": "Salud",
+  "icono": "heart"
+ },
+ {
+  "clave": "shapes",
+  "nombre": "Formas",
+  "icono": "square.on.circle"
+ },
+ {
+  "clave": "arrows",
+  "nombre": "Flechas",
+  "icono": "arrow.forward"
+ },
+ {
+  "clave": "indices",
+  "nombre": "Números y letras",
+  "icono": "a.circle"
+ },
+ {
+  "clave": "math",
+  "nombre": "Matemáticas",
+  "icono": "radicand.squareroot"
+ }
+]

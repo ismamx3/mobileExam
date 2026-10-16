@@ -1,0 +1,1747 @@
+[
+ {
+  "seccion": "Pestañas del TabView",
+  "simbolos": [
+   {
+    "nombre": "house.fill",
+    "uso": "Inicio / pantalla principal",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "list.bullet",
+    "uso": "Lista de elementos",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "list.bullet.rectangle.fill",
+    "uso": "Lista con detalle",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "square.grid.2x2.fill",
+    "uso": "Galería, categorías o menú de opciones",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "magnifyingglass",
+    "uso": "Buscar / buscador",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chart.bar.fill",
+    "uso": "Estadísticas / gráficas",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chart.pie.fill",
+    "uso": "Resumen / proporciones",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "person.crop.circle.fill",
+    "uso": "Perfil del usuario",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "gearshape.fill",
+    "uso": "Ajustes / configuración",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "star.fill",
+    "uso": "Favoritos / destacados",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "heart.fill",
+    "uso": "Favoritos / me gusta",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "bell.fill",
+    "uso": "Notificaciones / avisos",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "calendar",
+    "uso": "Calendario / agenda",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "map.fill",
+    "uso": "Mapa / lugares",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "cart.fill",
+    "uso": "Carrito / compras",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "bookmark.fill",
+    "uso": "Guardados / leer después",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "sparkles",
+    "uso": "Recomendación sorpresa / descubrir",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "info.circle.fill",
+    "uso": "Acerca de / información",
+    "ios": "13.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Acciones (botones)",
+  "simbolos": [
+   {
+    "nombre": "plus",
+    "uso": "Agregar (botón chico, toolbar)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "plus.circle.fill",
+    "uso": "Agregar (botón grande)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "pencil",
+    "uso": "Editar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "square.and.pencil",
+    "uso": "Editar / escribir nota",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "trash",
+    "uso": "Borrar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "trash.fill",
+    "uso": "Borrar (destructivo, en rojo)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "square.and.arrow.up",
+    "uso": "Compartir",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "square.and.arrow.down",
+    "uso": "Guardar / descargar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "xmark",
+    "uso": "Cerrar una hoja / cancelar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "xmark.circle.fill",
+    "uso": "Limpiar un campo de texto / cerrar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "checkmark",
+    "uso": "Confirmar / listo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "checkmark.circle.fill",
+    "uso": "Completado / guardado con éxito",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.clockwise",
+    "uso": "Recargar / reintentar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.uturn.backward",
+    "uso": "Deshacer",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "line.3.horizontal.decrease.circle",
+    "uso": "Filtrar",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "arrow.up.arrow.down",
+    "uso": "Ordenar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "slider.horizontal.3",
+    "uso": "Ajustes de filtro / preferencias",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "ellipsis.circle",
+    "uso": "Más opciones (menú)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chevron.right",
+    "uso": "Ir al detalle (flechita del renglón)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chevron.left",
+    "uso": "Regresar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.right.circle.fill",
+    "uso": "Siguiente / continuar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "paperplane.fill",
+    "uso": "Enviar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "doc.on.doc",
+    "uso": "Copiar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "link",
+    "uso": "Abrir una liga",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "shuffle",
+    "uso": "Mezclar / al azar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "dice.fill",
+    "uso": "Recomendación al azar",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "arrow.triangle.2.circlepath",
+    "uso": "Cambiar / sincronizar",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "eye",
+    "uso": "Mostrar contraseña",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "eye.slash",
+    "uso": "Ocultar contraseña",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "rectangle.portrait.and.arrow.right",
+    "uso": "Cerrar sesión",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "person.badge.plus",
+    "uso": "Registrarse / agregar persona",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "qrcode",
+    "uso": "Código QR",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "printer.fill",
+    "uso": "Imprimir",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "mic.fill",
+    "uso": "Grabar voz / micrófono",
+    "ios": "13.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Estados y mensajes",
+  "simbolos": [
+   {
+    "nombre": "checkmark.seal.fill",
+    "uso": "Verificado / aprobado / vacunado",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "exclamationmark.triangle.fill",
+    "uso": "Advertencia (amarillo/naranja)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "exclamationmark.circle.fill",
+    "uso": "Error en un campo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "xmark.octagon.fill",
+    "uso": "Error grave / prohibido",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "info.circle",
+    "uso": "Información / ayuda corta",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "questionmark.circle",
+    "uso": "Ayuda / preguntas",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "clock.fill",
+    "uso": "Pendiente / en espera",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "hourglass",
+    "uso": "Cargando / esperando",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "circle",
+    "uso": "Tarea sin completar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "checkmark.circle",
+    "uso": "Tarea completada (sin relleno)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "flag.fill",
+    "uso": "Marcar / meta",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "bolt.fill",
+    "uso": "Rápido / energía",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "flame.fill",
+    "uso": "Popular / tendencia / picante",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "crown.fill",
+    "uso": "Premium / el mejor",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "trophy.fill",
+    "uso": "Logro / ganador",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "medal.fill",
+    "uso": "Medalla / reconocimiento",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "hand.thumbsup.fill",
+    "uso": "Me gusta / recomendado",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "hand.thumbsdown.fill",
+    "uso": "No me gusta",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "face.smiling",
+    "uso": "Feliz / buen estado de ánimo",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "tray",
+    "uso": "Lista vacía / sin elementos",
+    "ios": "13.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Personas y comunicación",
+  "simbolos": [
+   {
+    "nombre": "person.fill",
+    "uso": "Usuario",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "person.2.fill",
+    "uso": "Amigos / grupo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "person.3.fill",
+    "uso": "Equipo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "person.text.rectangle.fill",
+    "uso": "Credencial / identificación",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "graduationcap.fill",
+    "uso": "Escuela / carrera / alumno",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "briefcase.fill",
+    "uso": "Trabajo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "envelope.fill",
+    "uso": "Correo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "phone.fill",
+    "uso": "Teléfono / llamar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "message.fill",
+    "uso": "Mensajes",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "bubble.left.and.bubble.right.fill",
+    "uso": "Chat / comentarios",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "at",
+    "uso": "Usuario o correo (@)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "hand.wave.fill",
+    "uso": "Saludo / bienvenida",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "figure.wave",
+    "uso": "Bienvenida / persona saludando",
+    "ios": "14.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Fechas y tiempo",
+  "simbolos": [
+   {
+    "nombre": "calendar",
+    "uso": "Fecha",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "calendar.badge.plus",
+    "uso": "Agendar / agregar evento",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "calendar.circle.fill",
+    "uso": "Fecha (en círculo)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "clock",
+    "uso": "Hora",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "alarm.fill",
+    "uso": "Alarma / recordatorio",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "timer",
+    "uso": "Temporizador",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "stopwatch.fill",
+    "uso": "Cronómetro",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "sun.max.fill",
+    "uso": "De día / mañana",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "moon.fill",
+    "uso": "De noche / modo oscuro",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "hourglass.bottomhalf.filled",
+    "uso": "Tiempo restante",
+    "ios": "15.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Dinero y compras",
+  "simbolos": [
+   {
+    "nombre": "dollarsign.circle.fill",
+    "uso": "Precio / costo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "creditcard.fill",
+    "uso": "Pago con tarjeta",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "banknote.fill",
+    "uso": "Efectivo",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "cart.fill",
+    "uso": "Carrito",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "bag.fill",
+    "uso": "Bolsa de compras",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "basket.fill",
+    "uso": "Canasta / súper",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "tag.fill",
+    "uso": "Etiqueta de precio / oferta",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "gift.fill",
+    "uso": "Regalo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "percent",
+    "uso": "Descuento / porcentaje",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "storefront.fill",
+    "uso": "Tienda / negocio",
+    "ios": "17.0"
+   },
+   {
+    "nombre": "chart.line.uptrend.xyaxis",
+    "uso": "Ganancias / va subiendo",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "chart.line.downtrend.xyaxis",
+    "uso": "Gastos / va bajando",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "wallet.pass.fill",
+    "uso": "Cartera / boletos guardados",
+    "ios": "14.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Comida y bebida (antojos)",
+  "simbolos": [
+   {
+    "nombre": "fork.knife",
+    "uso": "Restaurante / comida",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "fork.knife.circle.fill",
+    "uso": "Restaurante (en círculo)",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "takeoutbag.and.cup.and.straw.fill",
+    "uso": "Comida para llevar / rápida",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "cup.and.saucer.fill",
+    "uso": "Café / cafetería",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "mug.fill",
+    "uso": "Café o té",
+    "ios": "16.1"
+   },
+   {
+    "nombre": "wineglass.fill",
+    "uso": "Bar / bebidas",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "birthday.cake.fill",
+    "uso": "Postres / pasteles / cumpleaños",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "carrot.fill",
+    "uso": "Saludable / verduras",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "fish.fill",
+    "uso": "Mariscos / pescado",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "popcorn.fill",
+    "uso": "Botanas / cine",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "frying.pan.fill",
+    "uso": "Cocinar / recetas",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "refrigerator.fill",
+    "uso": "Cocina / despensa",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "leaf.fill",
+    "uso": "Vegano / natural",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "flame.fill",
+    "uso": "Picante",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "waterbottle.fill",
+    "uso": "Agua / bebida",
+    "ios": "17.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Lugares y viajes",
+  "simbolos": [
+   {
+    "nombre": "mappin.and.ellipse",
+    "uso": "Ubicación de un lugar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "mappin.circle.fill",
+    "uso": "Lugar marcado",
+    "ios": "13.1"
+   },
+   {
+    "nombre": "location.fill",
+    "uso": "Mi ubicación",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "map.fill",
+    "uso": "Mapa",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "globe.americas.fill",
+    "uso": "Mundo / viajes",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "airplane",
+    "uso": "Vuelos / viajes",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "suitcase.fill",
+    "uso": "Equipaje / viaje",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "building.2.fill",
+    "uso": "Ciudad / edificios",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "tent.fill",
+    "uso": "Acampar",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "mountain.2.fill",
+    "uso": "Montaña / naturaleza",
+    "ios": "16.1"
+   },
+   {
+    "nombre": "beach.umbrella.fill",
+    "uso": "Playa / vacaciones",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "ticket.fill",
+    "uso": "Boletos / eventos",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "binoculars.fill",
+    "uso": "Explorar / descubrir",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "signpost.right.fill",
+    "uso": "Direcciones / camino",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "bed.double.fill",
+    "uso": "Hotel / hospedaje",
+    "ios": "13.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Transporte",
+  "simbolos": [
+   {
+    "nombre": "car.fill",
+    "uso": "Auto",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "bus.fill",
+    "uso": "Camión / transporte público",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "tram.fill",
+    "uso": "Metro / tren ligero",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "bicycle",
+    "uso": "Bicicleta",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "figure.walk",
+    "uso": "Caminando",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "ferry.fill",
+    "uso": "Barco / ferry",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "fuelpump.fill",
+    "uso": "Gasolina",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "parkingsign.circle.fill",
+    "uso": "Estacionamiento",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "scooter",
+    "uso": "Scooter",
+    "ios": "15.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Deporte, gym y salud",
+  "simbolos": [
+   {
+    "nombre": "figure.run",
+    "uso": "Correr / cardio",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "figure.strengthtraining.traditional",
+    "uso": "Pesas / gimnasio",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "dumbbell.fill",
+    "uso": "Gimnasio / rutina",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "figure.yoga",
+    "uso": "Yoga / estiramiento",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "figure.pool.swim",
+    "uso": "Natación",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "sportscourt.fill",
+    "uso": "Cancha / deportes",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "soccerball",
+    "uso": "Fútbol",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "basketball.fill",
+    "uso": "Básquetbol",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "football.fill",
+    "uso": "Fútbol americano",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "tennisball.fill",
+    "uso": "Tenis",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "baseball.fill",
+    "uso": "Béisbol",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "heart.text.square.fill",
+    "uso": "Salud / signos vitales",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "waveform.path.ecg",
+    "uso": "Ritmo cardiaco",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "cross.case.fill",
+    "uso": "Primeros auxilios / médico",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "pills.fill",
+    "uso": "Medicinas",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "bandage.fill",
+    "uso": "Lesión / curita",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "stethoscope",
+    "uso": "Doctor / consulta",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "drop.fill",
+    "uso": "Agua / hidratación",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "scalemass.fill",
+    "uso": "Peso",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "bed.double.fill",
+    "uso": "Dormir / descanso",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "brain.head.profile",
+    "uso": "Mente / bienestar",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "lungs.fill",
+    "uso": "Respiración",
+    "ios": "14.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Escuela, libros y trabajo",
+  "simbolos": [
+   {
+    "nombre": "book.fill",
+    "uso": "Libro",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "books.vertical.fill",
+    "uso": "Librero / biblioteca",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "book.closed.fill",
+    "uso": "Libro cerrado / leído",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "text.book.closed.fill",
+    "uso": "Libro de texto / materia",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "graduationcap.fill",
+    "uso": "Graduación / carrera",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "backpack.fill",
+    "uso": "Mochila / escuela",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "pencil.and.ruler.fill",
+    "uso": "Útiles / diseño",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "highlighter",
+    "uso": "Subrayar / estudiar",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "newspaper.fill",
+    "uso": "Noticias",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "doc.text.fill",
+    "uso": "Documento",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "folder.fill",
+    "uso": "Carpeta",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "paperclip",
+    "uso": "Adjuntar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "checklist",
+    "uso": "Lista de pendientes",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "note.text",
+    "uso": "Nota",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "lightbulb.fill",
+    "uso": "Idea / tip",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "brain",
+    "uso": "Pensar / aprender",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "studentdesk",
+    "uso": "Salón de clases",
+    "ios": "13.1"
+   }
+  ]
+ },
+ {
+  "seccion": "Música, video y entretenimiento",
+  "simbolos": [
+   {
+    "nombre": "music.note",
+    "uso": "Canción",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "music.note.list",
+    "uso": "Playlist / lista de canciones",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "headphones",
+    "uso": "Escuchar / audífonos",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "guitars.fill",
+    "uso": "Instrumentos / banda",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "pianokeys",
+    "uso": "Piano / teclado musical",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "film.fill",
+    "uso": "Película",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "tv.fill",
+    "uso": "Serie / TV",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "play.rectangle.fill",
+    "uso": "Video",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "gamecontroller.fill",
+    "uso": "Videojuegos",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "theatermasks.fill",
+    "uso": "Teatro / eventos",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "mic.fill",
+    "uso": "Cantar / podcast",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "radio.fill",
+    "uso": "Radio",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "play.fill",
+    "uso": "Reproducir",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "pause.fill",
+    "uso": "Pausa",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "stop.fill",
+    "uso": "Detener",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "forward.fill",
+    "uso": "Adelantar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "backward.fill",
+    "uso": "Regresar canción",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "speaker.wave.2.fill",
+    "uso": "Volumen",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "speaker.slash.fill",
+    "uso": "Silencio",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "repeat",
+    "uso": "Repetir",
+    "ios": "13.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Fotos y cámara",
+  "simbolos": [
+   {
+    "nombre": "camera.fill",
+    "uso": "Tomar foto",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "camera.circle.fill",
+    "uso": "Cámara (botón redondo)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "photo",
+    "uso": "Foto / galería",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "photo.fill",
+    "uso": "Foto (relleno)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "photo.on.rectangle",
+    "uso": "Elegir de la galería (PhotosPicker)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "photo.stack.fill",
+    "uso": "Varias fotos / álbum",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "photo.badge.plus",
+    "uso": "Agregar foto",
+    "ios": "17.0"
+   },
+   {
+    "nombre": "camera.viewfinder",
+    "uso": "Escanear",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "person.crop.circle.badge.plus",
+    "uso": "Agregar foto de perfil",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "video.fill",
+    "uso": "Grabar video",
+    "ios": "13.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Naturaleza y clima",
+  "simbolos": [
+   {
+    "nombre": "sun.max.fill",
+    "uso": "Soleado",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "cloud.fill",
+    "uso": "Nublado",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "cloud.rain.fill",
+    "uso": "Lluvia",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "cloud.bolt.fill",
+    "uso": "Tormenta",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "snowflake",
+    "uso": "Frío / nieve",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "wind",
+    "uso": "Viento",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "thermometer.medium",
+    "uso": "Temperatura",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "umbrella.fill",
+    "uso": "Llevar paraguas",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "leaf.fill",
+    "uso": "Planta / ecología",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "tree.fill",
+    "uso": "Árbol / parque",
+    "ios": "16.1"
+   },
+   {
+    "nombre": "moon.stars.fill",
+    "uso": "Noche estrellada",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "sunrise.fill",
+    "uso": "Amanecer",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "sunset.fill",
+    "uso": "Atardecer",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "rainbow",
+    "uso": "Arcoíris",
+    "ios": "17.0"
+   },
+   {
+    "nombre": "drop.fill",
+    "uso": "Agua / humedad",
+    "ios": "14.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Animales y mascotas",
+  "simbolos": [
+   {
+    "nombre": "pawprint.fill",
+    "uso": "Mascotas (general)",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "dog.fill",
+    "uso": "Perro",
+    "ios": "17.0"
+   },
+   {
+    "nombre": "cat.fill",
+    "uso": "Gato",
+    "ios": "17.0"
+   },
+   {
+    "nombre": "bird.fill",
+    "uso": "Ave",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "fish.fill",
+    "uso": "Pez",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "tortoise.fill",
+    "uso": "Tortuga / lento",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "hare.fill",
+    "uso": "Conejo / rápido",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "ant.fill",
+    "uso": "Insecto",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "ladybug.fill",
+    "uso": "Catarina / bichos",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "lizard.fill",
+    "uso": "Reptil",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "teddybear.fill",
+    "uso": "Peluche / juguete",
+    "ios": "16.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Tecnología",
+  "simbolos": [
+   {
+    "nombre": "iphone",
+    "uso": "Celular",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "laptopcomputer",
+    "uso": "Laptop",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "desktopcomputer",
+    "uso": "Computadora",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "applewatch",
+    "uso": "Reloj inteligente",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "wifi",
+    "uso": "Internet / wifi",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "wifi.slash",
+    "uso": "Sin internet",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "antenna.radiowaves.left.and.right",
+    "uso": "Señal / transmisión",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "battery.100",
+    "uso": "Batería",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "cpu",
+    "uso": "Procesador / hardware",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "keyboard",
+    "uso": "Teclado",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "display",
+    "uso": "Pantalla / monitor",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "icloud.fill",
+    "uso": "Nube / respaldo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "barcode",
+    "uso": "Código de barras",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chevron.left.forwardslash.chevron.right",
+    "uso": "Código / programación",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "terminal.fill",
+    "uso": "Terminal / consola",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "server.rack",
+    "uso": "Servidor",
+    "ios": "14.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Hogar",
+  "simbolos": [
+   {
+    "nombre": "house.fill",
+    "uso": "Casa",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "sofa.fill",
+    "uso": "Sala",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "lamp.desk.fill",
+    "uso": "Escritorio / estudiar",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "lightbulb.fill",
+    "uso": "Luz",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "fan.fill",
+    "uso": "Ventilador",
+    "ios": "17.0"
+   },
+   {
+    "nombre": "washer.fill",
+    "uso": "Lavadora / lavandería",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "shower.fill",
+    "uso": "Baño / regadera",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "key.fill",
+    "uso": "Llave / acceso",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "door.left.hand.open",
+    "uso": "Entrar / puerta",
+    "ios": "16.0"
+   },
+   {
+    "nombre": "powerplug.fill",
+    "uso": "Enchufe / energía",
+    "ios": "15.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Gráficas y datos",
+  "simbolos": [
+   {
+    "nombre": "chart.bar.fill",
+    "uso": "Barras (comparar categorías)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chart.bar.xaxis",
+    "uso": "Barras con eje",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "chart.pie.fill",
+    "uso": "Pastel / dona (partes de un total)",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chart.xyaxis.line",
+    "uso": "Líneas (tendencia en el tiempo)",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "chart.dots.scatter",
+    "uso": "Puntos (relación entre 2 datos)",
+    "ios": "16.1"
+   },
+   {
+    "nombre": "chart.line.uptrend.xyaxis",
+    "uso": "Tendencia que sube",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "percent",
+    "uso": "Porcentaje",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "number",
+    "uso": "Número / cantidad",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "sum",
+    "uso": "Total / suma",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "function",
+    "uso": "Fórmula",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "tablecells",
+    "uso": "Tabla",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "list.number",
+    "uso": "Lista numerada / ranking",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "gauge.with.dots.needle.33percent",
+    "uso": "Medidor / avance",
+    "ios": "17.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Flechas y navegación",
+  "simbolos": [
+   {
+    "nombre": "chevron.right",
+    "uso": "Siguiente / ir al detalle",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chevron.left",
+    "uso": "Regresar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chevron.down",
+    "uso": "Desplegar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "chevron.up",
+    "uso": "Contraer",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.right",
+    "uso": "Siguiente paso",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.left",
+    "uso": "Paso anterior",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.up",
+    "uso": "Subir",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.down",
+    "uso": "Bajar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.up.right",
+    "uso": "Abrir afuera / externo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.clockwise",
+    "uso": "Recargar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.counterclockwise",
+    "uso": "Restablecer",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.left.arrow.right",
+    "uso": "Intercambiar / convertir",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "arrow.up.left.and.arrow.down.right",
+    "uso": "Expandir / pantalla completa",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrowshape.turn.up.left.fill",
+    "uso": "Responder",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "arrow.triangle.turn.up.right.diamond.fill",
+    "uso": "Cómo llegar / indicaciones",
+    "ios": "14.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Formas, números y letras",
+  "simbolos": [
+   {
+    "nombre": "circle.fill",
+    "uso": "Punto / indicador",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "square.fill",
+    "uso": "Cuadro",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "triangle.fill",
+    "uso": "Triángulo",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "diamond.fill",
+    "uso": "Rombo",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "hexagon.fill",
+    "uso": "Hexágono",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "seal.fill",
+    "uso": "Sello / insignia",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "1.circle.fill",
+    "uso": "Paso 1 / primer lugar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "2.circle.fill",
+    "uso": "Paso 2 / segundo lugar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "3.circle.fill",
+    "uso": "Paso 3 / tercer lugar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "number.circle.fill",
+    "uso": "Número",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "a.circle.fill",
+    "uso": "Letra / opción A",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "plus.square.fill",
+    "uso": "Sumar / agregar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "minus.circle.fill",
+    "uso": "Restar / quitar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "multiply",
+    "uso": "Multiplicar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "divide",
+    "uso": "Dividir",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "equal",
+    "uso": "Igual / resultado",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "plusminus",
+    "uso": "Más o menos",
+    "ios": "13.0"
+   }
+  ]
+ },
+ {
+  "seccion": "Ajustes y sistema",
+  "simbolos": [
+   {
+    "nombre": "gearshape.fill",
+    "uso": "Ajustes",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "slider.horizontal.3",
+    "uso": "Preferencias",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "switch.2",
+    "uso": "Interruptores / opciones",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "power",
+    "uso": "Encender / apagar",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "paintbrush.fill",
+    "uso": "Personalizar / tema",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "paintpalette.fill",
+    "uso": "Colores / paleta",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "textformat.size",
+    "uso": "Tamaño de letra",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "globe",
+    "uso": "Idioma",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "circle.lefthalf.filled",
+    "uso": "Modo claro / oscuro",
+    "ios": "15.0"
+   },
+   {
+    "nombre": "bell.badge.fill",
+    "uso": "Notificaciones nuevas",
+    "ios": "14.0"
+   },
+   {
+    "nombre": "lock.fill",
+    "uso": "Contraseña / bloqueado",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "lock.shield.fill",
+    "uso": "Seguridad",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "hand.raised.fill",
+    "uso": "Privacidad",
+    "ios": "13.0"
+   },
+   {
+    "nombre": "accessibility",
+    "uso": "Accesibilidad",
+    "ios": "17.0"
+   },
+   {
+    "nombre": "trash.fill",
+    "uso": "Borrar datos",
+    "ios": "13.0"
+   }
+  ]
+ }
+]
